@@ -3,7 +3,7 @@
 //  eleTD
 //
 //  Created by Jan-Dawid Roodt on 10/02/14.
-//  Copyright (c) 2014 JD. All rights reserved.
+//  Copyright (c) 2014 JD. All rights reserved..
 //
 
 #import "ViewController.h"
