@@ -25,6 +25,12 @@
 		D2322D7B18A798DD00DD4C37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2322D5318A798DD00DD4C37 /* UIKit.framework */; };
 		D2322D8318A798DD00DD4C37 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D2322D8118A798DD00DD4C37 /* InfoPlist.strings */; };
 		D2322D8518A798DD00DD4C37 /* eleTDTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D2322D8418A798DD00DD4C37 /* eleTDTests.m */; };
+		D29F910618A9C0BA00CE3CDA /* mapBeta1.png in Resources */ = {isa = PBXBuildFile; fileRef = D29F910018A9C0BA00CE3CDA /* mapBeta1.png */; };
+		D29F910718A9C0BA00CE3CDA /* selectD1.png in Resources */ = {isa = PBXBuildFile; fileRef = D29F910118A9C0BA00CE3CDA /* selectD1.png */; };
+		D29F910818A9C0BA00CE3CDA /* selectF1.png in Resources */ = {isa = PBXBuildFile; fileRef = D29F910218A9C0BA00CE3CDA /* selectF1.png */; };
+		D29F910918A9C0BA00CE3CDA /* selectL1.png in Resources */ = {isa = PBXBuildFile; fileRef = D29F910318A9C0BA00CE3CDA /* selectL1.png */; };
+		D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */ = {isa = PBXBuildFile; fileRef = D29F910418A9C0BA00CE3CDA /* selectN1.png */; };
+		D29F910B18A9C0BA00CE3CDA /* selectW1.png in Resources */ = {isa = PBXBuildFile; fileRef = D29F910518A9C0BA00CE3CDA /* selectW1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +68,12 @@
 		D2322D8018A798DD00DD4C37 /* eleTDTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "eleTDTests-Info.plist"; sourceTree = "<group>"; };
 		D2322D8218A798DD00DD4C37 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D2322D8418A798DD00DD4C37 /* eleTDTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = eleTDTests.m; sourceTree = "<group>"; };
+		D29F910018A9C0BA00CE3CDA /* mapBeta1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mapBeta1.png; sourceTree = "<group>"; };
+		D29F910118A9C0BA00CE3CDA /* selectD1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectD1.png; sourceTree = "<group>"; };
+		D29F910218A9C0BA00CE3CDA /* selectF1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectF1.png; sourceTree = "<group>"; };
+		D29F910318A9C0BA00CE3CDA /* selectL1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectL1.png; sourceTree = "<group>"; };
+		D29F910418A9C0BA00CE3CDA /* selectN1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectN1.png; sourceTree = "<group>"; };
+		D29F910518A9C0BA00CE3CDA /* selectW1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectW1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +104,7 @@
 		D2322D4318A798DD00DD4C37 = {
 			isa = PBXGroup;
 			children = (
+				D29F90FF18A9C0A700CE3CDA /* images */,
 				D2322D5718A798DD00DD4C37 /* eleTD */,
 				D2322D7E18A798DD00DD4C37 /* eleTDTests */,
 				D2322D4E18A798DD00DD4C37 /* Frameworks */,
@@ -165,6 +178,19 @@
 				D2322D8118A798DD00DD4C37 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D29F90FF18A9C0A700CE3CDA /* images */ = {
+			isa = PBXGroup;
+			children = (
+				D29F910018A9C0BA00CE3CDA /* mapBeta1.png */,
+				D29F910118A9C0BA00CE3CDA /* selectD1.png */,
+				D29F910218A9C0BA00CE3CDA /* selectF1.png */,
+				D29F910318A9C0BA00CE3CDA /* selectL1.png */,
+				D29F910418A9C0BA00CE3CDA /* selectN1.png */,
+				D29F910518A9C0BA00CE3CDA /* selectW1.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,10 +269,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D29F910718A9C0BA00CE3CDA /* selectD1.png in Resources */,
+				D29F910B18A9C0BA00CE3CDA /* selectW1.png in Resources */,
 				D2322D7018A798DD00DD4C37 /* Spaceship.png in Resources */,
 				D2322D7218A798DD00DD4C37 /* Images.xcassets in Resources */,
+				D29F910618A9C0BA00CE3CDA /* mapBeta1.png in Resources */,
 				D2322D6818A798DD00DD4C37 /* Main_iPad.storyboard in Resources */,
 				D2322D6518A798DD00DD4C37 /* Main_iPhone.storyboard in Resources */,
+				D29F910918A9C0BA00CE3CDA /* selectL1.png in Resources */,
+				D29F910818A9C0BA00CE3CDA /* selectF1.png in Resources */,
+				D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */,
 				D2322D5C18A798DD00DD4C37 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -490,6 +522,7 @@
 				D2322D8A18A798DD00DD4C37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D2322D8B18A798DD00DD4C37 /* Build configuration list for PBXNativeTarget "eleTDTests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +531,7 @@
 				D2322D8D18A798DD00DD4C37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
