@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D21B965C18B2F3520005DCAD /* MapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965B18B2F3520005DCAD /* MapScene.m */; };
+		D21B966018B2F5D80005DCAD /* ToolbarScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965F18B2F5D80005DCAD /* ToolbarScene.m */; };
+		D21B966318B3194B0005DCAD /* ElementPickerScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B966218B3194B0005DCAD /* ElementPickerScene.m */; };
+		D21B96B218B35AB70005DCAD /* dragFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = D21B96B018B35AB70005DCAD /* dragFire.sks */; };
+		D21B96B318B35AB70005DCAD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = D21B96B118B35AB70005DCAD /* spark.png */; };
+		D21B96B518B37E4A0005DCAD /* dragFire2.sks in Resources */ = {isa = PBXBuildFile; fileRef = D21B96B418B37E4A0005DCAD /* dragFire2.sks */; };
 		D2322D5018A798DD00DD4C37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2322D4F18A798DD00DD4C37 /* Foundation.framework */; };
 		D2322D5218A798DD00DD4C37 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2322D5118A798DD00DD4C37 /* CoreGraphics.framework */; };
 		D2322D5418A798DD00DD4C37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2322D5318A798DD00DD4C37 /* UIKit.framework */; };
@@ -17,7 +23,6 @@
 		D2322D6518A798DD00DD4C37 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2322D6318A798DD00DD4C37 /* Main_iPhone.storyboard */; };
 		D2322D6818A798DD00DD4C37 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D2322D6618A798DD00DD4C37 /* Main_iPad.storyboard */; };
 		D2322D6B18A798DD00DD4C37 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D2322D6A18A798DD00DD4C37 /* ViewController.m */; };
-		D2322D6E18A798DD00DD4C37 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D2322D6D18A798DD00DD4C37 /* MyScene.m */; };
 		D2322D7018A798DD00DD4C37 /* Spaceship.png in Resources */ = {isa = PBXBuildFile; fileRef = D2322D6F18A798DD00DD4C37 /* Spaceship.png */; };
 		D2322D7218A798DD00DD4C37 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2322D7118A798DD00DD4C37 /* Images.xcassets */; };
 		D2322D7918A798DD00DD4C37 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2322D7818A798DD00DD4C37 /* XCTest.framework */; };
@@ -44,6 +49,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D21B965A18B2F3520005DCAD /* MapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapScene.h; path = eleTD/MapScene.h; sourceTree = "<group>"; };
+		D21B965B18B2F3520005DCAD /* MapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapScene.m; path = eleTD/MapScene.m; sourceTree = "<group>"; };
+		D21B965E18B2F5D80005DCAD /* ToolbarScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarScene.h; sourceTree = "<group>"; };
+		D21B965F18B2F5D80005DCAD /* ToolbarScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToolbarScene.m; sourceTree = "<group>"; };
+		D21B966118B3194B0005DCAD /* ElementPickerScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementPickerScene.h; sourceTree = "<group>"; };
+		D21B966218B3194B0005DCAD /* ElementPickerScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementPickerScene.m; sourceTree = "<group>"; };
+		D21B96B018B35AB70005DCAD /* dragFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragFire.sks; sourceTree = "<group>"; };
+		D21B96B118B35AB70005DCAD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
+		D21B96B418B37E4A0005DCAD /* dragFire2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragFire2.sks; sourceTree = "<group>"; };
 		D2322D4C18A798DD00DD4C37 /* eleTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eleTD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2322D4F18A798DD00DD4C37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2322D5118A798DD00DD4C37 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -59,9 +73,7 @@
 		D2322D6718A798DD00DD4C37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D2322D6918A798DD00DD4C37 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		D2322D6A18A798DD00DD4C37 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D2322D6C18A798DD00DD4C37 /* MyScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MyScene.h; sourceTree = "<group>"; };
-		D2322D6D18A798DD00DD4C37 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
-		D2322D6F18A798DD00DD4C37 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Spaceship.png; sourceTree = "<group>"; };
+		D2322D6F18A798DD00DD4C37 /* Spaceship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Spaceship.png; path = eleTD/Spaceship.png; sourceTree = "<group>"; };
 		D2322D7118A798DD00DD4C37 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D2322D7718A798DD00DD4C37 /* eleTDTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eleTDTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2322D7818A798DD00DD4C37 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -101,11 +113,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D21B965D18B2F4D70005DCAD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				D21B965A18B2F3520005DCAD /* MapScene.h */,
+				D21B965B18B2F3520005DCAD /* MapScene.m */,
+				D21B965E18B2F5D80005DCAD /* ToolbarScene.h */,
+				D21B965F18B2F5D80005DCAD /* ToolbarScene.m */,
+				D21B966118B3194B0005DCAD /* ElementPickerScene.h */,
+				D21B966218B3194B0005DCAD /* ElementPickerScene.m */,
+			);
+			name = Scenes;
+			sourceTree = "<group>";
+		};
+		D21B96AF18B35A3F0005DCAD /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				D21B96B018B35AB70005DCAD /* dragFire.sks */,
+				D21B96B118B35AB70005DCAD /* spark.png */,
+				D21B96B418B37E4A0005DCAD /* dragFire2.sks */,
+			);
+			name = Particles;
+			sourceTree = "<group>";
+		};
 		D2322D4318A798DD00DD4C37 = {
 			isa = PBXGroup;
 			children = (
+				D21B96AF18B35A3F0005DCAD /* Particles */,
 				D29F90FF18A9C0A700CE3CDA /* images */,
-				D2322D5718A798DD00DD4C37 /* eleTD */,
+				D21B965D18B2F4D70005DCAD /* Scenes */,
+				D2322D5718A798DD00DD4C37 /* ViewControllers */,
 				D2322D7E18A798DD00DD4C37 /* eleTDTests */,
 				D2322D4E18A798DD00DD4C37 /* Frameworks */,
 				D2322D4D18A798DD00DD4C37 /* Products */,
@@ -133,21 +170,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D2322D5718A798DD00DD4C37 /* eleTD */ = {
+		D2322D5718A798DD00DD4C37 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D2322D6918A798DD00DD4C37 /* ViewController.h */,
+				D2322D6A18A798DD00DD4C37 /* ViewController.m */,
 				D2322D6018A798DD00DD4C37 /* AppDelegate.h */,
 				D2322D6118A798DD00DD4C37 /* AppDelegate.m */,
 				D2322D6318A798DD00DD4C37 /* Main_iPhone.storyboard */,
 				D2322D6618A798DD00DD4C37 /* Main_iPad.storyboard */,
-				D2322D6918A798DD00DD4C37 /* ViewController.h */,
-				D2322D6A18A798DD00DD4C37 /* ViewController.m */,
-				D2322D6C18A798DD00DD4C37 /* MyScene.h */,
-				D2322D6D18A798DD00DD4C37 /* MyScene.m */,
-				D2322D6F18A798DD00DD4C37 /* Spaceship.png */,
 				D2322D7118A798DD00DD4C37 /* Images.xcassets */,
 				D2322D5818A798DD00DD4C37 /* Supporting Files */,
 			);
+			name = ViewControllers;
 			path = eleTD;
 			sourceTree = "<group>";
 		};
@@ -183,6 +218,7 @@
 		D29F90FF18A9C0A700CE3CDA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D2322D6F18A798DD00DD4C37 /* Spaceship.png */,
 				D29F910018A9C0BA00CE3CDA /* mapBeta1.png */,
 				D29F910118A9C0BA00CE3CDA /* selectD1.png */,
 				D29F910218A9C0BA00CE3CDA /* selectF1.png */,
@@ -274,9 +310,12 @@
 				D2322D7018A798DD00DD4C37 /* Spaceship.png in Resources */,
 				D2322D7218A798DD00DD4C37 /* Images.xcassets in Resources */,
 				D29F910618A9C0BA00CE3CDA /* mapBeta1.png in Resources */,
+				D21B96B318B35AB70005DCAD /* spark.png in Resources */,
 				D2322D6818A798DD00DD4C37 /* Main_iPad.storyboard in Resources */,
+				D21B96B218B35AB70005DCAD /* dragFire.sks in Resources */,
 				D2322D6518A798DD00DD4C37 /* Main_iPhone.storyboard in Resources */,
 				D29F910918A9C0BA00CE3CDA /* selectL1.png in Resources */,
+				D21B96B518B37E4A0005DCAD /* dragFire2.sks in Resources */,
 				D29F910818A9C0BA00CE3CDA /* selectF1.png in Resources */,
 				D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */,
 				D2322D5C18A798DD00DD4C37 /* InfoPlist.strings in Resources */,
@@ -298,10 +337,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2322D6E18A798DD00DD4C37 /* MyScene.m in Sources */,
+				D21B966018B2F5D80005DCAD /* ToolbarScene.m in Sources */,
 				D2322D6B18A798DD00DD4C37 /* ViewController.m in Sources */,
+				D21B965C18B2F3520005DCAD /* MapScene.m in Sources */,
 				D2322D6218A798DD00DD4C37 /* AppDelegate.m in Sources */,
 				D2322D5E18A798DD00DD4C37 /* main.m in Sources */,
+				D21B966318B3194B0005DCAD /* ElementPickerScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

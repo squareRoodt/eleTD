@@ -9,6 +9,17 @@
 #import <UIKit/UIKit.h>
 #import <SpriteKit/SpriteKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController {
+    SKView *mapSKView;
+    SKView *toolbarSKView;
+    SKView *elementPickerSKView;
+    
+    UIToolbar *elementPickerToolbar;
+    UIView *toolbarUIView;
+    
+    SKScene *mapScene;
+    SKScene *toolbarScene;
+    SKScene *elementPickerScene;
+}
 
 @end

@@ -7,7 +7,14 @@
 //
 
 #import "ViewController.h"
-#import "MyScene.h"
+#import "MapScene.h"
+#import "ToolbarScene.h"
+#import "ElementPickerScene.h"
+
+
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_IPAD ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )1024 ) < DBL_EPSILON )
+#define IS_IPHONE_4 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )480 ) < DBL_EPSILON )
 
 @implementation ViewController
 
@@ -16,16 +23,55 @@
     [super viewDidLoad];
 
     // Configure the view.
-    SKView * skView = (SKView *)self.view;
+    /*SKView * skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
+     */
     
-    // Create and configure the scene.
-    SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
-    scene.scaleMode = SKSceneScaleModeAspectFill;
+    // Configure the SKViews
+    if (!IS_IPHONE_5) {
+        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
+        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
+                                                              self.view.bounds.size.height - self.view.bounds.size.width)];
+        
+        if (IS_IPHONE_4) {
+            elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
+            
+        } else /*is IPAD */  {
+            elementPickerSKView = [[SKView alloc]initWithFrame: CGRectMake(
+                                                    mapSKView.bounds.size.width/15,
+                                                    mapSKView.bounds.size.height/15,
+                                                    mapSKView.bounds.size.width - (2* mapSKView.bounds.size.width/15),
+                                                    mapSKView.bounds.size.height - mapSKView.bounds.size.height/13)];
+            elementPickerSKView.layer.cornerRadius = 25;
+            elementPickerSKView.layer.masksToBounds = YES;
+        }
+    } else /* is IPHONE_5 */{
+        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 568-160)];
+        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height,
+                                                              self.view.bounds.size.width, 160)];
+        elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
+    }
     
-    // Present the scene.
-    [skView presentScene:scene];
+    
+    // Create and configure the scenes.
+    mapScene = [MapScene sceneWithSize: mapSKView.bounds.size];
+    mapScene.scaleMode = SKSceneScaleModeAspectFill;
+    [mapSKView presentScene:mapScene];
+    
+    toolbarScene = [ToolbarScene sceneWithSize:toolbarSKView.bounds.size];
+    toolbarScene.scaleMode = SKSceneScaleModeAspectFill;
+    [toolbarSKView presentScene: toolbarScene];
+    
+    elementPickerScene = [ElementPickerScene sceneWithSize:elementPickerSKView.bounds.size];
+    [elementPickerSKView presentScene:elementPickerScene];
+    
+    
+    // adding views
+    [self.view addSubview:mapSKView];
+    [self.view addSubview:toolbarSKView];
+    [self.view addSubview:elementPickerSKView];
+    
 }
 
 - (BOOL)shouldAutorotate
