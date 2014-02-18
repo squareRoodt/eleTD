@@ -60,8 +60,8 @@
         currentElement = eleFire;
         
         // adding fire particles
-        SKEmitterNode *dragFire =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire" ofType:@"sks"]];
-        SKEmitterNode *dragFire2 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire2" ofType:@"sks"]];
+        dragFire =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire" ofType:@"sks"]];
+        dragFire2 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire2" ofType:@"sks"]];
         dragFire2.position = touchLocation;
         dragFire.position = touchLocation;
         
@@ -73,7 +73,7 @@
             dragFire2.particleBirthRate = 500;
             dragFire.particleScale = 0.9;
             dragFire2.particleSpeed = 120;}],
-                                              [SKAction waitForDuration:0.1],
+                                              [SKAction waitForDuration:0.05],
                                               [SKAction runBlock:^{
             dragFire.particleBirthRate = 292;
             dragFire2.particleBirthRate = 59;

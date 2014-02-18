@@ -24,6 +24,9 @@
     CGRect selectableL;
     CGRect selectableN;
     CGRect selectableD;
+    
+    SKEmitterNode *dragFire;
+    SKEmitterNode *dragFire2;
 }
 
 @end
