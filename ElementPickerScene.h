@@ -24,9 +24,14 @@
     CGRect selectableL;
     CGRect selectableN;
     CGRect selectableD;
+    CGRect atomCenter;
     
     SKEmitterNode *dragFire;
     SKEmitterNode *dragFire2;
+    
+    SKAction *fireExplosion;
+    
+    bool isRemovingAtom;
 }
 
 @end
