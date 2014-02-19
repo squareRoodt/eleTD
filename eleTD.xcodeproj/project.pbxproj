@@ -13,6 +13,7 @@
 		D21B96B218B35AB70005DCAD /* dragFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = D21B96B018B35AB70005DCAD /* dragFire.sks */; };
 		D21B96B318B35AB70005DCAD /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = D21B96B118B35AB70005DCAD /* spark.png */; };
 		D21B96B518B37E4A0005DCAD /* dragFire2.sks in Resources */ = {isa = PBXBuildFile; fileRef = D21B96B418B37E4A0005DCAD /* dragFire2.sks */; };
+		D21B96BB18B4672A0005DCAD /* element button.png in Resources */ = {isa = PBXBuildFile; fileRef = D21B96BA18B4672A0005DCAD /* element button.png */; };
 		D2322D5018A798DD00DD4C37 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2322D4F18A798DD00DD4C37 /* Foundation.framework */; };
 		D2322D5218A798DD00DD4C37 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2322D5118A798DD00DD4C37 /* CoreGraphics.framework */; };
 		D2322D5418A798DD00DD4C37 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2322D5318A798DD00DD4C37 /* UIKit.framework */; };
@@ -58,6 +59,7 @@
 		D21B96B018B35AB70005DCAD /* dragFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragFire.sks; sourceTree = "<group>"; };
 		D21B96B118B35AB70005DCAD /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		D21B96B418B37E4A0005DCAD /* dragFire2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragFire2.sks; sourceTree = "<group>"; };
+		D21B96BA18B4672A0005DCAD /* element button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "element button.png"; sourceTree = "<group>"; };
 		D2322D4C18A798DD00DD4C37 /* eleTD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eleTD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2322D4F18A798DD00DD4C37 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2322D5118A798DD00DD4C37 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -218,6 +220,7 @@
 		D29F90FF18A9C0A700CE3CDA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D21B96BA18B4672A0005DCAD /* element button.png */,
 				D2322D6F18A798DD00DD4C37 /* Spaceship.png */,
 				D29F910018A9C0BA00CE3CDA /* mapBeta1.png */,
 				D29F910118A9C0BA00CE3CDA /* selectD1.png */,
@@ -316,6 +319,7 @@
 				D21B96B318B35AB70005DCAD /* spark.png in Resources */,
 				D2322D6818A798DD00DD4C37 /* Main_iPad.storyboard in Resources */,
 				D21B96B218B35AB70005DCAD /* dragFire.sks in Resources */,
+				D21B96BB18B4672A0005DCAD /* element button.png in Resources */,
 				D2322D6518A798DD00DD4C37 /* Main_iPhone.storyboard in Resources */,
 				D29F910918A9C0BA00CE3CDA /* selectL1.png in Resources */,
 				D21B96B518B37E4A0005DCAD /* dragFire2.sks in Resources */,

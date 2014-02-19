@@ -28,6 +28,9 @@
     skView.showsNodeCount = YES;
      */
     
+    deviceHeight = self.view.bounds.size.height;
+    deviceWidth = self.view.bounds.size.width;
+    
     // Configure the SKViews
     if (!IS_IPHONE_5) {
         mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
@@ -71,7 +74,23 @@
     [self.view addSubview:mapSKView];
     [self.view addSubview:toolbarSKView];
     [self.view addSubview:elementPickerSKView];
+    elementPickerSKView.hidden = true;
     
+    
+    float buttonSize = (deviceHeight-deviceWidth) * 0.7;
+    UIButton *pickerButton = [[UIButton alloc] initWithFrame:CGRectMake(deviceWidth/3 + (deviceWidth/3 *0.15), (deviceHeight-deviceWidth) * 0.15, buttonSize, buttonSize)];
+    [toolbarSKView addSubview:pickerButton];
+    
+    [pickerButton setBackgroundImage:[UIImage imageNamed:@"element button.png"] forState:UIControlStateNormal];
+    [toolbarSKView addSubview:pickerButton];
+    [pickerButton addTarget:self action:@selector(openPicker) forControlEvents:UIControlEventTouchDown];
+    
+}
+
+- (void) openPicker {
+    NSLog(@"button pressed");
+    
+    elementPickerSKView.hidden = !elementPickerSKView.hidden;
 }
 
 - (BOOL)shouldAutorotate

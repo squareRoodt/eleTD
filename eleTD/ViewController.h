@@ -20,6 +20,11 @@
     SKScene *mapScene;
     SKScene *toolbarScene;
     SKScene *elementPickerScene;
+    
+    float deviceHeight;
+    float deviceWidth;
 }
+
+- (void) openPicker;
 
 @end
