@@ -52,7 +52,29 @@
             [self addChild:element];
         }
         
-        
+        // SKActions
+        // (fire)
+        fireExplosion = [SKAction sequence:@[[SKAction runBlock:^{
+            dragFire.particleBirthRate = 2000;
+            dragFire2.particleBirthRate = 250;
+            dragFire.particleScale = 0.9;
+            dragFire2.particleSpeed = 120;
+            dragFire.particlePositionRange = CGVectorMake(100, 50);
+            dragFire2.particlePositionRange = CGVectorMake(100, 50);
+        }],
+                                             [SKAction waitForDuration:0.05],
+                                             [SKAction runBlock:^{
+            dragFire.particleBirthRate = 450;
+            dragFire2.particleBirthRate = 250;
+            dragFire.particleScale = 0.5;
+            dragFire2.particleSpeed = 79;
+            dragFire.particlePositionRange = CGVectorMake(25.5, 4.5);
+            dragFire2.particlePositionRange = CGVectorMake(22, 7.6);
+            dragFire.particleBirthRate = 385;
+            dragFire2.particleBirthRate = 60;
+        }],
+                                             [SKAction waitForDuration:1]
+                                             ]];
     }
     return self;
 }
@@ -81,29 +103,7 @@
         
         currentElement = eleFire;
         
-        // SKActions
-        // (fire)
-        fireExplosion = [SKAction sequence:@[[SKAction runBlock:^{
-            dragFire.particleBirthRate = 2000;
-            dragFire2.particleBirthRate = 250;
-            dragFire.particleScale = 0.9;
-            dragFire2.particleSpeed = 120;
-            dragFire.particlePositionRange = CGVectorMake(100, 50);
-            dragFire2.particlePositionRange = CGVectorMake(100, 50);
-        }],
-                                             [SKAction waitForDuration:0.05],
-                                             [SKAction runBlock:^{
-            dragFire.particleBirthRate = 450;
-            dragFire2.particleBirthRate = 250;
-            dragFire.particleScale = 0.5;
-            dragFire2.particleSpeed = 79;
-            dragFire.particlePositionRange = CGVectorMake(25.5, 4.5);
-            dragFire2.particlePositionRange = CGVectorMake(22, 7.6);
-            dragFire.particleBirthRate = 385;
-            dragFire2.particleBirthRate = 60;
-        }],
-                                             [SKAction waitForDuration:1]
-                                             ]];
+        
         
         // adding fire particles
         dragFire =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire" ofType:@"sks"]];

@@ -91,6 +91,12 @@
     NSLog(@"button pressed");
     
     elementPickerSKView.hidden = !elementPickerSKView.hidden;
+    /*  possible efficiency problems
+    if (!elementPickerSKView.hidden) {
+        [elementPickerSKView presentScene:elementPickerScene];
+    } else {
+        [elementPickerScene removeFromParent];
+    }*/
 }
 
 - (BOOL)shouldAutorotate
