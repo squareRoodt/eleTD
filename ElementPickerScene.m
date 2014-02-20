@@ -76,6 +76,21 @@
                                              [SKAction waitForDuration:1]
                                              ]];
     }
+    // (water)
+    waterExplosion = [SKAction sequence:@[[SKAction runBlock:^{
+        dragWater.particleBirthRate = 4000;
+        dragWater.particleSpeedRange = 400;
+        dragWater.particleLifetime = 2.0;
+    }],
+                                         [SKAction waitForDuration:0.05],
+                                         [SKAction runBlock:^{
+        dragWater.particleBirthRate = 466;
+        dragWater.particleSpeedRange = 160;
+        dragWater.particleLifetime = 1.4;
+    }],
+                                         [SKAction waitForDuration:1]
+                                         ]];
+    
     return self;
 }
 
@@ -100,10 +115,7 @@
     isRemovingAtom = false;
     
     if (CGRectContainsPoint(selectableF, touchLocation)) {
-        
         currentElement = eleFire;
-        
-        
         
         // adding fire particles
         dragFire =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire" ofType:@"sks"]];
@@ -121,6 +133,15 @@
         
     } else if (CGRectContainsPoint(selectableW, touchLocation)) {
         currentElement = eleWater;
+        
+        // adding water particles
+        dragWater =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragWater" ofType:@"sks"]];
+        CGPoint waterLocation =CGPointMake(460, 540);
+        dragWater.position = waterLocation;
+        dragWater.targetNode = self;
+        
+        [self addChild:dragWater];
+        [self runAction:waterExplosion];
         
     } else if (CGRectContainsPoint(selectableL, touchLocation)) {
         currentElement = eleLight;
