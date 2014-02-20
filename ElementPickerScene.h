@@ -32,6 +32,8 @@
     SKAction *fireExplosion;
     
     bool isRemovingAtom;
+    bool canClickElement;
+    NSTimer *spamControlTimer;
 }
 
 @end

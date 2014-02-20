@@ -14,6 +14,12 @@
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor whiteColor];
         isRemovingAtom = false;
+        canClickElement = true;
+        spamControlTimer = [NSTimer scheduledTimerWithTimeInterval:1.5
+                                                            target:self
+                                                          selector:@selector(spamChecker)
+                                                          userInfo:nil
+                                                           repeats:YES];
         
         eleFire = [SKSpriteNode spriteNodeWithImageNamed:@"selectF1"];
         eleWater = [SKSpriteNode spriteNodeWithImageNamed:@"selectW1"];
@@ -51,10 +57,18 @@
     return self;
 }
 
+- (void) spamChecker {
+    canClickElement = true;
+}
+
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint positionInScene = [touch locationInNode:self];
-    [self findSelectedNodeInTouch:positionInScene];
+    if (canClickElement) {
+        [self findSelectedNodeInTouch:positionInScene];
+        canClickElement = false;
+    }
+    
 }
 
 - (void)findSelectedNodeInTouch:(CGPoint)touchLocation {
@@ -150,18 +164,28 @@
                 
             }
             
+            // add new element to atom collection
             if (dragFire.position.y <= endPoint.y) {
                 
-                [self smoothRemove:dragFire];
-                [self smoothRemove:dragFire2];
+                [dragFire removeFromParent];
+                [dragFire2 removeFromParent];
                 currentElement = nil;
                 
                 [self addElement:@"F"];
             }
             
+            // dragged out of range
             if (dragFire.position.y > 650) {
-                [self smoothRemove:dragFire];
-                [self smoothRemove:dragFire2];
+                dragFire.particleBirthRate = 0;
+                dragFire2.particleBirthRate = 0;
+                
+                SKAction *remF = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{[dragFire removeFromParent];
+                }] ]];
+                SKAction *remF2 = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{[dragFire2 removeFromParent];
+                }] ]];
+                
+                [self runAction:remF];
+                [self runAction:remF2];
             }
             
         } else if ([currentElement.name isEqualToString:@"water"]) {
@@ -187,8 +211,17 @@
     
     if ([currentElement.name isEqualToString:@"fire"]) {
         NSLog(@"in fire method for delete");
-        [self smoothRemove:dragFire];
-        [self smoothRemove:dragFire2];
+        
+        dragFire.particleBirthRate = 0;
+        dragFire2.particleBirthRate = 0;
+        
+        SKAction *remF = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{[dragFire removeFromParent];
+        }] ]];
+        SKAction *remF2 = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{[dragFire2 removeFromParent];
+        }] ]];
+        
+        [self runAction:remF];
+        [self runAction:remF2];
         
     } else if ([currentElement.name isEqualToString:@"water"]) {
         
@@ -203,11 +236,6 @@
     currentElement = nil;
 }
 
-- (void) smoothRemove: (SKEmitterNode *) particle {
-    particle.particleBirthRate = 0;
-    [SKAction sequence:@[ [SKAction waitForDuration:0.01], [SKAction runBlock:^{[particle removeFromParent];
-    }] ]];
-}
 
 
 @end
