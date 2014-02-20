@@ -46,21 +46,7 @@
             [self addChild:element];
         }
         
-        // SKActions
-        // (fire)
-        fireExplosion = [SKAction sequence:@[[SKAction runBlock:^{
-            dragFire.particleBirthRate = 1000;
-            dragFire2.particleBirthRate = 500;
-            dragFire.particleScale = 0.9;
-            dragFire2.particleSpeed = 120;}],
-                             [SKAction waitForDuration:0.05],
-                             [SKAction runBlock:^{
-            dragFire.particleBirthRate = 292;
-            dragFire2.particleBirthRate = 59;
-            dragFire.particleScale = 0.5;
-            dragFire2.particleSpeed = 79;}],
-                                             [SKAction waitForDuration:1]
-                             ]];
+        
     }
     return self;
 }
@@ -73,12 +59,37 @@
 
 - (void)findSelectedNodeInTouch:(CGPoint)touchLocation {
     //NSLog(@"touch on element picker screen");
-    NSLog(@"X: %f,   Y: %f", touchLocation.x, touchLocation.y);
+    //NSLog(@"X: %f,   Y: %f", touchLocation.x, touchLocation.y);
     // assume you are adding atoms until told you are removing
     isRemovingAtom = false;
     
     if (CGRectContainsPoint(selectableF, touchLocation)) {
+        
         currentElement = eleFire;
+        
+        // SKActions
+        // (fire)
+        fireExplosion = [SKAction sequence:@[[SKAction runBlock:^{
+            dragFire.particleBirthRate = 2000;
+            dragFire2.particleBirthRate = 250;
+            dragFire.particleScale = 0.9;
+            dragFire2.particleSpeed = 120;
+            dragFire.particlePositionRange = CGVectorMake(100, 50);
+            dragFire2.particlePositionRange = CGVectorMake(100, 50);
+        }],
+                                             [SKAction waitForDuration:0.05],
+                                             [SKAction runBlock:^{
+            dragFire.particleBirthRate = 450;
+            dragFire2.particleBirthRate = 250;
+            dragFire.particleScale = 0.5;
+            dragFire2.particleSpeed = 79;
+            dragFire.particlePositionRange = CGVectorMake(25.5, 4.5);
+            dragFire2.particlePositionRange = CGVectorMake(22, 7.6);
+            dragFire.particleBirthRate = 385;
+            dragFire2.particleBirthRate = 60;
+        }],
+                                             [SKAction waitForDuration:1]
+                                             ]];
         
         // adding fire particles
         dragFire =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire" ofType:@"sks"]];
@@ -86,6 +97,8 @@
         CGPoint fireLocation =CGPointMake(187, 541);
         dragFire2.position = fireLocation;
         dragFire.position = fireLocation;
+        dragFire.targetNode = self;
+        dragFire2.targetNode = self;
         
         
         [self addChild:dragFire2];
@@ -127,18 +140,28 @@
         if ([currentElement.name isEqualToString:@"fire"]) {
             
             if (positionInScene.y < (-1.1189 * positionInScene.x) + 750.23) {
-                NSLog(@"fire scroll1");
                 // y = mx + c
                 [dragFire runAction:[SKAction moveTo:CGPointMake(positionInScene.x, (-1.1189 * positionInScene.x) + 750.23) duration:0.01]];
                 [dragFire2 runAction:[SKAction moveTo:CGPointMake(positionInScene.x, (-1.1189 * positionInScene.x) + 750.23) duration:0.01]];
             } else {
-                NSLog(@"fire scroll2");
                 // x = (y - c) / m
                 [dragFire runAction:[SKAction moveTo:CGPointMake((positionInScene.y - 750.23)/-1.1189, positionInScene.y) duration:0.01]];
                 [dragFire2 runAction:[SKAction moveTo:CGPointMake((positionInScene.y - 750.23)/-1.1189, positionInScene.y) duration:0.01]];
                 
-                //[dragFire2 runAction:[SKAction moveTo:CGPointMake(100, positionInScene.y) duration:0.01]];
-                NSLog(@"%f, %f", (positionInScene.y - 11.763)/1.1189, positionInScene.y);
+            }
+            
+            if (dragFire.position.y <= endPoint.y) {
+                
+                [self smoothRemove:dragFire];
+                [self smoothRemove:dragFire2];
+                currentElement = nil;
+                
+                [self addElement:@"F"];
+            }
+            
+            if (dragFire.position.y > 650) {
+                [self smoothRemove:dragFire];
+                [self smoothRemove:dragFire2];
             }
             
         } else if ([currentElement.name isEqualToString:@"water"]) {
@@ -152,6 +175,38 @@
         }
     }
     
+}
+
+- (void) addElement: (NSString *) elementType {
+    NSLog(@"added %@ element", elementType);
+    
+}
+
+- (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"finger lifted");
+    
+    if ([currentElement.name isEqualToString:@"fire"]) {
+        NSLog(@"in fire method for delete");
+        [self smoothRemove:dragFire];
+        [self smoothRemove:dragFire2];
+        
+    } else if ([currentElement.name isEqualToString:@"water"]) {
+        
+    } else if ([currentElement.name isEqualToString:@"light"]) {
+        
+    } else if ([currentElement.name isEqualToString:@"nature"]) {
+        
+    } else if ([currentElement.name isEqualToString:@"dark"]) {
+        
+    }
+    
+    currentElement = nil;
+}
+
+- (void) smoothRemove: (SKEmitterNode *) particle {
+    particle.particleBirthRate = 0;
+    [SKAction sequence:@[ [SKAction waitForDuration:0.01], [SKAction runBlock:^{[particle removeFromParent];
+    }] ]];
 }
 
 
