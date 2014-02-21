@@ -114,7 +114,7 @@
                                          [SKAction waitForDuration:0.05],
                                          [SKAction runBlock:^{
         dragWater.particleBirthRate = 275;
-        dragWater.particleSpeedRange = 160;
+        dragWater.particleSpeedRange = 110;
         dragWater.particleLifetime = 1.4;
     }]
                                        
