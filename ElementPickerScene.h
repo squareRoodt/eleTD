@@ -31,9 +31,12 @@
     SKEmitterNode *dragFire;
     SKEmitterNode *dragFire2;
     SKEmitterNode *dragWater;
+    SKEmitterNode *dragDark;
+    SKEmitterNode *dragDark2;
     
     SKAction *fireExplosion;
     SKAction *waterExplosion;
+    SKAction *darkExplosion;
     
     bool isRemovingAtom;
     bool canClickElement;

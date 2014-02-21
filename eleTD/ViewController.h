@@ -10,6 +10,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface ViewController : UIViewController {
+    // idea: maybe the toolbar doesnt need to be a skview. that would save a lot of processing? but no sprite. which is orite??
     SKView *mapSKView;
     SKView *toolbarSKView;
     SKView *elementPickerSKView;

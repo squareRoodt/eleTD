@@ -60,7 +60,7 @@
     // Create and configure the scenes.
     mapScene = [MapScene sceneWithSize: mapSKView.bounds.size];
     mapScene.scaleMode = SKSceneScaleModeAspectFill;
-    [mapSKView presentScene:mapScene];
+    //[mapSKView presentScene:mapScene];
     
     toolbarScene = [ToolbarScene sceneWithSize:toolbarSKView.bounds.size];
     toolbarScene.scaleMode = SKSceneScaleModeAspectFill;
