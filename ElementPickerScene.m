@@ -13,13 +13,15 @@
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor whiteColor];
+        currentDrag = [[SKNode alloc]init];
         isRemovingAtom = false;
         canClickElement = true;
-        spamControlTimer = [NSTimer scheduledTimerWithTimeInterval:1.5
+        [self addChild:currentDrag];
+        /*spamControlTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                             target:self
                                                           selector:@selector(spamChecker)
                                                           userInfo:nil
-                                                           repeats:YES];
+                                                           repeats:YES];*/
         
         eleFire = [SKSpriteNode spriteNodeWithImageNamed:@"selectF1"];
         eleWater = [SKSpriteNode spriteNodeWithImageNamed:@"selectW1"];
@@ -98,21 +100,22 @@
     canClickElement = true;
 }
 
+//  TOUCH BEGAN
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint positionInScene = [touch locationInNode:self];
-    if (canClickElement) {
+    
         [self findSelectedNodeInTouch:positionInScene];
-        canClickElement = false;
-    }
+      
     
 }
 
 - (void)findSelectedNodeInTouch:(CGPoint)touchLocation {
     //NSLog(@"touch on element picker screen");
-    //NSLog(@"X: %f,   Y: %f", touchLocation.x, touchLocation.y);
+    NSLog(@"X: %f,   Y: %f", touchLocation.x, touchLocation.y);
     // assume you are adding atoms until told you are removing
     isRemovingAtom = false;
+    [currentDrag removeAllChildren];
     
     if (CGRectContainsPoint(selectableF, touchLocation)) {
         currentElement = eleFire;
@@ -121,14 +124,15 @@
         dragFire =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire" ofType:@"sks"]];
         dragFire2 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire2" ofType:@"sks"]];
         CGPoint fireLocation =CGPointMake(187, 541);
-        dragFire2.position = fireLocation;
-        dragFire.position = fireLocation;
+        currentDrag.position = fireLocation;
+        //dragFire2.position = fireLocation;
+        //dragFire.position = fireLocation;
         dragFire.targetNode = self;
         dragFire2.targetNode = self;
         
         
-        [self addChild:dragFire2];
-        [self addChild:dragFire];
+        [currentDrag addChild:dragFire2];
+        [currentDrag addChild:dragFire];
         [self runAction: fireExplosion];
         
     } else if (CGRectContainsPoint(selectableW, touchLocation)) {
@@ -137,10 +141,10 @@
         // adding water particles
         dragWater =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragWater" ofType:@"sks"]];
         CGPoint waterLocation =CGPointMake(460, 540);
-        dragWater.position = waterLocation;
+        currentDrag.position = waterLocation;
         dragWater.targetNode = self;
         
-        [self addChild:dragWater];
+        [currentDrag addChild:dragWater];
         [self runAction:waterExplosion];
         
     } else if (CGRectContainsPoint(selectableL, touchLocation)) {
@@ -163,8 +167,8 @@
 	
 }
 
+// TOUCH MOVED
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-    // [_player runAction:[SKAction moveTo:[[touches anyObject] locationInNode:self] duration:0.01]];
     UITouch *touch = [touches anyObject];
     CGPoint positionInScene = [touch locationInNode:self];
     CGPoint endPoint = CGPointMake(330, 381);
@@ -176,40 +180,44 @@
             
             if (positionInScene.y < (-1.1189 * positionInScene.x) + 750.23) {
                 // y = mx + c
-                [dragFire runAction:[SKAction moveTo:CGPointMake(positionInScene.x, (-1.1189 * positionInScene.x) + 750.23) duration:0.01]];
-                [dragFire2 runAction:[SKAction moveTo:CGPointMake(positionInScene.x, (-1.1189 * positionInScene.x) + 750.23) duration:0.01]];
+                [currentDrag runAction:[SKAction moveTo:CGPointMake(positionInScene.x, (-1.1189 * positionInScene.x) + 750.23) duration:0.01]];
             } else {
                 // x = (y - c) / m
-                [dragFire runAction:[SKAction moveTo:CGPointMake((positionInScene.y - 750.23)/-1.1189, positionInScene.y) duration:0.01]];
-                [dragFire2 runAction:[SKAction moveTo:CGPointMake((positionInScene.y - 750.23)/-1.1189, positionInScene.y) duration:0.01]];
-                
+                [currentDrag runAction:[SKAction moveTo:CGPointMake((positionInScene.y - 750.23)/-1.1189, positionInScene.y) duration:0.01]];
             }
             
             // add new element to atom collection
-            if (dragFire.position.y <= endPoint.y) {
-                
-                [dragFire removeFromParent];
-                [dragFire2 removeFromParent];
-                currentElement = nil;
-                
+            if (currentDrag.position.y <= endPoint.y) {
+                [self removeFire];
                 [self addElement:@"F"];
             }
             
             // dragged out of range
-            if (dragFire.position.y > 650) {
-                dragFire.particleBirthRate = 0;
-                dragFire2.particleBirthRate = 0;
-                
-                SKAction *remF = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{[dragFire removeFromParent];
-                }] ]];
-                SKAction *remF2 = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{[dragFire2 removeFromParent];
-                }] ]];
-                
-                [self runAction:remF];
-                [self runAction:remF2];
+            if (currentDrag.position.y > 650) {
+                [self removeFire];
             }
             
         } else if ([currentElement.name isEqualToString:@"water"]) {
+            // movement
+            // y = 1.22x - 21.2
+            if (positionInScene.y < (1.22 * positionInScene.x) - 21.2) {
+                // y = mx + c
+                [currentDrag runAction:[SKAction moveTo:CGPointMake(positionInScene.x, (1.22 * positionInScene.x) - 21.2) duration:0.01]];
+            } else {
+                // x = (y - c) / m
+                [currentDrag runAction:[SKAction moveTo:CGPointMake((positionInScene.y + 21.2)/1.22, positionInScene.y) duration:0.01]];
+            }
+            
+            // add new element to atom collection
+            if (currentDrag.position.y <= endPoint.y) {
+                [self removeWater];
+                [self addElement:@"W"];
+            }
+            
+            // dragged out of range
+            if (currentDrag.position.y > 650) {
+                [self removeWater];
+            }
             
         } else if ([currentElement.name isEqualToString:@"light"]) {
             
@@ -227,25 +235,15 @@
     
 }
 
+
+// TOUCH ENDED
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"finger lifted");
     
     if ([currentElement.name isEqualToString:@"fire"]) {
-        NSLog(@"in fire method for delete");
-        
-        dragFire.particleBirthRate = 0;
-        dragFire2.particleBirthRate = 0;
-        
-        SKAction *remF = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{[dragFire removeFromParent];
-        }] ]];
-        SKAction *remF2 = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{[dragFire2 removeFromParent];
-        }] ]];
-        
-        [self runAction:remF];
-        [self runAction:remF2];
-        
+        [self removeFire];
     } else if ([currentElement.name isEqualToString:@"water"]) {
-        
+        [self removeWater];
     } else if ([currentElement.name isEqualToString:@"light"]) {
         
     } else if ([currentElement.name isEqualToString:@"nature"]) {
@@ -254,7 +252,26 @@
         
     }
     
+}
+
+- (void) removeFire {
     currentElement = nil;
+    dragFire.particleBirthRate = 0;
+    dragFire2.particleBirthRate = 0;
+    
+    SKAction *remF2 = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{[currentDrag removeAllChildren];
+    }] ]];
+    
+    [self runAction:remF2];
+}
+
+- (void) removeWater {
+    currentElement = nil;
+    dragWater.particleBirthRate = 0;
+    
+    SKAction *remW = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{ [currentDrag removeAllChildren];
+    }] ]];
+    [SKAction runAction:remW onChildWithName:nil];
 }
 
 

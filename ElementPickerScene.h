@@ -26,6 +26,7 @@
     CGRect selectableD;
     CGRect atomCenter;
     
+    SKNode *currentDrag;
     SKEmitterNode *dragFire;
     SKEmitterNode *dragFire2;
     SKEmitterNode *dragWater;
