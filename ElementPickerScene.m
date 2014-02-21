@@ -113,7 +113,7 @@
     }],
                                          [SKAction waitForDuration:0.05],
                                          [SKAction runBlock:^{
-        dragWater.particleBirthRate = 466;
+        dragWater.particleBirthRate = 275;
         dragWater.particleSpeedRange = 160;
         dragWater.particleLifetime = 1.4;
     }]
@@ -176,31 +176,13 @@
     //NSLog(@"X: %f,   Y: %f", touchLocation.x, touchLocation.y);
     // assume you are adding atoms until told you are removing
     isRemovingAtom = false;
-    //[currentDrag removeAllChildren];
     
     if (CGRectContainsPoint(selectableF, touchLocation)) {
         currentElement = eleFire;
-        
-        // adding fire particles
-        
-        
-        //currentDrag.position = fireLocation;
-        //dragFire2.position = fireLocation;
-        //dragFire.position = fireLocation;
-        
-        
         [self runAction: fireExplosion];
         
     } else if (CGRectContainsPoint(selectableW, touchLocation)) {
         currentElement = eleWater;
-        
-        // adding water particles
-        
-        
-        //currentDrag.position = waterLocation;
-        //dragWater.targetNode = self;
-        
-        //[currentDrag addChild:dragWater];
         [self runAction:waterExplosion];
         
     } else if (CGRectContainsPoint(selectableL, touchLocation)) {
@@ -211,12 +193,6 @@
         
     } else if (CGRectContainsPoint(selectableD, touchLocation)) {
         currentElement = eleDark;
-        
-        
-        //currentDrag.position = darkLocation;
-        
-        //NSLog(@"%f", ((SKEmitterNode *)currentDrag.children[0]).particleBirthRate);
-        
         [self runAction: darkExplosion];
         
     } else if (CGRectContainsPoint(atomCenter, touchLocation)) {
@@ -339,11 +315,6 @@
     dragWater.particleBirthRate = 0;
     dragDark.particleBirthRate = 0;
     dragDark2.particleBirthRate = 0;
-    
-    //SKAction *rem = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{ [currentDrag removeAllChildren];
-    //}] ]];
-    
-    //[self runAction:rem];
 }
 
 
