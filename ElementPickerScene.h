@@ -14,6 +14,7 @@
     SKSpriteNode *eleLight;
     SKSpriteNode *eleNature;
     SKSpriteNode *eleDark;
+    SKSpriteNode *eleNull;
     
     NSMutableArray *elements;
     

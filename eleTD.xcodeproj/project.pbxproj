@@ -38,6 +38,7 @@
 		D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */ = {isa = PBXBuildFile; fileRef = D29F910418A9C0BA00CE3CDA /* selectN1.png */; };
 		D29F910B18A9C0BA00CE3CDA /* selectW1.png in Resources */ = {isa = PBXBuildFile; fileRef = D29F910518A9C0BA00CE3CDA /* selectW1.png */; };
 		D2D606A518B61E8D00A86B23 /* dragWater.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606A418B61E8D00A86B23 /* dragWater.sks */; };
+		D2D606A718B6EF5B00A86B23 /* drop.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606A618B6EF5B00A86B23 /* drop.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,7 @@
 		D29F910418A9C0BA00CE3CDA /* selectN1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectN1.png; sourceTree = "<group>"; };
 		D29F910518A9C0BA00CE3CDA /* selectW1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectW1.png; sourceTree = "<group>"; };
 		D2D606A418B61E8D00A86B23 /* dragWater.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragWater.sks; sourceTree = "<group>"; };
+		D2D606A618B6EF5B00A86B23 /* drop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +135,9 @@
 		D21B96AF18B35A3F0005DCAD /* Particles */ = {
 			isa = PBXGroup;
 			children = (
-				D21B96B018B35AB70005DCAD /* dragFire.sks */,
+				D2D606A618B6EF5B00A86B23 /* drop.png */,
 				D21B96B118B35AB70005DCAD /* spark.png */,
+				D21B96B018B35AB70005DCAD /* dragFire.sks */,
 				D21B96B418B37E4A0005DCAD /* dragFire2.sks */,
 				D2D606A418B61E8D00A86B23 /* dragWater.sks */,
 			);
@@ -323,6 +326,7 @@
 				D2322D6818A798DD00DD4C37 /* Main_iPad.storyboard in Resources */,
 				D21B96B218B35AB70005DCAD /* dragFire.sks in Resources */,
 				D21B96BB18B4672A0005DCAD /* element button.png in Resources */,
+				D2D606A718B6EF5B00A86B23 /* drop.png in Resources */,
 				D2322D6518A798DD00DD4C37 /* Main_iPhone.storyboard in Resources */,
 				D29F910918A9C0BA00CE3CDA /* selectL1.png in Resources */,
 				D21B96B518B37E4A0005DCAD /* dragFire2.sks in Resources */,

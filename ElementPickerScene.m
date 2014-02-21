@@ -28,12 +28,16 @@
         eleLight = [SKSpriteNode spriteNodeWithImageNamed:@"selectL1"];
         eleNature = [SKSpriteNode spriteNodeWithImageNamed:@"selectN1"];
         eleDark = [SKSpriteNode spriteNodeWithImageNamed:@"selectD1"];
+        eleNull = [SKSpriteNode spriteNodeWithColor:[SKColor clearColor] size:CGSizeMake(1, 1)];
         
         eleFire.name = @"fire";
         eleWater.name = @"water";
         eleLight.name = @"light";
         eleNature.name = @"nature";
         eleDark.name = @"dark";
+        eleNull.name = @"null";
+        [self addChild:eleNull];
+        currentElement = eleNull;
         
         // iPad dimensions
         selectableF = CGRectMake(64, 441, 265, 199);
@@ -160,7 +164,7 @@
         // removing an element from the atom
         isRemovingAtom = true;
     } else {
-        currentElement = Nil;
+        currentElement = eleNull;
     }
     
     NSLog(@"touched %@ element", currentElement.name);
@@ -244,6 +248,7 @@
         [self removeFire];
     } else if ([currentElement.name isEqualToString:@"water"]) {
         [self removeWater];
+        
     } else if ([currentElement.name isEqualToString:@"light"]) {
         
     } else if ([currentElement.name isEqualToString:@"nature"]) {
@@ -255,7 +260,7 @@
 }
 
 - (void) removeFire {
-    currentElement = nil;
+    currentElement = eleNull;
     dragFire.particleBirthRate = 0;
     dragFire2.particleBirthRate = 0;
     
@@ -266,12 +271,13 @@
 }
 
 - (void) removeWater {
-    currentElement = nil;
+    currentElement = eleNull;
     dragWater.particleBirthRate = 0;
     
     SKAction *remW = [SKAction sequence:@[ [SKAction waitForDuration:0.3], [SKAction runBlock:^{ [currentDrag removeAllChildren];
     }] ]];
-    [SKAction runAction:remW onChildWithName:nil];
+    
+    [self runAction:remW];
 }
 
 
