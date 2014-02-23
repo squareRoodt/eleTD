@@ -42,6 +42,16 @@
 		D2D606A918B71BDE00A86B23 /* dragDark.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606A818B71BDE00A86B23 /* dragDark.sks */; };
 		D2D606AB18B71F1700A86B23 /* skull.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606AA18B71F1700A86B23 /* skull.png */; };
 		D2D606AD18B71F4F00A86B23 /* dragDark2.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606AC18B71F4F00A86B23 /* dragDark2.sks */; };
+		D2D606B018B8C92200A86B23 /* dragLeaf1.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606AE18B8C92200A86B23 /* dragLeaf1.png */; };
+		D2D606B118B8C92200A86B23 /* dragLeaf2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606AF18B8C92200A86B23 /* dragLeaf2.png */; };
+		D2D606B318B8C94100A86B23 /* dragNature1.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606B218B8C94100A86B23 /* dragNature1.sks */; };
+		D2D606B518B8CB1D00A86B23 /* dragNature2.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606B418B8CB1D00A86B23 /* dragNature2.sks */; };
+		D2D606B718B8CEBE00A86B23 /* dragNature3.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606B618B8CEBE00A86B23 /* dragNature3.sks */; };
+		D2D606B918B990FB00A86B23 /* dragFlower.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606B818B990FB00A86B23 /* dragFlower.png */; };
+		D2D606BF18B9C13400A86B23 /* dragLight1.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606BE18B9C13400A86B23 /* dragLight1.sks */; };
+		D2D606C318B9EA9C00A86B23 /* dragLight2.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606C218B9EA9C00A86B23 /* dragLight2.sks */; };
+		D2D606C518B9FC7700A86B23 /* dragLight3.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606C418B9FC7700A86B23 /* dragLight3.sks */; };
+		D2D606C718BA012E00A86B23 /* dragLight2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606C618BA012E00A86B23 /* dragLight2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +108,16 @@
 		D2D606A818B71BDE00A86B23 /* dragDark.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragDark.sks; sourceTree = "<group>"; };
 		D2D606AA18B71F1700A86B23 /* skull.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skull.png; sourceTree = "<group>"; };
 		D2D606AC18B71F4F00A86B23 /* dragDark2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragDark2.sks; sourceTree = "<group>"; };
+		D2D606AE18B8C92200A86B23 /* dragLeaf1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragLeaf1.png; sourceTree = "<group>"; };
+		D2D606AF18B8C92200A86B23 /* dragLeaf2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragLeaf2.png; sourceTree = "<group>"; };
+		D2D606B218B8C94100A86B23 /* dragNature1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragNature1.sks; sourceTree = "<group>"; };
+		D2D606B418B8CB1D00A86B23 /* dragNature2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragNature2.sks; sourceTree = "<group>"; };
+		D2D606B618B8CEBE00A86B23 /* dragNature3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragNature3.sks; sourceTree = "<group>"; };
+		D2D606B818B990FB00A86B23 /* dragFlower.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragFlower.png; sourceTree = "<group>"; };
+		D2D606BE18B9C13400A86B23 /* dragLight1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragLight1.sks; sourceTree = "<group>"; };
+		D2D606C218B9EA9C00A86B23 /* dragLight2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragLight2.sks; sourceTree = "<group>"; };
+		D2D606C418B9FC7700A86B23 /* dragLight3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragLight3.sks; sourceTree = "<group>"; };
+		D2D606C618BA012E00A86B23 /* dragLight2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragLight2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,14 +161,24 @@
 		D21B96AF18B35A3F0005DCAD /* Particles */ = {
 			isa = PBXGroup;
 			children = (
+				D2D606B818B990FB00A86B23 /* dragFlower.png */,
+				D2D606AE18B8C92200A86B23 /* dragLeaf1.png */,
+				D2D606AF18B8C92200A86B23 /* dragLeaf2.png */,
 				D2D606AA18B71F1700A86B23 /* skull.png */,
 				D2D606A618B6EF5B00A86B23 /* drop.png */,
 				D21B96B118B35AB70005DCAD /* spark.png */,
+				D2D606C618BA012E00A86B23 /* dragLight2.png */,
+				D2D606B218B8C94100A86B23 /* dragNature1.sks */,
+				D2D606B418B8CB1D00A86B23 /* dragNature2.sks */,
+				D2D606B618B8CEBE00A86B23 /* dragNature3.sks */,
 				D21B96B018B35AB70005DCAD /* dragFire.sks */,
 				D21B96B418B37E4A0005DCAD /* dragFire2.sks */,
 				D2D606A418B61E8D00A86B23 /* dragWater.sks */,
 				D2D606A818B71BDE00A86B23 /* dragDark.sks */,
 				D2D606AC18B71F4F00A86B23 /* dragDark2.sks */,
+				D2D606BE18B9C13400A86B23 /* dragLight1.sks */,
+				D2D606C418B9FC7700A86B23 /* dragLight3.sks */,
+				D2D606C218B9EA9C00A86B23 /* dragLight2.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -326,16 +356,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2D606B918B990FB00A86B23 /* dragFlower.png in Resources */,
 				D29F910718A9C0BA00CE3CDA /* selectD1.png in Resources */,
+				D2D606B318B8C94100A86B23 /* dragNature1.sks in Resources */,
 				D29F910B18A9C0BA00CE3CDA /* selectW1.png in Resources */,
+				D2D606B118B8C92200A86B23 /* dragLeaf2.png in Resources */,
+				D2D606C318B9EA9C00A86B23 /* dragLight2.sks in Resources */,
 				D2322D7018A798DD00DD4C37 /* Spaceship.png in Resources */,
+				D2D606B518B8CB1D00A86B23 /* dragNature2.sks in Resources */,
 				D2322D7218A798DD00DD4C37 /* Images.xcassets in Resources */,
 				D29F910618A9C0BA00CE3CDA /* mapBeta1.png in Resources */,
 				D21B96B318B35AB70005DCAD /* spark.png in Resources */,
 				D2D606AB18B71F1700A86B23 /* skull.png in Resources */,
+				D2D606C518B9FC7700A86B23 /* dragLight3.sks in Resources */,
 				D2322D6818A798DD00DD4C37 /* Main_iPad.storyboard in Resources */,
+				D2D606B718B8CEBE00A86B23 /* dragNature3.sks in Resources */,
 				D21B96B218B35AB70005DCAD /* dragFire.sks in Resources */,
 				D21B96BB18B4672A0005DCAD /* element button.png in Resources */,
+				D2D606BF18B9C13400A86B23 /* dragLight1.sks in Resources */,
 				D2D606A718B6EF5B00A86B23 /* drop.png in Resources */,
 				D2322D6518A798DD00DD4C37 /* Main_iPhone.storyboard in Resources */,
 				D29F910918A9C0BA00CE3CDA /* selectL1.png in Resources */,
@@ -344,8 +382,10 @@
 				D2D606A518B61E8D00A86B23 /* dragWater.sks in Resources */,
 				D2D606A918B71BDE00A86B23 /* dragDark.sks in Resources */,
 				D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */,
+				D2D606B018B8C92200A86B23 /* dragLeaf1.png in Resources */,
 				D2D606AD18B71F4F00A86B23 /* dragDark2.sks in Resources */,
 				D2322D5C18A798DD00DD4C37 /* InfoPlist.strings in Resources */,
+				D2D606C718BA012E00A86B23 /* dragLight2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

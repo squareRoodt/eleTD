@@ -33,13 +33,20 @@
     SKEmitterNode *dragWater;
     SKEmitterNode *dragDark;
     SKEmitterNode *dragDark2;
+    SKEmitterNode *dragNature1;
+    SKEmitterNode *dragNature2;
+    SKEmitterNode *dragNature3;
+    SKEmitterNode *dragLight1;
+    SKEmitterNode *dragLight2;
     
     SKAction *fireExplosion;
     SKAction *waterExplosion;
     SKAction *darkExplosion;
+    SKAction *natureExplosion;
+    SKAction *lightExplosion;
     
     bool isRemovingAtom;
-    bool canClickElement;
+    //bool canClickElement;
     NSTimer *spamControlTimer;
 }
 

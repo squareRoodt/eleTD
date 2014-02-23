@@ -18,7 +18,6 @@
         self.backgroundColor = [SKColor whiteColor];
         currentDrag = [[SKNode alloc]init];
         isRemovingAtom = false;
-        canClickElement = true;
         [self addChild:currentDrag];
         /*spamControlTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                             target:self
@@ -120,6 +119,59 @@
                                        
                                          ]];
     
+    // (nature)
+    dragNature1 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragNature1" ofType:@"sks"]];
+    dragNature2 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragNature2" ofType:@"sks"]];
+    dragNature3 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragNature3" ofType:@"sks"]];
+    dragNature1.targetNode = self;
+    dragNature2.targetNode = self;
+    dragNature3.targetNode = self;
+    [currentDrag addChild:dragNature1];
+    CGPoint natureLocation = CGPointMake(334, 114);
+    
+    // special case for nature
+    [self addChild:dragNature3];
+    [self addChild:dragNature2];
+    [dragNature2 setZPosition:10];
+    dragNature2.position = CGPointMake(natureLocation.x, natureLocation.y + 60);
+    dragNature3.position = CGPointMake(natureLocation.x, natureLocation.y + 60);
+    
+    natureExplosion = [SKAction sequence:@[ [SKAction runBlock:^{currentDrag.position = natureLocation;}],
+                                          [SKAction runBlock:^{
+        dragNature3.particleBirthRate = 500;
+        dragNature2.particleBirthRate = 200;
+        dragNature1.particleBirthRate = 40;
+    }],
+                                          [SKAction waitForDuration:0.05],
+                                          [SKAction runBlock:^{
+        dragNature3.particleBirthRate = 0;
+        dragNature2.particleBirthRate = 0;
+        
+    }]
+                                          ]];
+    
+    // (light)
+    dragLight1 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragLight1" ofType:@"sks"]];
+    dragLight2 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragLight3" ofType:@"sks"]];
+    dragLight1.targetNode = self;
+    dragLight2.targetNode = self;
+    [currentDrag addChild:dragLight2];
+    [currentDrag addChild:dragLight1];
+    dragLight1.zPosition = 100;
+    CGPoint lightLocation =CGPointMake(555, 286);
+    
+    lightExplosion = [SKAction sequence:@[ [SKAction runBlock:^{currentDrag.position = lightLocation;}],
+                                          [SKAction runBlock:^{
+        dragLight1.particleBirthRate = 1000;
+        dragLight2.particleBirthRate = 840;
+    }],
+                                          [SKAction waitForDuration:0.05],
+                                          [SKAction runBlock:^{
+        
+        //dragLight1.particleBirthRate = 0;
+    }]
+                                          ]];
+    
     
     // (dark)
     dragDark =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragDark" ofType:@"sks"]];
@@ -155,12 +207,6 @@
     return self;
 }
 
-
-// REVISE THIS. DO I STILL NEED IT
-- (void) spamChecker {
-    canClickElement = true;
-}
-
 //  TOUCH BEGAN
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
@@ -173,7 +219,7 @@
 
 - (void)findSelectedNodeInTouch:(CGPoint)touchLocation {
     //NSLog(@"touch on element picker screen");
-    //NSLog(@"X: %f,   Y: %f", touchLocation.x, touchLocation.y);
+    NSLog(@"X: %f,   Y: %f", touchLocation.x, touchLocation.y);
     // assume you are adding atoms until told you are removing
     isRemovingAtom = false;
     
@@ -187,9 +233,11 @@
         
     } else if (CGRectContainsPoint(selectableL, touchLocation)) {
         currentElement = eleLight;
+        [self runAction:lightExplosion];
         
     } else if (CGRectContainsPoint(selectableN, touchLocation)) {
         currentElement = eleNature;
+        [self runAction:natureExplosion];
         
     } else if (CGRectContainsPoint(selectableD, touchLocation)) {
         currentElement = eleDark;
@@ -259,8 +307,34 @@
             }
             
         } else if ([currentElement.name isEqualToString:@"light"]) {
+            [currentDrag runAction:[SKAction moveTo:CGPointMake(positionInScene.x, (-0.42 * positionInScene.x) + 520) duration:0.01]];
+            
+            
+            // add new element to atom collection
+            if (currentDrag.position.x <= endPoint.x) {
+                [self removeElementDraggers];
+                [self addElement:@"L"];
+            }
+            
+            // dragged out of range
+            if (currentDrag.position.x > self.view.bounds.size.width) {
+                [self removeElementDraggers];
+            }
             
         } else if ([currentElement.name isEqualToString:@"nature"]) {
+            [currentDrag runAction:[SKAction moveTo:CGPointMake(endPoint.x, positionInScene.y) duration:0.01]];
+            
+            
+            // add new element to atom collection
+            if (currentDrag.position.y >= endPoint.y) {
+                [self removeElementDraggers];
+                [self addElement:@"N"];
+            }
+            
+            // dragged out of range
+            if (currentDrag.position.y < 0) {
+                [self removeElementDraggers];
+            }
             
         } else if ([currentElement.name isEqualToString:@"dark"]) {
             [currentDrag runAction:[SKAction moveTo:CGPointMake(positionInScene.x, (0.374 * positionInScene.x) + 257.6) duration:0.01]];
@@ -315,6 +389,11 @@
     dragWater.particleBirthRate = 0;
     dragDark.particleBirthRate = 0;
     dragDark2.particleBirthRate = 0;
+    dragNature1.particleBirthRate = 0;
+    dragNature2.particleBirthRate = 0;
+    dragNature3.particleBirthRate = 0;
+    dragLight1.particleBirthRate = 0;
+    dragLight2.particleBirthRate = 0;
 }
 
 
