@@ -52,6 +52,10 @@
 		D2D606C318B9EA9C00A86B23 /* dragLight2.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606C218B9EA9C00A86B23 /* dragLight2.sks */; };
 		D2D606C518B9FC7700A86B23 /* dragLight3.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606C418B9FC7700A86B23 /* dragLight3.sks */; };
 		D2D606C718BA012E00A86B23 /* dragLight2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606C618BA012E00A86B23 /* dragLight2.png */; };
+		D2D606C918BAC16E00A86B23 /* dragWater2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606C818BAC16E00A86B23 /* dragWater2.png */; };
+		D2D606CB18BAC75700A86B23 /* dragLight4.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606CA18BAC75700A86B23 /* dragLight4.sks */; };
+		D2D606CD18BAD43000A86B23 /* drop2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606CC18BAD43000A86B23 /* drop2.png */; };
+		D2D606CF18BAD5CE00A86B23 /* drop3.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606CE18BAD5CE00A86B23 /* drop3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +122,10 @@
 		D2D606C218B9EA9C00A86B23 /* dragLight2.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragLight2.sks; sourceTree = "<group>"; };
 		D2D606C418B9FC7700A86B23 /* dragLight3.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragLight3.sks; sourceTree = "<group>"; };
 		D2D606C618BA012E00A86B23 /* dragLight2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragLight2.png; sourceTree = "<group>"; };
+		D2D606C818BAC16E00A86B23 /* dragWater2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragWater2.png; sourceTree = "<group>"; };
+		D2D606CA18BAC75700A86B23 /* dragLight4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragLight4.sks; sourceTree = "<group>"; };
+		D2D606CC18BAD43000A86B23 /* drop2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop2.png; sourceTree = "<group>"; };
+		D2D606CE18BAD5CE00A86B23 /* drop3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop3.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,11 +169,14 @@
 		D21B96AF18B35A3F0005DCAD /* Particles */ = {
 			isa = PBXGroup;
 			children = (
+				D2D606C818BAC16E00A86B23 /* dragWater2.png */,
 				D2D606B818B990FB00A86B23 /* dragFlower.png */,
 				D2D606AE18B8C92200A86B23 /* dragLeaf1.png */,
 				D2D606AF18B8C92200A86B23 /* dragLeaf2.png */,
 				D2D606AA18B71F1700A86B23 /* skull.png */,
 				D2D606A618B6EF5B00A86B23 /* drop.png */,
+				D2D606CE18BAD5CE00A86B23 /* drop3.png */,
+				D2D606CC18BAD43000A86B23 /* drop2.png */,
 				D21B96B118B35AB70005DCAD /* spark.png */,
 				D2D606C618BA012E00A86B23 /* dragLight2.png */,
 				D2D606B218B8C94100A86B23 /* dragNature1.sks */,
@@ -178,6 +189,7 @@
 				D2D606AC18B71F4F00A86B23 /* dragDark2.sks */,
 				D2D606BE18B9C13400A86B23 /* dragLight1.sks */,
 				D2D606C418B9FC7700A86B23 /* dragLight3.sks */,
+				D2D606CA18BAC75700A86B23 /* dragLight4.sks */,
 				D2D606C218B9EA9C00A86B23 /* dragLight2.sks */,
 			);
 			name = Particles;
@@ -378,13 +390,17 @@
 				D2322D6518A798DD00DD4C37 /* Main_iPhone.storyboard in Resources */,
 				D29F910918A9C0BA00CE3CDA /* selectL1.png in Resources */,
 				D21B96B518B37E4A0005DCAD /* dragFire2.sks in Resources */,
+				D2D606C918BAC16E00A86B23 /* dragWater2.png in Resources */,
+				D2D606CB18BAC75700A86B23 /* dragLight4.sks in Resources */,
 				D29F910818A9C0BA00CE3CDA /* selectF1.png in Resources */,
 				D2D606A518B61E8D00A86B23 /* dragWater.sks in Resources */,
 				D2D606A918B71BDE00A86B23 /* dragDark.sks in Resources */,
 				D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */,
 				D2D606B018B8C92200A86B23 /* dragLeaf1.png in Resources */,
 				D2D606AD18B71F4F00A86B23 /* dragDark2.sks in Resources */,
+				D2D606CF18BAD5CE00A86B23 /* drop3.png in Resources */,
 				D2322D5C18A798DD00DD4C37 /* InfoPlist.strings in Resources */,
+				D2D606CD18BAD43000A86B23 /* drop2.png in Resources */,
 				D2D606C718BA012E00A86B23 /* dragLight2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

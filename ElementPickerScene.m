@@ -152,7 +152,7 @@
     
     // (light)
     dragLight1 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragLight1" ofType:@"sks"]];
-    dragLight2 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragLight3" ofType:@"sks"]];
+    dragLight2 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragLight4" ofType:@"sks"]];
     dragLight1.targetNode = self;
     dragLight2.targetNode = self;
     [currentDrag addChild:dragLight2];
@@ -162,8 +162,8 @@
     
     lightExplosion = [SKAction sequence:@[ [SKAction runBlock:^{currentDrag.position = lightLocation;}],
                                           [SKAction runBlock:^{
-        dragLight1.particleBirthRate = 1000;
-        dragLight2.particleBirthRate = 840;
+        //dragLight1.particleBirthRate = 1000;
+        dragLight2.particleBirthRate = 640;
     }],
                                           [SKAction waitForDuration:0.05],
                                           [SKAction runBlock:^{
