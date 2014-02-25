@@ -56,6 +56,10 @@
 		D2D606CB18BAC75700A86B23 /* dragLight4.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606CA18BAC75700A86B23 /* dragLight4.sks */; };
 		D2D606CD18BAD43000A86B23 /* drop2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606CC18BAD43000A86B23 /* drop2.png */; };
 		D2D606CF18BAD5CE00A86B23 /* drop3.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606CE18BAD5CE00A86B23 /* drop3.png */; };
+		D2D606D118BADB1300A86B23 /* dragFloat.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606D018BADB1300A86B23 /* dragFloat.png */; };
+		D2D606D318BADF6B00A86B23 /* dragFloat2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606D218BADF6B00A86B23 /* dragFloat2.png */; };
+		D2D606D718BC29B200A86B23 /* lightLensflare.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606D618BC29B200A86B23 /* lightLensflare.png */; };
+		D2D606D918BC2A0E00A86B23 /* lightLensflare2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606D818BC2A0E00A86B23 /* lightLensflare2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +130,10 @@
 		D2D606CA18BAC75700A86B23 /* dragLight4.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = dragLight4.sks; sourceTree = "<group>"; };
 		D2D606CC18BAD43000A86B23 /* drop2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop2.png; sourceTree = "<group>"; };
 		D2D606CE18BAD5CE00A86B23 /* drop3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = drop3.png; sourceTree = "<group>"; };
+		D2D606D018BADB1300A86B23 /* dragFloat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragFloat.png; sourceTree = "<group>"; };
+		D2D606D218BADF6B00A86B23 /* dragFloat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragFloat2.png; sourceTree = "<group>"; };
+		D2D606D618BC29B200A86B23 /* lightLensflare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightLensflare.png; sourceTree = "<group>"; };
+		D2D606D818BC2A0E00A86B23 /* lightLensflare2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightLensflare2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +177,8 @@
 		D21B96AF18B35A3F0005DCAD /* Particles */ = {
 			isa = PBXGroup;
 			children = (
+				D2D606D618BC29B200A86B23 /* lightLensflare.png */,
+				D2D606D818BC2A0E00A86B23 /* lightLensflare2.png */,
 				D2D606C818BAC16E00A86B23 /* dragWater2.png */,
 				D2D606B818B990FB00A86B23 /* dragFlower.png */,
 				D2D606AE18B8C92200A86B23 /* dragLeaf1.png */,
@@ -179,6 +189,8 @@
 				D2D606CC18BAD43000A86B23 /* drop2.png */,
 				D21B96B118B35AB70005DCAD /* spark.png */,
 				D2D606C618BA012E00A86B23 /* dragLight2.png */,
+				D2D606D018BADB1300A86B23 /* dragFloat.png */,
+				D2D606D218BADF6B00A86B23 /* dragFloat2.png */,
 				D2D606B218B8C94100A86B23 /* dragNature1.sks */,
 				D2D606B418B8CB1D00A86B23 /* dragNature2.sks */,
 				D2D606B618B8CEBE00A86B23 /* dragNature3.sks */,
@@ -371,6 +383,7 @@
 				D2D606B918B990FB00A86B23 /* dragFlower.png in Resources */,
 				D29F910718A9C0BA00CE3CDA /* selectD1.png in Resources */,
 				D2D606B318B8C94100A86B23 /* dragNature1.sks in Resources */,
+				D2D606D318BADF6B00A86B23 /* dragFloat2.png in Resources */,
 				D29F910B18A9C0BA00CE3CDA /* selectW1.png in Resources */,
 				D2D606B118B8C92200A86B23 /* dragLeaf2.png in Resources */,
 				D2D606C318B9EA9C00A86B23 /* dragLight2.sks in Resources */,
@@ -379,6 +392,7 @@
 				D2322D7218A798DD00DD4C37 /* Images.xcassets in Resources */,
 				D29F910618A9C0BA00CE3CDA /* mapBeta1.png in Resources */,
 				D21B96B318B35AB70005DCAD /* spark.png in Resources */,
+				D2D606D718BC29B200A86B23 /* lightLensflare.png in Resources */,
 				D2D606AB18B71F1700A86B23 /* skull.png in Resources */,
 				D2D606C518B9FC7700A86B23 /* dragLight3.sks in Resources */,
 				D2322D6818A798DD00DD4C37 /* Main_iPad.storyboard in Resources */,
@@ -386,8 +400,10 @@
 				D21B96B218B35AB70005DCAD /* dragFire.sks in Resources */,
 				D21B96BB18B4672A0005DCAD /* element button.png in Resources */,
 				D2D606BF18B9C13400A86B23 /* dragLight1.sks in Resources */,
+				D2D606D918BC2A0E00A86B23 /* lightLensflare2.png in Resources */,
 				D2D606A718B6EF5B00A86B23 /* drop.png in Resources */,
 				D2322D6518A798DD00DD4C37 /* Main_iPhone.storyboard in Resources */,
+				D2D606D118BADB1300A86B23 /* dragFloat.png in Resources */,
 				D29F910918A9C0BA00CE3CDA /* selectL1.png in Resources */,
 				D21B96B518B37E4A0005DCAD /* dragFire2.sks in Resources */,
 				D2D606C918BAC16E00A86B23 /* dragWater2.png in Resources */,

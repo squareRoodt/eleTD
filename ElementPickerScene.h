@@ -38,6 +38,7 @@
     SKEmitterNode *dragNature3;
     SKEmitterNode *dragLight1;
     SKEmitterNode *dragLight2;
+    SKEmitterNode *dragLight3;
     
     SKAction *fireExplosion;
     SKAction *waterExplosion;

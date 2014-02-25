@@ -151,24 +151,28 @@
                                           ]];
     
     // (light)
-    dragLight1 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragLight1" ofType:@"sks"]];
+    dragLight1 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragLight3" ofType:@"sks"]];
     dragLight2 =  [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragLight4" ofType:@"sks"]];
+    dragLight3 = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragLight2" ofType:@"sks"]];
+    dragLight3.targetNode = self;
     dragLight1.targetNode = self;
     dragLight2.targetNode = self;
     [currentDrag addChild:dragLight2];
     [currentDrag addChild:dragLight1];
+    [currentDrag addChild:dragLight3];
     dragLight1.zPosition = 100;
     CGPoint lightLocation =CGPointMake(555, 286);
     
     lightExplosion = [SKAction sequence:@[ [SKAction runBlock:^{currentDrag.position = lightLocation;}],
                                           [SKAction runBlock:^{
-        //dragLight1.particleBirthRate = 1000;
         dragLight2.particleBirthRate = 640;
+        dragLight1.particleBirthRate = 130;
+        dragLight3.particleBirthRate = 17;
     }],
                                           [SKAction waitForDuration:0.05],
                                           [SKAction runBlock:^{
         
-        //dragLight1.particleBirthRate = 0;
+        dragLight3.particleBirthRate = 0;
     }]
                                           ]];
     
@@ -196,7 +200,7 @@
         dragDark.particleLifetime = 3.8;
         dragDark.particleScale = 0.2;
         dragDark.particleSpeed = 0;
-        dragDark2.particleBirthRate = 1.0;
+        dragDark2.particleBirthRate = 1.3;
         dragDark2.particleScale = 0.4;
         
     }]
@@ -394,6 +398,7 @@
     dragNature3.particleBirthRate = 0;
     dragLight1.particleBirthRate = 0;
     dragLight2.particleBirthRate = 0;
+    dragLight3.particleBirthRate = 0;
 }
 
 
