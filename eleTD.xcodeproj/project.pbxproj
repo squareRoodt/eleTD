@@ -60,6 +60,9 @@
 		D2D606D318BADF6B00A86B23 /* dragFloat2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606D218BADF6B00A86B23 /* dragFloat2.png */; };
 		D2D606D718BC29B200A86B23 /* lightLensflare.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606D618BC29B200A86B23 /* lightLensflare.png */; };
 		D2D606D918BC2A0E00A86B23 /* lightLensflare2.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606D818BC2A0E00A86B23 /* lightLensflare2.png */; };
+		D2D606DB18BC38DA00A86B23 /* atomParticleEffect.sks in Resources */ = {isa = PBXBuildFile; fileRef = D2D606DA18BC38DA00A86B23 /* atomParticleEffect.sks */; };
+		D2D606DE18BC4A5F00A86B23 /* AtomNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D2D606DD18BC4A5F00A86B23 /* AtomNode.m */; };
+		D2D606E018BC637800A86B23 /* atomSpace100.png in Resources */ = {isa = PBXBuildFile; fileRef = D2D606DF18BC637800A86B23 /* atomSpace100.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,10 @@
 		D2D606D218BADF6B00A86B23 /* dragFloat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dragFloat2.png; sourceTree = "<group>"; };
 		D2D606D618BC29B200A86B23 /* lightLensflare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightLensflare.png; sourceTree = "<group>"; };
 		D2D606D818BC2A0E00A86B23 /* lightLensflare2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lightLensflare2.png; sourceTree = "<group>"; };
+		D2D606DA18BC38DA00A86B23 /* atomParticleEffect.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = atomParticleEffect.sks; sourceTree = "<group>"; };
+		D2D606DC18BC4A5F00A86B23 /* AtomNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomNode.h; sourceTree = "<group>"; };
+		D2D606DD18BC4A5F00A86B23 /* AtomNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtomNode.m; sourceTree = "<group>"; };
+		D2D606DF18BC637800A86B23 /* atomSpace100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = atomSpace100.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +175,8 @@
 				D21B965B18B2F3520005DCAD /* MapScene.m */,
 				D21B965E18B2F5D80005DCAD /* ToolbarScene.h */,
 				D21B965F18B2F5D80005DCAD /* ToolbarScene.m */,
+				D2D606DC18BC4A5F00A86B23 /* AtomNode.h */,
+				D2D606DD18BC4A5F00A86B23 /* AtomNode.m */,
 				D21B966118B3194B0005DCAD /* ElementPickerScene.h */,
 				D21B966218B3194B0005DCAD /* ElementPickerScene.m */,
 			);
@@ -203,6 +212,7 @@
 				D2D606C418B9FC7700A86B23 /* dragLight3.sks */,
 				D2D606CA18BAC75700A86B23 /* dragLight4.sks */,
 				D2D606C218B9EA9C00A86B23 /* dragLight2.sks */,
+				D2D606DA18BC38DA00A86B23 /* atomParticleEffect.sks */,
 			);
 			name = Particles;
 			sourceTree = "<group>";
@@ -297,6 +307,7 @@
 				D29F910318A9C0BA00CE3CDA /* selectL1.png */,
 				D29F910418A9C0BA00CE3CDA /* selectN1.png */,
 				D29F910518A9C0BA00CE3CDA /* selectW1.png */,
+				D2D606DF18BC637800A86B23 /* atomSpace100.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -392,6 +403,7 @@
 				D2322D7218A798DD00DD4C37 /* Images.xcassets in Resources */,
 				D29F910618A9C0BA00CE3CDA /* mapBeta1.png in Resources */,
 				D21B96B318B35AB70005DCAD /* spark.png in Resources */,
+				D2D606DB18BC38DA00A86B23 /* atomParticleEffect.sks in Resources */,
 				D2D606D718BC29B200A86B23 /* lightLensflare.png in Resources */,
 				D2D606AB18B71F1700A86B23 /* skull.png in Resources */,
 				D2D606C518B9FC7700A86B23 /* dragLight3.sks in Resources */,
@@ -412,6 +424,7 @@
 				D2D606A518B61E8D00A86B23 /* dragWater.sks in Resources */,
 				D2D606A918B71BDE00A86B23 /* dragDark.sks in Resources */,
 				D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */,
+				D2D606E018BC637800A86B23 /* atomSpace100.png in Resources */,
 				D2D606B018B8C92200A86B23 /* dragLeaf1.png in Resources */,
 				D2D606AD18B71F4F00A86B23 /* dragDark2.sks in Resources */,
 				D2D606CF18BAD5CE00A86B23 /* drop3.png in Resources */,
@@ -441,6 +454,7 @@
 				D21B965C18B2F3520005DCAD /* MapScene.m in Sources */,
 				D2322D6218A798DD00DD4C37 /* AppDelegate.m in Sources */,
 				D2322D5E18A798DD00DD4C37 /* main.m in Sources */,
+				D2D606DE18BC4A5F00A86B23 /* AtomNode.m in Sources */,
 				D21B966318B3194B0005DCAD /* ElementPickerScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

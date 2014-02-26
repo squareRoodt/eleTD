@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import "AtomNode.h"
 
 @interface ElementPickerScene : SKScene {
     SKSpriteNode *eleFire;
@@ -40,15 +41,23 @@
     SKEmitterNode *dragLight2;
     SKEmitterNode *dragLight3;
     
+    SKEmitterNode *atomParticles;
+    AtomNode *atom1;
+    AtomNode *atom2;
+    AtomNode *atom3;
+    SKNode *currentAtom;
+    
     SKAction *fireExplosion;
     SKAction *waterExplosion;
     SKAction *darkExplosion;
     SKAction *natureExplosion;
     SKAction *lightExplosion;
+    SKAction *atomMovement;
     
     bool isRemovingAtom;
     //bool canClickElement;
     NSTimer *spamControlTimer;
+    CGPoint endPoint;
 }
 
 @end

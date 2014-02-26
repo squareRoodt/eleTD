@@ -17,8 +17,29 @@
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor whiteColor];
         currentDrag = [[SKNode alloc]init];
+        
+        atom1 = [[AtomNode alloc] initWithRotation:0];
+        atom2 = [[AtomNode alloc] initWithRotation:45];
+        atom3 = [[AtomNode alloc] initWithRotation:90];
+        atom1.position = CGPointMake(330, 381);
+        atom2.position = CGPointMake(330, 381);
+        atom3.position = CGPointMake(330, 381);
+        atom1.atomEmitter.targetNode = self;
+        atom2.atomEmitter.targetNode = self;
+        atom3.atomEmitter.targetNode = self;
+        [self addChild:atom1];
+        [self addChild:atom2];
+        [self addChild:atom3];
+        //[atom1 animate];
+        //[atom2 animate];
+        //[atom3 animate];
+        
+        //atomParticles = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire" ofType:@"sks"]];
         isRemovingAtom = false;
         [self addChild:currentDrag];
+        endPoint = CGPointMake(330, 381);
+        
+        
         /*spamControlTimer = [NSTimer scheduledTimerWithTimeInterval:0.5
                                                             target:self
                                                           selector:@selector(spamChecker)
@@ -59,6 +80,8 @@
             element.size = CGSizeMake(element.size.width/eleScale, element.size.height/eleScale);
             [self addChild:element];
         }
+        
+        // ===============================================  SKActions  =============================================
         
         // SKActions
         // (fire)
@@ -205,7 +228,7 @@
         
     }]
                                           ]];
-    
+    // ===============================================  SKActions  =============================================
     
     [self removeElementDraggers];
     return self;
@@ -217,7 +240,6 @@
     CGPoint positionInScene = [touch locationInNode:self];
     //NSLog(@"%@", currentDrag.children);
     [self findSelectedNodeInTouch:positionInScene];
-    
     
 }
 
@@ -262,7 +284,7 @@
 - (void) touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     CGPoint positionInScene = [touch locationInNode:self];
-    CGPoint endPoint = CGPointMake(330, 381);
+    
     
     if (isRemovingAtom) {
         
@@ -400,6 +422,12 @@
     dragLight2.particleBirthRate = 0;
     dragLight3.particleBirthRate = 0;
 }
+
+
+/*
+- (float) findNextRotationPosY: (CGPoint) currentPos {
+    return (5 * (sqrtf(25 - (currentPos.x * currentPos.x)))) / 25;
+}*/
 
 
 @end
