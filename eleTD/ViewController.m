@@ -26,7 +26,35 @@
     deviceWidth = self.view.bounds.size.width;
     
     // Configure the SKViews
-    // NOTE: IT MIGHT JUST BE EASIER TO HARDCODE ALL 3 DEVICE LOCATIONS. it would be easier to understand in future
+    if (IS_IPHONE_4) {
+        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
+        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
+                                                                self.view.bounds.size.height - self.view.bounds.size.width)];
+         elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
+    }
+    
+    else if (IS_IPHONE_5) {
+        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 568-160)];
+        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height,
+                                                                self.view.bounds.size.width, 160)];
+        elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
+    }
+    
+    else /* IS_IPAD */ {
+        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
+        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
+                                                                self.view.bounds.size.height - self.view.bounds.size.width)];
+        elementPickerSKView = [[SKView alloc]initWithFrame: CGRectMake(
+                                                                       mapSKView.bounds.size.width/15,
+                                                                       mapSKView.bounds.size.height/15,
+                                                                       mapSKView.bounds.size.width - (2* mapSKView.bounds.size.width/15),
+                                                                       mapSKView.bounds.size.height - mapSKView.bounds.size.height/13)];
+        elementPickerSKView.layer.cornerRadius = 25;
+        elementPickerSKView.layer.masksToBounds = YES;
+    }
+    
+    
+    /*
     if (!IS_IPHONE_5) {
         mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
         toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
@@ -35,7 +63,7 @@
         if (IS_IPHONE_4) {
             elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
             
-        } else /*is IPAD */  {
+        } else   {
             elementPickerSKView = [[SKView alloc]initWithFrame: CGRectMake(
                                                     mapSKView.bounds.size.width/15,
                                                     mapSKView.bounds.size.height/15,
@@ -44,13 +72,13 @@
             elementPickerSKView.layer.cornerRadius = 25;
             elementPickerSKView.layer.masksToBounds = YES;
         }
-    } else /* is IPHONE_5 */{
+    } else {
         mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 568-160)];
         toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height,
                                                               self.view.bounds.size.width, 160)];
         elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
-    }
-    
+    }*/
+
     
     // Create and configure the scenes.
     mapScene = [MapScene sceneWithSize: mapSKView.bounds.size];
