@@ -46,6 +46,7 @@
     AtomNode *atom2;
     AtomNode *atom3;
     AtomNode *currentAtom;
+    NSMutableArray *towerCodeArray;
     
     SKAction *fireExplosion;
     SKAction *waterExplosion;
@@ -59,5 +60,9 @@
     NSTimer *spamControlTimer;
     CGPoint endPoint;
 }
+
+@property NSString *towerCode;
+
+- (NSString *) getTowerCode;
 
 @end

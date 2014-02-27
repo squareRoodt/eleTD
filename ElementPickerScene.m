@@ -12,11 +12,14 @@
 #import "ElementPickerScene.h"
 
 @implementation ElementPickerScene
+@synthesize towerCode;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [SKColor whiteColor];
         currentDrag = [[SKNode alloc]init];
+        towerCodeArray = [[NSMutableArray alloc] init];
+        towerCode = @"";
         
         atom1 = [[AtomNode alloc] initWithRotation:0];
         atom2 = [[AtomNode alloc] initWithRotation:45];
@@ -387,39 +390,37 @@
 }
 
 - (void) addElement: (NSString *) elementType {
-    NSLog(@"added %@ element", elementType);
+    //NSLog(@"added %@ element", elementType);
     [currentAtom turnOn];
     [currentAtom changeElement:elementType];
     
     // changing current atom
     if ([currentAtom.name isEqualToString: atom1.name]) {
-        [atom1 changeElement:elementType];
         currentAtom = atom2;
+        towerCodeArray[0] = elementType;
     } else if ([currentAtom.name isEqualToString:atom2.name]) {
         currentAtom = atom3;
+        towerCodeArray[1] = elementType;
     } else if ([currentAtom.name isEqualToString:atom3.name]) {
         currentAtom = atom1;
+        towerCodeArray[2] = elementType;
     }
+    
+    if ([towerCode length] <= 2) {
+        towerCode = [NSString stringWithFormat:@"%@%@", towerCode, elementType];
+    } else if ([towerCode length] == 3) {
+        towerCode = [NSString stringWithFormat:@"%@%@", [towerCode substringFromIndex:1], elementType];
+    } else {
+        NSLog(@"ERROR TOWER CODE EXCEDES 3 LETTERS");
+    }
+    
+    NSLog(@"%@", [self getTowerCode]);
 }
 
 
 // TOUCH ENDED
 - (void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-   // NSLog(@"finger lifted     %@", currentDrag.children);
     [self removeElementDraggers];
-    /*
-    if ([currentElement.name isEqualToString:@"fire"]) {
-        [self removeElementDraggers];
-    } else if ([currentElement.name isEqualToString:@"water"]) {
-        [self removeElementDraggers];
-        
-    } else if ([currentElement.name isEqualToString:@"light"]) {
-        
-    } else if ([currentElement.name isEqualToString:@"nature"]) {
-        
-    } else if ([currentElement.name isEqualToString:@"dark"]) {
-        
-    }*/
     
 }
 
@@ -440,10 +441,14 @@
 }
 
 
-/*
-- (float) findNextRotationPosY: (CGPoint) currentPos {
-    return (5 * (sqrtf(25 - (currentPos.x * currentPos.x)))) / 25;
-}*/
+- (NSString *) getTowerCode {
+    if ([towerCodeArray count] == 3) {
+        [towerCodeArray sortUsingSelector:@selector(compare:)];
+        return [NSString stringWithFormat:@"%@%@%@", towerCodeArray[0], towerCodeArray[1], towerCodeArray[2]];
+    } else {
+        return @"INCOMPLETE";
+    }
+}
 
 
 @end
