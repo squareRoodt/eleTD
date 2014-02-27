@@ -21,17 +21,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Configure the view.
-    /*SKView * skView = (SKView *)self.view;
-    skView.showsFPS = YES;
-    skView.showsNodeCount = YES;
-     */
     
     deviceHeight = self.view.bounds.size.height;
     deviceWidth = self.view.bounds.size.width;
     
     // Configure the SKViews
+    // NOTE: IT MIGHT JUST BE EASIER TO HARDCODE ALL 3 DEVICE LOCATIONS. it would be easier to understand in future
     if (!IS_IPHONE_5) {
         mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
         toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
@@ -60,7 +55,7 @@
     // Create and configure the scenes.
     mapScene = [MapScene sceneWithSize: mapSKView.bounds.size];
     mapScene.scaleMode = SKSceneScaleModeAspectFill;
-    //[mapSKView presentScene:mapScene];
+    [mapSKView presentScene:mapScene];
     
     toolbarScene = [ToolbarScene sceneWithSize:toolbarSKView.bounds.size];
     toolbarScene.scaleMode = SKSceneScaleModeAspectFill;
@@ -88,9 +83,10 @@
 }
 
 - (void) openPicker {
-    NSLog(@"button pressed");
-    
+    NSLog(@"entering element picker");
     elementPickerSKView.hidden = !elementPickerSKView.hidden;
+    [elementPickerScene clearScreen];
+    
     /*  possible efficiency problems
     if (!elementPickerSKView.hidden) {
         [elementPickerSKView presentScene:elementPickerScene];

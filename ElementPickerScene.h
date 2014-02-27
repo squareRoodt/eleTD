@@ -57,7 +57,6 @@
     
     bool isRemovingAtom;
     //bool canClickElement;
-    NSTimer *spamControlTimer;
     CGPoint endPoint;
 }
 
@@ -65,5 +64,6 @@
 
 - (NSString *) getTowerCode;
 - (bool) isTowerReady;
+- (void) clearScreen;
 
 @end

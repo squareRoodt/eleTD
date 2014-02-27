@@ -459,4 +459,16 @@
 }
 
 
+- (void) clearScreen {
+    [atom1 turnOff];
+    [atom2 turnOff];
+    [atom3 turnOff];
+    currentAtom = atom1;
+    [towerCodeArray removeAllObjects];
+    towerCode = @"";
+    [self removeElementDraggers];
+    
+}
+
+
 @end
