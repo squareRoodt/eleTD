@@ -21,9 +21,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     deviceHeight = self.view.bounds.size.height;
     deviceWidth = self.view.bounds.size.width;
+    
     
     // Configure the SKViews
     if (IS_IPHONE_4) {
@@ -52,32 +52,6 @@
         elementPickerSKView.layer.cornerRadius = 25;
         elementPickerSKView.layer.masksToBounds = YES;
     }
-    
-    
-    /*
-    if (!IS_IPHONE_5) {
-        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
-        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
-                                                              self.view.bounds.size.height - self.view.bounds.size.width)];
-        
-        if (IS_IPHONE_4) {
-            elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
-            
-        } else   {
-            elementPickerSKView = [[SKView alloc]initWithFrame: CGRectMake(
-                                                    mapSKView.bounds.size.width/15,
-                                                    mapSKView.bounds.size.height/15,
-                                                    mapSKView.bounds.size.width - (2* mapSKView.bounds.size.width/15),
-                                                    mapSKView.bounds.size.height - mapSKView.bounds.size.height/13)];
-            elementPickerSKView.layer.cornerRadius = 25;
-            elementPickerSKView.layer.masksToBounds = YES;
-        }
-    } else {
-        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 568-160)];
-        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height,
-                                                              self.view.bounds.size.width, 160)];
-        elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
-    }*/
 
     
     // Create and configure the scenes.
@@ -100,10 +74,22 @@
     elementPickerSKView.hidden = true;
     
     
+    // adding buttons, icons and smaller objects
+    UIButton *pickerButton = [[UIButton alloc]init];
     float buttonSize = (deviceHeight-deviceWidth) * 0.7;
-    UIButton *pickerButton = [[UIButton alloc] initWithFrame:CGRectMake(deviceWidth/3 + (deviceWidth/3 *0.15), (deviceHeight-deviceWidth) * 0.15, buttonSize, buttonSize)];
-    [toolbarSKView addSubview:pickerButton];
     
+    if (IS_IPHONE_4) {
+        pickerButton.frame = CGRectMake(deviceWidth/3 + (deviceWidth/3 *0.15)-20, (deviceHeight-deviceWidth) * 0.15, buttonSize, buttonSize);
+    }
+    else if (IS_IPHONE_5) {
+        pickerButton.frame = CGRectMake(deviceWidth/3 + (deviceWidth/3 *0.15)-20, (deviceHeight-deviceWidth) * 0.15 -15, buttonSize-55, buttonSize-55);
+    }
+    else /* IS_IPAD */ {
+        
+        pickerButton.frame = CGRectMake(deviceWidth/3 + (deviceWidth/3 *0.15), (deviceHeight-deviceWidth) * 0.15, buttonSize, buttonSize);
+    }
+    
+    [toolbarSKView addSubview:pickerButton];
     [pickerButton setBackgroundImage:[UIImage imageNamed:@"element button.png"] forState:UIControlStateNormal];
     [toolbarSKView addSubview:pickerButton];
     [pickerButton addTarget:self action:@selector(openPicker) forControlEvents:UIControlEventTouchDown];
@@ -114,14 +100,13 @@
     NSLog(@"entering element picker");
     elementPickerSKView.hidden = !elementPickerSKView.hidden;
     [elementPickerScene clearScreen];
-    
-    /*  possible efficiency problems
-    if (!elementPickerSKView.hidden) {
-        [elementPickerSKView presentScene:elementPickerScene];
-    } else {
-        [elementPickerScene removeFromParent];
-    }*/
 }
+
+// ROTATION CODE NEEDED HERE
+-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    NSLog(@"rotation detected");
+}
+
 
 - (BOOL)shouldAutorotate
 {
