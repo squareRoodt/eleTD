@@ -17,9 +17,14 @@
 }
 
 @property SKEmitterNode *atomEmitter;
+@property NSString *element;
 
-- (void) animate;
+- (void) deleteElement: (NSString *) originElement;
+- (void) changeElement: (NSString *) element;
 - (void) rotateBy: (float) angle;
 - (id) initWithRotation: (float) angle;
+- (void) turnOn;
+- (void) turnOff;
+- (void) spinOtherWay;
 
 @end

@@ -21,18 +21,23 @@
         atom1 = [[AtomNode alloc] initWithRotation:0];
         atom2 = [[AtomNode alloc] initWithRotation:45];
         atom3 = [[AtomNode alloc] initWithRotation:90];
-        atom1.position = CGPointMake(330, 381);
-        atom2.position = CGPointMake(330, 381);
-        atom3.position = CGPointMake(330, 381);
+        atom1.position = CGPointMake(310, 351);
+        atom2.position = CGPointMake(336, 338);
+        atom3.position = CGPointMake(355, 355);
         atom1.atomEmitter.targetNode = self;
         atom2.atomEmitter.targetNode = self;
         atom3.atomEmitter.targetNode = self;
+        atom1.name = @"atom1";
+        atom2.name = @"atom2";
+        atom3.name = @"atom3";
         [self addChild:atom1];
         [self addChild:atom2];
         [self addChild:atom3];
-        //[atom1 animate];
-        //[atom2 animate];
-        //[atom3 animate];
+        [atom1 turnOff];
+        [atom2 turnOff];
+        [atom3 turnOff];
+
+        currentAtom = atom1;
         
         //atomParticles = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"dragFire" ofType:@"sks"]];
         isRemovingAtom = false;
@@ -240,7 +245,7 @@
     CGPoint positionInScene = [touch locationInNode:self];
     //NSLog(@"%@", currentDrag.children);
     [self findSelectedNodeInTouch:positionInScene];
-    
+    //[atom1 rotateBy:0.1];
 }
 
 - (void)findSelectedNodeInTouch:(CGPoint)touchLocation {
@@ -383,7 +388,18 @@
 
 - (void) addElement: (NSString *) elementType {
     NSLog(@"added %@ element", elementType);
+    [currentAtom turnOn];
+    [currentAtom changeElement:elementType];
     
+    // changing current atom
+    if ([currentAtom.name isEqualToString: atom1.name]) {
+        [atom1 changeElement:elementType];
+        currentAtom = atom2;
+    } else if ([currentAtom.name isEqualToString:atom2.name]) {
+        currentAtom = atom3;
+    } else if ([currentAtom.name isEqualToString:atom3.name]) {
+        currentAtom = atom1;
+    }
 }
 
 

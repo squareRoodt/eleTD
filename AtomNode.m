@@ -23,10 +23,11 @@ int rad = 6;
 
 - (id) initWithRotation: (float) angle {
     if (self = [super init]) {
+        
         [self runAction:[SKAction rotateByAngle:angle duration:0]];
-        //self.anchorPoint = CGPointZero;
+        self.anchorPoint = CGPointMake(20, 50);
         atomEmitter = [NSKeyedUnarchiver unarchiveObjectWithFile:[[NSBundle mainBundle] pathForResource:@"atomParticleEffect" ofType:@"sks"]];
-        atomEmitter.position = CGPointMake(0, 50);
+        atomEmitter.position = CGPointMake(30, 50);
         
         // SKAction
         SKAction *atomRotation = [SKAction sequence:@[[SKAction runBlock:^{
@@ -46,19 +47,56 @@ int rad = 6;
         
         [self addChild:atomEmitter];
         [self runAction:[SKAction repeatActionForever:atomRotation]];
-        [self runAction:[SKAction repeatActionForever:atomRotation]];
+        //[self runAction:[SKAction repeatActionForever:atomRotation]];
     }
     return self;
 }
 
+- (void) deleteElement: (NSString *) originElement {
+    if ([originElement isEqualToString:@"F"]) {
+        
+    }
+}
 
-- (void) animate {
+- (void) changeElement: (NSString *) elementChange {
+    NSLog(@"change element to %@", elementChange);
+    atomEmitter.particleColorSequence = nil;
+    atomEmitter.particleColorBlendFactor = 1.0;
     
-    //[self runAction:[SKAction repeatActionForever:atomRotation]];
+    // STILL NEEDS WORK. THE COLOURS ARE NOT GOOD ENOUGH
+    if ([elementChange isEqualToString:@"F"]) {
+        //atomEmitter.particleColor = [SKColor colorWithRed:1 green:122/255.0 blue:3/255.0 alpha:1];
+        atomEmitter.particleColor = [SKColor redColor];
+    } else if ([elementChange isEqualToString:@"W"]) {
+        atomEmitter.particleColor = [SKColor colorWithRed:0 green:162/255.0 blue:1 alpha:1];
+    } else if ([elementChange isEqualToString:@"L"]) {
+        atomEmitter.particleColor = [SKColor colorWithRed:203/255.0 green:136/255.0 blue:1 alpha:1];
+        //atomEmitter.particleColor = [SKColor ];
+    } else if ([elementChange isEqualToString:@"N"]) {
+        atomEmitter.particleColor = [SKColor colorWithRed:30/255.0 green:210/255.0 blue:0 alpha:1];
+        //atomEmitter.particleColor = [SKColor greenColor];
+    } else if ([elementChange isEqualToString:@"D"]) {
+        //atomEmitter.particleColor = [SKColor colorWithRed:36/255.0 green:0 blue:110/255.0 alpha:1];
+        atomEmitter.particleColor = [SKColor blackColor];
+    } else {
+        NSLog(@"ERROR atomic element was changed to an invalid element");
+    }
 }
 
 - (void) rotateBy: (float) angle {
     [self runAction:[SKAction rotateByAngle:angle duration:0]];
+}
+
+- (void) turnOn {
+    atomEmitter.particleBirthRate = 300;
+}
+
+- (void) turnOff {
+    atomEmitter.particleBirthRate = 0;
+}
+
+- (void) spinOtherWay {
+    
 }
 
 @end

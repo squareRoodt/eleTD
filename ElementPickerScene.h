@@ -45,7 +45,7 @@
     AtomNode *atom1;
     AtomNode *atom2;
     AtomNode *atom3;
-    SKNode *currentAtom;
+    AtomNode *currentAtom;
     
     SKAction *fireExplosion;
     SKAction *waterExplosion;
