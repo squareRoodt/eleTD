@@ -450,5 +450,13 @@
     }
 }
 
+- (bool) isTowerReady {
+    if ([[self getTowerCode] length] == 3) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 
 @end

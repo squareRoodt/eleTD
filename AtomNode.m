@@ -70,7 +70,7 @@ int rad = 6;
     } else if ([elementChange isEqualToString:@"W"]) {
         atomEmitter.particleColor = [SKColor colorWithRed:0 green:162/255.0 blue:1 alpha:1];
     } else if ([elementChange isEqualToString:@"L"]) {
-        atomEmitter.particleColor = [SKColor colorWithRed:203/255.0 green:136/255.0 blue:1 alpha:1];
+        atomEmitter.particleColor = [SKColor colorWithRed:203/255.0 green:150/255.0 blue:1 alpha:1];
         //atomEmitter.particleColor = [SKColor ];
     } else if ([elementChange isEqualToString:@"N"]) {
         atomEmitter.particleColor = [SKColor colorWithRed:30/255.0 green:210/255.0 blue:0 alpha:1];
