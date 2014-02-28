@@ -11,22 +11,39 @@
 
 #import "ElementPickerScene.h"
 
+#define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+#define IS_IPAD ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )1024 ) < DBL_EPSILON )
+#define IS_IPHONE_4 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )480 ) < DBL_EPSILON )
+
 @implementation ElementPickerScene
 @synthesize towerCode;
 
+// ----*** device conversions ***----
+float i4x = 320/720;
+float i4y = 480/1024;
+float i5x = 320/720;
+float i5y = 568/1024;
+// NOTE: all measurements are for iPad
+
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+        
         self.backgroundColor = [SKColor whiteColor];
         currentDrag = [[SKNode alloc]init];
         towerCodeArray = [[NSMutableArray alloc] init];
         towerCode = @"";
         
+        // atom config
         atom1 = [[AtomNode alloc] initWithRotation:0];
         atom2 = [[AtomNode alloc] initWithRotation:45];
         atom3 = [[AtomNode alloc] initWithRotation:90];
         atom1.position = CGPointMake(310, 351);
-        atom2.position = CGPointMake(336, 338);
+        atom2.position = CGPointMake(330, 338);
         atom3.position = CGPointMake(355, 355);
+        //atom1.position = CGPointMake(310-310, 351-338);
+        //atom2.position = CGPointMake(330-310, 338-338);
+        //atom3.position = CGPointMake(355-310, 355-338);
+        
         atom1.atomEmitter.targetNode = self;
         atom2.atomEmitter.targetNode = self;
         atom3.atomEmitter.targetNode = self;
