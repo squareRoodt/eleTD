@@ -34,6 +34,7 @@ float i5y = 568/1024;
         towerCode = @"";
         
         // atom config
+        atomIndex = 0;
         atom1 = [[AtomNode alloc] initWithRotation:0];
         atom2 = [[AtomNode alloc] initWithRotation:45];
         atom3 = [[AtomNode alloc] initWithRotation:90];
@@ -259,6 +260,11 @@ float i5y = 568/1024;
     return self;
 }
 
+
+
+
+
+
 //  TOUCH BEGAN
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
@@ -270,7 +276,7 @@ float i5y = 568/1024;
 
 - (void)findSelectedNodeInTouch:(CGPoint)touchLocation {
     //NSLog(@"touch on element picker screen");
-    NSLog(@"X: %f,   Y: %f", touchLocation.x, touchLocation.y);
+    //NSLog(@"X: %f,   Y: %f", touchLocation.x, touchLocation.y);
     // assume you are adding atoms until told you are removing
     isRemovingAtom = false;
     
@@ -301,7 +307,7 @@ float i5y = 568/1024;
         currentElement = eleNull;
     }
     
-    NSLog(@"touched %@ element", currentElement.name);
+    //NSLog(@"touched %@ element", currentElement.name);
 	
 }
 
@@ -410,17 +416,21 @@ float i5y = 568/1024;
     //NSLog(@"added %@ element", elementType);
     [currentAtom turnOn];
     [currentAtom changeElement:elementType];
+    towerCodeArray[atomIndex] = elementType;
     
     // changing current atom
-    if ([currentAtom.name isEqualToString: atom1.name]) {
+    if (atomIndex == 0) {
         currentAtom = atom2;
-        towerCodeArray[0] = elementType;
-    } else if ([currentAtom.name isEqualToString:atom2.name]) {
+        atomIndex =1;
+    } else if (atomIndex== 1) {
         currentAtom = atom3;
-        towerCodeArray[1] = elementType;
-    } else if ([currentAtom.name isEqualToString:atom3.name]) {
+        atomIndex = 2;
+    } else if (atomIndex ==2){
         currentAtom = atom1;
-        towerCodeArray[2] = elementType;
+        atomIndex = 0;
+    }
+    else {
+        NSLog(@"ERROR: ATOM INDEX EXCEDED THE RANGE OF 0-2 (in elementpickerscene)");
     }
     
     if ([towerCode length] <= 2) {
@@ -460,8 +470,9 @@ float i5y = 568/1024;
 
 - (NSString *) getTowerCode {
     if ([towerCodeArray count] == 3) {
-        [towerCodeArray sortUsingSelector:@selector(compare:)];
-        return [NSString stringWithFormat:@"%@%@%@", towerCodeArray[0], towerCodeArray[1], towerCodeArray[2]];
+        NSMutableArray *sortedElements = [[NSMutableArray alloc]initWithArray:towerCodeArray];
+        [sortedElements sortUsingSelector:@selector(compare:)];
+        return [NSString stringWithFormat:@"%@%@%@", sortedElements[0], sortedElements[1], sortedElements[2]];
     } else {
         return @"INCOMPLETE";
     }
@@ -484,7 +495,7 @@ float i5y = 568/1024;
     [towerCodeArray removeAllObjects];
     towerCode = @"";
     [self removeElementDraggers];
-    
+    atomIndex = 0;
 }
 
 

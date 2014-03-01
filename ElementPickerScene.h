@@ -47,6 +47,7 @@
     AtomNode *atom3;
     AtomNode *currentAtom;
     NSMutableArray *towerCodeArray;
+    int atomIndex;
     
     SKAction *fireExplosion;
     SKAction *waterExplosion;
