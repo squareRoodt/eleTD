@@ -18,7 +18,7 @@ int b = 1;
 // using velocity to turn atom
 float atomAngle = 90;
 float turn = 1;
-float speed = 0.001;
+float speed = 0.05;
 int rad = 6;
 
 - (id) initWithRotation: (float) angle {

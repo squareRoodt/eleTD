@@ -188,7 +188,7 @@ float i5y = 568/1024;
                                           [SKAction runBlock:^{
         dragNature3.particleBirthRate = 500;
         dragNature2.particleBirthRate = 200;
-        dragNature1.particleBirthRate = 40;
+        dragNature1.particleBirthRate = 80;
     }],
                                           [SKAction waitForDuration:0.05],
                                           [SKAction runBlock:^{
