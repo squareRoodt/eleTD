@@ -7,7 +7,7 @@
 //                                       NOTES:
 // - to make the element draggers go to their location first and then start animating, (ie) fire burst in flames on fire
 // and not on the last element, then just make the animation perform a block skaction before the current block which changes
-// the position. (for now it looks cool when you spam it)
+// the position. (for now it looks cool when you spam it) 
 
 #import "ElementPickerScene.h"
 
