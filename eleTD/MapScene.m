@@ -8,6 +8,9 @@
 
 
 #import "MapScene.h"
+#import "Bullet.h"
+#import "Tower.h"
+#import "Creep.h"
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 #define IS_IPAD ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )1024 ) < DBL_EPSILON )
@@ -34,6 +37,24 @@
         [self addChild:background];
         
         
+        // importing building spots
+        NSString* plistPath = [[NSBundle mainBundle] pathForResource:@"towerLocations" ofType:@"plist"];
+        NSArray * towerPositions = [NSArray arrayWithContentsOfFile:plistPath];
+        towerBases = [[NSMutableArray alloc] init];
+        
+        NSLog(@"in init  %@", [towerPositions[0] objectForKey:@"x"]);
+        for(NSDictionary * towerPos in towerPositions)
+        {
+            //UIImage *img = [UIImage imageNamed:@"buildSpotChecker"];
+            NSLog(@"in here");
+            SKSpriteNode * towerBase = [SKSpriteNode spriteNodeWithImageNamed:@"buildSpotPH"];
+            [background addChild:towerBase];
+            towerBase.size = CGSizeMake(towerBase.size.width/1.6, towerBase.size.height/1.6);
+            [towerBase setPosition:CGPointMake([[towerPos objectForKey:@"x"] intValue],
+                                       [[towerPos objectForKey:@"y"] intValue])];
+            NSLog(@"grass spot x: %f,   y: %f",towerBase.position.x, towerBase.position.y);
+            [towerBases addObject:towerBase];
+        }
         
         
     }
@@ -43,21 +64,20 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
-    CGPoint positionInScene = [touch locationInNode:self];
-    [self findSelectedNodeInTouch:positionInScene];
+    CGPoint positionOnMap = [touch locationInNode:background];
+    [self findSelectedNodeInTouch:positionOnMap];
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
     
-    if ([selectedNode.name isEqualToString:@"background"]) {
-        CGPoint currentLocation = [touch locationInNode:self];
-        CGPoint previousLocation = [touch previousLocationInNode:self];
-        float newPosX = (previousLocation.x - currentLocation.x);
-        float newPosY = (previousLocation.y - currentLocation.y);
-        CGPoint newPos = CGPointMake(newPosX, newPosY);
-        [self scrollMap: newPos];
-    }
+    CGPoint currentLocation = [touch locationInNode:self];
+    CGPoint previousLocation = [touch previousLocationInNode:self];
+    float newPosX = (previousLocation.x - currentLocation.x);
+    float newPosY = (previousLocation.y - currentLocation.y);
+    CGPoint newPos = CGPointMake(newPosX, newPosY);
+    [self scrollMap: newPos];
+    
     
     
 }
@@ -75,8 +95,8 @@
 
 
 - (void)findSelectedNodeInTouch:(CGPoint)touchLocation {
-    NSLog(@"touch on map screen");
-    SKSpriteNode *touchedNode = (SKSpriteNode *)[self nodeAtPoint:touchLocation];
+    NSLog(@"map location: x= %f, y= %f", touchLocation.x, touchLocation.y);
+    SKNode *touchedNode = (SKNode *)[background nodeAtPoint:touchLocation];
     
 	if(![selectedNode isEqual:touchedNode]) {
 		selectedNode = touchedNode;

@@ -9,10 +9,10 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface MapScene : SKScene {
-    
+    NSMutableArray *towerBases;
 }
 
 @property (nonatomic, strong) SKSpriteNode *background;
-@property (nonatomic, strong) SKSpriteNode *selectedNode;
+@property (nonatomic, strong) SKNode *selectedNode;
 
 @end
