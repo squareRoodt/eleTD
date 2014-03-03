@@ -21,8 +21,12 @@
 @synthesize background;
 @synthesize selectedNode;
 
+float iPadScale = 1.6;
+float iPhoneScale = 3.5;
+
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
+        
         
         //Loading the background
         background = [SKSpriteNode spriteNodeWithImageNamed:@"mapBeta1"];
@@ -30,9 +34,9 @@
         [background setAnchorPoint:CGPointZero];
         // scalling the background size
         if (IS_IPHONE_4 || IS_IPHONE_5) {
-            background.size = CGSizeMake(background.size.width/3.5, background.size.height/3.5);
+            background.size = CGSizeMake(background.size.width/iPhoneScale, background.size.height/iPhoneScale);
         } else if (IS_IPAD) {
-            background.size = CGSizeMake(background.size.width/1.6, background.size.height/1.6);
+            background.size = CGSizeMake(background.size.width/iPadScale, background.size.height/iPadScale);
         }
         [self addChild:background];
         
@@ -42,18 +46,19 @@
         NSArray * towerPositions = [NSArray arrayWithContentsOfFile:plistPath];
         towerBases = [[NSMutableArray alloc] init];
         
-        NSLog(@"in init  %@", [towerPositions[0] objectForKey:@"x"]);
         for(NSDictionary * towerPos in towerPositions)
         {
-            //UIImage *img = [UIImage imageNamed:@"buildSpotChecker"];
+            
             NSLog(@"in here");
-            SKSpriteNode * towerBase = [SKSpriteNode spriteNodeWithImageNamed:@"buildSpotPH"];
+            SKSpriteNode * towerBase = [SKSpriteNode spriteNodeWithImageNamed:@"buildHighlight"];
             [background addChild:towerBase];
-            towerBase.size = CGSizeMake(towerBase.size.width/1.6, towerBase.size.height/1.6);
+            towerBase.size = CGSizeMake(towerBase.size.width/iPadScale, towerBase.size.height/iPadScale);
             [towerBase setPosition:CGPointMake([[towerPos objectForKey:@"x"] intValue],
                                        [[towerPos objectForKey:@"y"] intValue])];
             NSLog(@"grass spot x: %f,   y: %f",towerBase.position.x, towerBase.position.y);
             [towerBases addObject:towerBase];
+            towerBase.name = @"build_spot";
+            towerBase.hidden = TRUE;
         }
         
         
@@ -98,13 +103,35 @@
     NSLog(@"map location: x= %f, y= %f", touchLocation.x, touchLocation.y);
     SKNode *touchedNode = (SKNode *)[background nodeAtPoint:touchLocation];
     
+    // deactivate nodes now that there is a new touch
+    if ([[selectedNode name] isEqualToString:@"build_spot"] && selectedNode != touchedNode) {
+        selectedNode.hidden = true;
+    }
+    
 	if(![selectedNode isEqual:touchedNode]) {
 		selectedNode = touchedNode;
         NSLog(@"touched %@", selectedNode.name);
+        
 		if([[touchedNode name] isEqualToString:@"tower"]) {
 			
-		}
+		} else if ([[touchedNode name] isEqualToString:@"build_spot"]) {
+            selectedNode.hidden = false;
+            [self glowBuildSpot];
+            // show element picker button
+        }
 	}
+    // else { touching the same thing }
+}
+
+- (void) glowBuildSpot {
+    selectedNode.alpha = 0;
+    SKAction *glow = [SKAction sequence:@[[SKAction fadeAlphaTo:1 duration:1], [SKAction fadeAlphaTo:0.5 duration:1]]];
+    
+    // double check its a build_spot
+    if ([selectedNode.name isEqualToString:@"build_spot"]) {
+        [selectedNode runAction:[SKAction repeatActionForever:glow]];
+    }
+    
 }
 
 -(void)update:(CFTimeInterval)currentTime {

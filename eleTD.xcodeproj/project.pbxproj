@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D212D2D718C440D400DA54FA /* buildSpotPH.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2D618C440D400DA54FA /* buildSpotPH.png */; };
+		D212D2D918C45B6C00DA54FA /* buildHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2D818C45B6C00DA54FA /* buildHighlight.png */; };
 		D21B965C18B2F3520005DCAD /* MapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965B18B2F3520005DCAD /* MapScene.m */; };
 		D21B966018B2F5D80005DCAD /* ToolbarScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965F18B2F5D80005DCAD /* ToolbarScene.m */; };
 		D21B966318B3194B0005DCAD /* ElementPickerScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B966218B3194B0005DCAD /* ElementPickerScene.m */; };
@@ -86,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		D212D2D618C440D400DA54FA /* buildSpotPH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildSpotPH.png; sourceTree = "<group>"; };
+		D212D2D818C45B6C00DA54FA /* buildHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildHighlight.png; sourceTree = "<group>"; };
 		D21B965A18B2F3520005DCAD /* MapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapScene.h; path = eleTD/MapScene.h; sourceTree = "<group>"; };
 		D21B965B18B2F3520005DCAD /* MapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapScene.m; path = eleTD/MapScene.m; sourceTree = "<group>"; };
 		D21B965E18B2F5D80005DCAD /* ToolbarScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarScene.h; sourceTree = "<group>"; };
@@ -360,6 +362,7 @@
 		D2AD9E8D18C4256A00EE8AF5 /* Map Images */ = {
 			isa = PBXGroup;
 			children = (
+				D212D2D818C45B6C00DA54FA /* buildHighlight.png */,
 				D2AD9E9018C425B400EE8AF5 /* creepSheep.png */,
 				D2AD9E9118C425B400EE8AF5 /* creepSheepL.png */,
 				D2AD9E9218C425B400EE8AF5 /* creepSheepR.png */,
@@ -457,6 +460,7 @@
 				D2D606B118B8C92200A86B23 /* dragLeaf2.png in Resources */,
 				D2D606C318B9EA9C00A86B23 /* dragLight2.sks in Resources */,
 				D2322D7018A798DD00DD4C37 /* Spaceship.png in Resources */,
+				D212D2D918C45B6C00DA54FA /* buildHighlight.png in Resources */,
 				D2D606B518B8CB1D00A86B23 /* dragNature2.sks in Resources */,
 				D2322D7218A798DD00DD4C37 /* Images.xcassets in Resources */,
 				D29F910618A9C0BA00CE3CDA /* mapBeta1.png in Resources */,

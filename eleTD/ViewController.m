@@ -18,12 +18,13 @@
 
 @implementation ViewController
 
+@synthesize pickerButton;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     deviceHeight = self.view.bounds.size.height;
     deviceWidth = self.view.bounds.size.width;
-    
     
     // Configure the SKViews
     if (IS_IPHONE_4) {
@@ -75,7 +76,7 @@
     
     
     // adding buttons, icons and smaller objects
-    UIButton *pickerButton = [[UIButton alloc]init];
+    pickerButton = [[UIButton alloc]init];
     float buttonSize = (deviceHeight-deviceWidth) * 0.7;
     
     if (IS_IPHONE_4) {

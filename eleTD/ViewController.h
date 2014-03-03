@@ -29,6 +29,8 @@
     float deviceWidth;
 }
 
+@property UIButton *pickerButton;
+
 - (void) openPicker;
 
 @end
