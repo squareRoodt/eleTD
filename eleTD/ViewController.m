@@ -10,6 +10,8 @@
 #import "MapScene.h"
 #import "ToolbarScene.h"
 #import "ElementPickerScene.h"
+#import "Map.h"
+#import "MapScene.h"
 
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
@@ -28,22 +30,24 @@
     
     // Configure the SKViews
     if (IS_IPHONE_4) {
-        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
-        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
+        /*mapSKView = [[Map alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];*/
+        mapSKView = [[Map alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width) andViewController:self];
+        toolbarSKView = [[Toolbar alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
                                                                 self.view.bounds.size.height - self.view.bounds.size.width)];
+        
          elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
     }
     
     else if (IS_IPHONE_5) {
-        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 568-160)];
-        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height,
+        mapSKView = [[Map alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 568-160) andViewController:self];
+        toolbarSKView = [[Toolbar alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height,
                                                                 self.view.bounds.size.width, 160)];
         elementPickerSKView = [[SKView alloc]initWithFrame: mapSKView.frame];
     }
     
     else /* IS_IPAD */ {
-        mapSKView = [[SKView alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)];
-        toolbarSKView = [[SKView alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
+        mapSKView = [[Map alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)andViewController:self];
+        toolbarSKView = [[Toolbar alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
                                                                 self.view.bounds.size.height - self.view.bounds.size.width)];
         elementPickerSKView = [[SKView alloc]initWithFrame: CGRectMake(
                                                                        mapSKView.bounds.size.width/15,
@@ -77,6 +81,7 @@
     
     // adding buttons, icons and smaller objects
     pickerButton = [[UIButton alloc]init];
+    pickerButton.hidden = true;
     float buttonSize = (deviceHeight-deviceWidth) * 0.7;
     
     if (IS_IPHONE_4) {
@@ -102,6 +107,12 @@
     elementPickerSKView.hidden = !elementPickerSKView.hidden;
     [elementPickerScene clearScreen];
 }
+
+- (void) setButtonHidden: (BOOL) status {
+    pickerButton.hidden = status;
+    
+}
+
 
 // ROTATION CODE NEEDED HERE
 -(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {

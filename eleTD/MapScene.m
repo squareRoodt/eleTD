@@ -11,6 +11,8 @@
 #import "Bullet.h"
 #import "Tower.h"
 #import "Creep.h"
+#import "ViewController.h"
+#import "Map.h"
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 #define IS_IPAD ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )1024 ) < DBL_EPSILON )
@@ -26,7 +28,9 @@ float iPhoneScale = 3.5;
 
 -(id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        
+        // NO IDEA WHY THIS DOESNT WORK
+        //viewController = [(Map*)self.view getViewController];
+        //parentMap = (Map*)self.view;
         
         //Loading the background
         background = [SKSpriteNode spriteNodeWithImageNamed:@"mapBeta1"];
@@ -111,6 +115,7 @@ float iPhoneScale = 3.5;
 	if(![selectedNode isEqual:touchedNode]) {
 		selectedNode = touchedNode;
         NSLog(@"touched %@", selectedNode.name);
+        [(Map *)self.view setEleButtonHidden:TRUE];
         
 		if([[touchedNode name] isEqualToString:@"tower"]) {
 			
@@ -118,6 +123,8 @@ float iPhoneScale = 3.5;
             selectedNode.hidden = false;
             [self glowBuildSpot];
             // show element picker button
+            [(Map *)self.view setEleButtonHidden:false];
+            //[parentMap test];
         }
 	}
     // else { touching the same thing }

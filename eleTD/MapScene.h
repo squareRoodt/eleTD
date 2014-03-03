@@ -7,9 +7,15 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+@class ViewController;
+@class Map;
 
 @interface MapScene : SKScene {
     NSMutableArray *towerBases;
+    
+    // these dont work??? have to manually use (Map*)self.view
+    ViewController *viewController;
+    Map *parentMap;
 }
 
 @property (nonatomic, strong) SKSpriteNode *background;
