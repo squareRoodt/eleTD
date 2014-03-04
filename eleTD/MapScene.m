@@ -52,14 +52,12 @@ float iPhoneScale = 3.5;
         
         for(NSDictionary * towerPos in towerPositions)
         {
-            
-            NSLog(@"in here");
             SKSpriteNode * towerBase = [SKSpriteNode spriteNodeWithImageNamed:@"buildHighlight"];
             [background addChild:towerBase];
             towerBase.size = CGSizeMake(towerBase.size.width/iPadScale, towerBase.size.height/iPadScale);
             [towerBase setPosition:CGPointMake([[towerPos objectForKey:@"x"] intValue],
                                        [[towerPos objectForKey:@"y"] intValue])];
-            NSLog(@"grass spot x: %f,   y: %f",towerBase.position.x, towerBase.position.y);
+            //NSLog(@"grass spot x: %f,   y: %f",towerBase.position.x, towerBase.position.y);
             [towerBases addObject:towerBase];
             towerBase.name = @"build_spot";
             towerBase.hidden = TRUE;

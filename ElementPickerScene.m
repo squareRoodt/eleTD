@@ -10,6 +10,8 @@
 // the position. (for now it looks cool when you spam it)
 
 #import "ElementPickerScene.h"
+#import "ElementPicker.h"
+#import "ViewController.h"
 
 #define IS_IPHONE_5 ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 #define IS_IPAD ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )1024 ) < DBL_EPSILON )
@@ -412,6 +414,9 @@ float i5y = 568/1024;
     
 }
 
+
+
+
 - (void) addElement: (NSString *) elementType {
     //NSLog(@"added %@ element", elementType);
     [currentAtom turnOn];
@@ -435,10 +440,15 @@ float i5y = 568/1024;
     
     if ([towerCode length] <= 2) {
         towerCode = [NSString stringWithFormat:@"%@%@", towerCode, elementType];
-    } else if ([towerCode length] == 3) {
+    } else if ([towerCode length] == 3)   {
         towerCode = [NSString stringWithFormat:@"%@%@", [towerCode substringFromIndex:1], elementType];
     } else {
         NSLog(@"ERROR TOWER CODE EXCEDES 3 LETTERS");
+    }
+    
+    if ([self isTowerReady]) {
+        [(ElementPicker *)self.view setCode:[self getTowerCode]];
+        [(ElementPicker *)self.view updateTowerLabel];
     }
     
     NSLog(@"%@", [self getTowerCode]);

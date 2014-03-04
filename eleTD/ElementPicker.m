@@ -1,16 +1,17 @@
 //
-//  Toolbar.m
+//  ElementPicker.m
 //  eleTD
 //
 //  Created by Jan-Dawid Roodt on 4/03/14.
 //  Copyright (c) 2014 JD. All rights reserved.
 //
 
-#import "Toolbar.h"
+#import "ElementPicker.h"
+#import "ViewController.h"
 
-@implementation Toolbar
+@implementation ElementPicker
+
 @synthesize viewController;
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -28,9 +29,13 @@
     return self;
 }
 
-- (NSString*) getTowerCode {
-    
-    return @"";
+- (void) setCode: (NSString *)newCode {
+    [viewController setCurrentCode:newCode];
+    NSLog(@"Element picker says code is %@", newCode);
+}
+
+- (void) updateTowerLabel {
+    [viewController updateTowerLabel];
 }
 
 /*

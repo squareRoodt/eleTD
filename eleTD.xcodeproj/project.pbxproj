@@ -11,6 +11,10 @@
 		D212D2D918C45B6C00DA54FA /* buildHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2D818C45B6C00DA54FA /* buildHighlight.png */; };
 		D212D2DF18C4A76B00DA54FA /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D212D2DE18C4A76B00DA54FA /* Toolbar.m */; };
 		D212D2E218C4A7D100DA54FA /* Map.m in Sources */ = {isa = PBXBuildFile; fileRef = D212D2E118C4A7D100DA54FA /* Map.m */; };
+		D212D2E418C532D500DA54FA /* tower-info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D212D2E318C532D500DA54FA /* tower-info.plist */; };
+		D212D2E718C53E3900DA54FA /* ElementPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D212D2E618C53E3900DA54FA /* ElementPicker.m */; };
+		D212D2EA18C5460400DA54FA /* buttonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2E818C5460400DA54FA /* buttonBack.png */; };
+		D212D2EB18C5460400DA54FA /* ButtonNext.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2E918C5460400DA54FA /* ButtonNext.png */; };
 		D21B965C18B2F3520005DCAD /* MapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965B18B2F3520005DCAD /* MapScene.m */; };
 		D21B966018B2F5D80005DCAD /* ToolbarScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965F18B2F5D80005DCAD /* ToolbarScene.m */; };
 		D21B966318B3194B0005DCAD /* ElementPickerScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B966218B3194B0005DCAD /* ElementPickerScene.m */; };
@@ -94,6 +98,11 @@
 		D212D2DE18C4A76B00DA54FA /* Toolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Toolbar.m; sourceTree = "<group>"; };
 		D212D2E018C4A7D100DA54FA /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 		D212D2E118C4A7D100DA54FA /* Map.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Map.m; sourceTree = "<group>"; };
+		D212D2E318C532D500DA54FA /* tower-info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "tower-info.plist"; sourceTree = "<group>"; };
+		D212D2E518C53E3900DA54FA /* ElementPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElementPicker.h; sourceTree = "<group>"; };
+		D212D2E618C53E3900DA54FA /* ElementPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementPicker.m; sourceTree = "<group>"; };
+		D212D2E818C5460400DA54FA /* buttonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBack.png; sourceTree = "<group>"; };
+		D212D2E918C5460400DA54FA /* ButtonNext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonNext.png; sourceTree = "<group>"; };
 		D21B965A18B2F3520005DCAD /* MapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapScene.h; path = eleTD/MapScene.h; sourceTree = "<group>"; };
 		D21B965B18B2F3520005DCAD /* MapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapScene.m; path = eleTD/MapScene.m; sourceTree = "<group>"; };
 		D21B965E18B2F5D80005DCAD /* ToolbarScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarScene.h; sourceTree = "<group>"; };
@@ -204,10 +213,10 @@
 				D21B965B18B2F3520005DCAD /* MapScene.m */,
 				D21B965E18B2F5D80005DCAD /* ToolbarScene.h */,
 				D21B965F18B2F5D80005DCAD /* ToolbarScene.m */,
-				D2D606DC18BC4A5F00A86B23 /* AtomNode.h */,
-				D2D606DD18BC4A5F00A86B23 /* AtomNode.m */,
 				D21B966118B3194B0005DCAD /* ElementPickerScene.h */,
 				D21B966218B3194B0005DCAD /* ElementPickerScene.m */,
+				D2D606DC18BC4A5F00A86B23 /* AtomNode.h */,
+				D2D606DD18BC4A5F00A86B23 /* AtomNode.m */,
 			);
 			name = Scenes;
 			sourceTree = "<group>";
@@ -290,6 +299,8 @@
 				D212D2DE18C4A76B00DA54FA /* Toolbar.m */,
 				D212D2E018C4A7D100DA54FA /* Map.h */,
 				D212D2E118C4A7D100DA54FA /* Map.m */,
+				D212D2E518C53E3900DA54FA /* ElementPicker.h */,
+				D212D2E618C53E3900DA54FA /* ElementPicker.m */,
 				D2322D6018A798DD00DD4C37 /* AppDelegate.h */,
 				D2322D6118A798DD00DD4C37 /* AppDelegate.m */,
 				D2322D6318A798DD00DD4C37 /* Main_iPhone.storyboard */,
@@ -305,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AD9E8A18C4238900EE8AF5 /* towerLocations.plist */,
+				D212D2E318C532D500DA54FA /* tower-info.plist */,
 				D2322D5918A798DD00DD4C37 /* eleTD-Info.plist */,
 				D2322D5A18A798DD00DD4C37 /* InfoPlist.strings */,
 				D2322D5D18A798DD00DD4C37 /* main.m */,
@@ -359,6 +371,8 @@
 		D2AD9E8C18C4254600EE8AF5 /* Element Picker */ = {
 			isa = PBXGroup;
 			children = (
+				D212D2E818C5460400DA54FA /* buttonBack.png */,
+				D212D2E918C5460400DA54FA /* ButtonNext.png */,
 				D2D606DF18BC637800A86B23 /* atomSpace100.png */,
 				D29F910118A9C0BA00CE3CDA /* selectD1.png */,
 				D29F910218A9C0BA00CE3CDA /* selectF1.png */,
@@ -465,6 +479,7 @@
 				D2D606B918B990FB00A86B23 /* dragFlower.png in Resources */,
 				D29F910718A9C0BA00CE3CDA /* selectD1.png in Resources */,
 				D2D606B318B8C94100A86B23 /* dragNature1.sks in Resources */,
+				D212D2E418C532D500DA54FA /* tower-info.plist in Resources */,
 				D2D606D318BADF6B00A86B23 /* dragFloat2.png in Resources */,
 				D29F910B18A9C0BA00CE3CDA /* selectW1.png in Resources */,
 				D2D606B118B8C92200A86B23 /* dragLeaf2.png in Resources */,
@@ -497,6 +512,7 @@
 				D2AD9E9618C425B400EE8AF5 /* creepSheepR.png in Resources */,
 				D29F910818A9C0BA00CE3CDA /* selectF1.png in Resources */,
 				D2D606A518B61E8D00A86B23 /* dragWater.sks in Resources */,
+				D212D2EA18C5460400DA54FA /* buttonBack.png in Resources */,
 				D2AD9E9518C425B400EE8AF5 /* creepSheepL.png in Resources */,
 				D2D606A918B71BDE00A86B23 /* dragDark.sks in Resources */,
 				D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */,
@@ -505,6 +521,7 @@
 				D2D606AD18B71F4F00A86B23 /* dragDark2.sks in Resources */,
 				D2D606CF18BAD5CE00A86B23 /* drop3.png in Resources */,
 				D2322D5C18A798DD00DD4C37 /* InfoPlist.strings in Resources */,
+				D212D2EB18C5460400DA54FA /* ButtonNext.png in Resources */,
 				D2D606CD18BAD43000A86B23 /* drop2.png in Resources */,
 				D2D606C718BA012E00A86B23 /* dragLight2.png in Resources */,
 				D2AD9E9718C425B400EE8AF5 /* creepSheepU.png in Resources */,
@@ -536,6 +553,7 @@
 				D2AD9E8918C40FFF00EE8AF5 /* Bullet.m in Sources */,
 				D2322D5E18A798DD00DD4C37 /* main.m in Sources */,
 				D2AD9E8618C40FD800EE8AF5 /* Creep.m in Sources */,
+				D212D2E718C53E3900DA54FA /* ElementPicker.m in Sources */,
 				D2D606DE18BC4A5F00A86B23 /* AtomNode.m in Sources */,
 				D21B966318B3194B0005DCAD /* ElementPickerScene.m in Sources */,
 			);

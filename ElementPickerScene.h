@@ -64,6 +64,7 @@
 @property NSString *towerCode;
 
 - (NSString *) getTowerCode;
+
 - (bool) isTowerReady;
 - (void) clearScreen;
 

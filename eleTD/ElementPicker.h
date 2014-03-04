@@ -1,5 +1,5 @@
 //
-//  Toolbar.h
+//  ElementPicker.h
 //  eleTD
 //
 //  Created by Jan-Dawid Roodt on 4/03/14.
@@ -9,13 +9,14 @@
 #import <SpriteKit/SpriteKit.h>
 @class ViewController;
 
-@interface Toolbar : SKView {
+@interface ElementPicker : SKView {
     
 }
 
 @property ViewController *viewController;
 
 - (id) initWithFrame:(CGRect)frame andViewController: (ViewController *) vc;
-- (NSString*) getTowerCode;
+- (void) setCode: (NSString *)newCode;
+- (void) updateTowerLabel;
 
 @end
