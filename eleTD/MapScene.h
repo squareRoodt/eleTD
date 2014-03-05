@@ -21,5 +21,8 @@
 @property (nonatomic, strong) SKSpriteNode *background;
 @property (nonatomic, strong) SKNode *selectedNode;
 @property (nonatomic, strong) NSMutableArray *towers;
+@property (nonatomic, strong) NSMutableArray *enemies;
+
+- (void) buildTowerOfType: (NSString*)code;
 
 @end

@@ -8,6 +8,23 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Creep : SKNode
+@class Tower, Map, MapScene, Bullet;
+
+@interface Creep : SKNode {
+    int maxHP;
+    int currentHP;
+    float walkingSpeed;
+    int nextDestinationIndex;  // index of array of points
+    CGPoint nextDestination;
+    BOOL active;
+    NSString *creepCode;
+}
+
+@property MapScene *mapScene;
+@property SKSpriteNode *creepSprite;
+
+- (id) initWithMap: (MapScene*) map andCode: (NSString*) code;
+- (void) doActivate;
+- (void) kill;
 
 @end

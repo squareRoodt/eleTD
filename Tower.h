@@ -23,9 +23,10 @@
     NSString *towerCode;
 }
 
-@property (nonatomic, weak) ViewController *viewController;
+@property (nonatomic, weak) MapScene *mapScene;
+@property (nonatomic, strong) SKSpriteNode *towerSprite;
 
--(id)initWithViewController:(ViewController *)vc location:(CGPoint)location code: (NSString *)code;
+-(id)initWithMap: (MapScene *)map code: (NSString *)code;
 
 
 @end

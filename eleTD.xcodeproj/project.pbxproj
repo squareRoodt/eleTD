@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		691A675D18C6DE4500338592 /* towerPlaceHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = 691A675C18C6DE4500338592 /* towerPlaceHolder.png */; };
 		D212D2D718C440D400DA54FA /* buildSpotPH.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2D618C440D400DA54FA /* buildSpotPH.png */; };
 		D212D2D918C45B6C00DA54FA /* buildHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2D818C45B6C00DA54FA /* buildHighlight.png */; };
 		D212D2DF18C4A76B00DA54FA /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D212D2DE18C4A76B00DA54FA /* Toolbar.m */; };
@@ -92,6 +93,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		691A675C18C6DE4500338592 /* towerPlaceHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = towerPlaceHolder.png; path = ../../Desktop/towerPlaceHolder.png; sourceTree = "<group>"; };
 		D212D2D618C440D400DA54FA /* buildSpotPH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildSpotPH.png; sourceTree = "<group>"; };
 		D212D2D818C45B6C00DA54FA /* buildHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildHighlight.png; sourceTree = "<group>"; };
 		D212D2DD18C4A76B00DA54FA /* Toolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
@@ -346,6 +348,7 @@
 		D29F90FF18A9C0A700CE3CDA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				691A675C18C6DE4500338592 /* towerPlaceHolder.png */,
 				D2AD9E8D18C4256A00EE8AF5 /* Map Images */,
 				D2AD9E8C18C4254600EE8AF5 /* Element Picker */,
 				D21B96BA18B4672A0005DCAD /* element button.png */,
@@ -514,6 +517,7 @@
 				D2D606A518B61E8D00A86B23 /* dragWater.sks in Resources */,
 				D212D2EA18C5460400DA54FA /* buttonBack.png in Resources */,
 				D2AD9E9518C425B400EE8AF5 /* creepSheepL.png in Resources */,
+				691A675D18C6DE4500338592 /* towerPlaceHolder.png in Resources */,
 				D2D606A918B71BDE00A86B23 /* dragDark.sks in Resources */,
 				D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */,
 				D2D606E018BC637800A86B23 /* atomSpace100.png in Resources */,

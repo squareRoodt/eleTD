@@ -22,7 +22,7 @@
 
 @synthesize background;
 @synthesize selectedNode;
-@synthesize towers;
+@synthesize towers, enemies;
 
 float iPadScale = 1.6;
 float iPhoneScale = 3.5;
@@ -137,6 +137,13 @@ float iPhoneScale = 3.5;
     if ([selectedNode.name isEqualToString:@"build_spot"]) {
         [selectedNode runAction:[SKAction repeatActionForever:glow]];
     }
+    
+}
+
+- (void) buildTowerOfType: (NSString*)code {
+    Tower *tower = [[Tower alloc] initWithMap:self code:code];
+    [background addChild:tower];
+    [tower setPosition:CGPointMake(selectedNode.frame.origin.x + selectedNode.frame.size.width/2, selectedNode.frame.origin.y + selectedNode.frame.size.height/2)];
     
 }
 

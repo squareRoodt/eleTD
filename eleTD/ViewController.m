@@ -159,14 +159,17 @@
 
 - (void) buildTower {
     [self openPicker];
+    [mapScene buildTowerOfType:currentCode];
     currentCode = @"";
-    
 }
 - (void) cancleTower {
     [self openPicker];
     currentCode = @"";
     towerName.text = @"";
 }
+
+
+
 
 - (NSString *) getCurrentName {
     
