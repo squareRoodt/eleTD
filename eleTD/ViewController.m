@@ -115,7 +115,7 @@
     
     [pickerButton setBackgroundImage:[UIImage imageNamed:@"element button.png"] forState:UIControlStateNormal];
     [pickerNextButton setBackgroundImage:[UIImage imageNamed:@"ButtonNext.png"] forState:UIControlStateNormal];
-    [pickerBackButton setBackgroundImage:[UIImage imageNamed:@"ButtonBack.png"] forState:UIControlStateNormal];
+    [pickerBackButton setBackgroundImage:[UIImage imageNamed:@"buttonBack.png"] forState:UIControlStateNormal];
     [toolbarSKView addSubview:pickerButton];
     [toolbarSKView addSubview:pickerBackButton];
     [toolbarSKView addSubview:pickerNextButton];
@@ -133,6 +133,7 @@
     pickerButton.hidden = !pickerButton.hidden;
     pickerNextButton.hidden = !pickerNextButton.hidden;
     pickerBackButton.hidden = !pickerBackButton.hidden;
+    pickerNextButton.enabled = NO;
     towerName.text = @"";
 }
 
@@ -144,6 +145,7 @@
 - (void)setCurrentCode:(NSString *)newCode {
     currentCode = newCode;
     NSLog(@"view controller says current code is %@", currentCode);
+    pickerNextButton.enabled = YES;
 }
 
 - (NSString *) getCurrentCode {

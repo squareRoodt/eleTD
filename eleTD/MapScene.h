@@ -20,5 +20,6 @@
 
 @property (nonatomic, strong) SKSpriteNode *background;
 @property (nonatomic, strong) SKNode *selectedNode;
+@property (nonatomic, strong) NSMutableArray *towers;
 
 @end

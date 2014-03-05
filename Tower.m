@@ -10,4 +10,11 @@
 
 @implementation Tower
 
+-(id)initWithViewController:(ViewController *)vc location:(CGPoint)location code: (NSString *)code{
+    towerCode = code;
+    
+    
+    return self;
+}
+
 @end

@@ -333,7 +333,7 @@ float i5y = 568/1024;
             }
             
             // add new element to atom collection
-            if (currentDrag.position.y <= endPoint.y) {
+            if (currentDrag.position.y <= endPoint.y+50) {
                 [self removeElementDraggers];
                 [self addElement:@"F"];
             }
@@ -355,7 +355,7 @@ float i5y = 568/1024;
             }
             
             // add new element to atom collection
-            if (currentDrag.position.y <= endPoint.y) {
+            if (currentDrag.position.y <= endPoint.y+50) {
                 [self removeElementDraggers];
                 [self addElement:@"W"];
             }
@@ -370,7 +370,7 @@ float i5y = 568/1024;
             
             
             // add new element to atom collection
-            if (currentDrag.position.x <= endPoint.x) {
+            if (currentDrag.position.x <= endPoint.x + 50) {
                 [self removeElementDraggers];
                 [self addElement:@"L"];
             }
@@ -385,7 +385,7 @@ float i5y = 568/1024;
             
             
             // add new element to atom collection
-            if (currentDrag.position.y >= endPoint.y) {
+            if (currentDrag.position.y >= endPoint.y-70) {
                 [self removeElementDraggers];
                 [self addElement:@"N"];
             }
@@ -400,7 +400,7 @@ float i5y = 568/1024;
             
             
             // add new element to atom collection
-            if (currentDrag.position.x >= endPoint.x) {
+            if (currentDrag.position.x >= endPoint.x -50) {
                 [self removeElementDraggers];
                 [self addElement:@"D"];
             }

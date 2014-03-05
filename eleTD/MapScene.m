@@ -22,6 +22,7 @@
 
 @synthesize background;
 @synthesize selectedNode;
+@synthesize towers;
 
 float iPadScale = 1.6;
 float iPhoneScale = 3.5;
