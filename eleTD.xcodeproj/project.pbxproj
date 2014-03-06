@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		691A675D18C6DE4500338592 /* towerPlaceHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = 691A675C18C6DE4500338592 /* towerPlaceHolder.png */; };
 		D212D2D718C440D400DA54FA /* buildSpotPH.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2D618C440D400DA54FA /* buildSpotPH.png */; };
 		D212D2D918C45B6C00DA54FA /* buildHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2D818C45B6C00DA54FA /* buildHighlight.png */; };
 		D212D2DF18C4A76B00DA54FA /* Toolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = D212D2DE18C4A76B00DA54FA /* Toolbar.m */; };
@@ -16,6 +15,8 @@
 		D212D2E718C53E3900DA54FA /* ElementPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D212D2E618C53E3900DA54FA /* ElementPicker.m */; };
 		D212D2EA18C5460400DA54FA /* buttonBack.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2E818C5460400DA54FA /* buttonBack.png */; };
 		D212D2EB18C5460400DA54FA /* ButtonNext.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2E918C5460400DA54FA /* ButtonNext.png */; };
+		D212D2ED18C80AD000DA54FA /* towerPlaceHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2EC18C80AD000DA54FA /* towerPlaceHolder.png */; };
+		D212D2EF18C81D0E00DA54FA /* spider.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2EE18C81D0E00DA54FA /* spider.png */; };
 		D21B965C18B2F3520005DCAD /* MapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965B18B2F3520005DCAD /* MapScene.m */; };
 		D21B966018B2F5D80005DCAD /* ToolbarScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965F18B2F5D80005DCAD /* ToolbarScene.m */; };
 		D21B966318B3194B0005DCAD /* ElementPickerScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B966218B3194B0005DCAD /* ElementPickerScene.m */; };
@@ -93,7 +94,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		691A675C18C6DE4500338592 /* towerPlaceHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = towerPlaceHolder.png; path = ../../Desktop/towerPlaceHolder.png; sourceTree = "<group>"; };
 		D212D2D618C440D400DA54FA /* buildSpotPH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildSpotPH.png; sourceTree = "<group>"; };
 		D212D2D818C45B6C00DA54FA /* buildHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buildHighlight.png; sourceTree = "<group>"; };
 		D212D2DD18C4A76B00DA54FA /* Toolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Toolbar.h; sourceTree = "<group>"; };
@@ -105,6 +105,8 @@
 		D212D2E618C53E3900DA54FA /* ElementPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElementPicker.m; sourceTree = "<group>"; };
 		D212D2E818C5460400DA54FA /* buttonBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonBack.png; sourceTree = "<group>"; };
 		D212D2E918C5460400DA54FA /* ButtonNext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonNext.png; sourceTree = "<group>"; };
+		D212D2EC18C80AD000DA54FA /* towerPlaceHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = towerPlaceHolder.png; sourceTree = "<group>"; };
+		D212D2EE18C81D0E00DA54FA /* spider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spider.png; sourceTree = "<group>"; };
 		D21B965A18B2F3520005DCAD /* MapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapScene.h; path = eleTD/MapScene.h; sourceTree = "<group>"; };
 		D21B965B18B2F3520005DCAD /* MapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapScene.m; path = eleTD/MapScene.m; sourceTree = "<group>"; };
 		D21B965E18B2F5D80005DCAD /* ToolbarScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarScene.h; sourceTree = "<group>"; };
@@ -348,7 +350,8 @@
 		D29F90FF18A9C0A700CE3CDA /* images */ = {
 			isa = PBXGroup;
 			children = (
-				691A675C18C6DE4500338592 /* towerPlaceHolder.png */,
+				D212D2EE18C81D0E00DA54FA /* spider.png */,
+				D212D2EC18C80AD000DA54FA /* towerPlaceHolder.png */,
 				D2AD9E8D18C4256A00EE8AF5 /* Map Images */,
 				D2AD9E8C18C4254600EE8AF5 /* Element Picker */,
 				D21B96BA18B4672A0005DCAD /* element button.png */,
@@ -514,13 +517,14 @@
 				D2D606CB18BAC75700A86B23 /* dragLight4.sks in Resources */,
 				D2AD9E9618C425B400EE8AF5 /* creepSheepR.png in Resources */,
 				D29F910818A9C0BA00CE3CDA /* selectF1.png in Resources */,
+				D212D2EF18C81D0E00DA54FA /* spider.png in Resources */,
 				D2D606A518B61E8D00A86B23 /* dragWater.sks in Resources */,
 				D212D2EA18C5460400DA54FA /* buttonBack.png in Resources */,
 				D2AD9E9518C425B400EE8AF5 /* creepSheepL.png in Resources */,
-				691A675D18C6DE4500338592 /* towerPlaceHolder.png in Resources */,
 				D2D606A918B71BDE00A86B23 /* dragDark.sks in Resources */,
 				D29F910A18A9C0BA00CE3CDA /* selectN1.png in Resources */,
 				D2D606E018BC637800A86B23 /* atomSpace100.png in Resources */,
+				D212D2ED18C80AD000DA54FA /* towerPlaceHolder.png in Resources */,
 				D2D606B018B8C92200A86B23 /* dragLeaf1.png in Resources */,
 				D2D606AD18B71F4F00A86B23 /* dragDark2.sks in Resources */,
 				D2D606CF18BAD5CE00A86B23 /* drop3.png in Resources */,

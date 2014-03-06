@@ -184,12 +184,6 @@
 	</dict>
 	<dict>
 		<key>code</key>
-		<string>LLN</string>
-		<key>name</key>
-		<string>Gold</string>
-	</dict>
-	<dict>
-		<key>code</key>
 		<string>LLL</string>
 		<key>name</key>
 		<string>Pure Light</string>

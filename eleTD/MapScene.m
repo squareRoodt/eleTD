@@ -64,6 +64,9 @@ float iPhoneScale = 3.5;
             towerBase.hidden = TRUE;
         }
         
+        // creating a testing creep
+        Creep *creep = [[Creep alloc]initWithMap:self andCode:@""];
+        [background addChild:creep];
         
     }
     return self;
@@ -145,6 +148,21 @@ float iPhoneScale = 3.5;
     [background addChild:tower];
     [tower setPosition:CGPointMake(selectedNode.frame.origin.x + selectedNode.frame.size.width/2, selectedNode.frame.origin.y + selectedNode.frame.size.height/2)];
     
+}
+
+-(BOOL)doesCircle:(CGPoint) circlePoint withRadius:(float) radius
+collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusTwo {
+    
+    float xdif = circlePoint.x - circlePointTwo.x;
+    float ydif = circlePoint.y - circlePointTwo.y;
+    
+    float distance = sqrt(xdif*xdif+ydif*ydif);
+    
+    if(distance <= radius+radiusTwo) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 -(void)update:(CFTimeInterval)currentTime {

@@ -14,8 +14,10 @@
     int maxHP;
     int currentHP;
     float walkingSpeed;
+    float walkingTime;
     int nextDestinationIndex;  // index of array of points
     CGPoint nextDestination;
+    CGPoint lastDestination;
     BOOL active;
     NSString *creepCode;
 }
