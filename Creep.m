@@ -6,6 +6,46 @@
 //  Copyright (c) 2014 JD. All rights reserved.
 //
 
+
+
+
+/*
+ self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1, 1)];
+ self.physicsBody.usesPreciseCollisionDetection = false;
+ mapScene.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+ self.physicsBody.friction = 0.0;
+ self.physicsBody.linearDamping = 0;
+ self.physicsBody.allowsRotation = true;
+ //self.physicsBody.mass = 0.1;
+ self.physicsBody.dynamic = true;
+ self.physicsBody.affectedByGravity = false;
+ 
+ [self.physicsBody applyForce:CGVectorMake(0, -100)];
+ [self.physicsBody applyImpulse:CGVectorMake(0, -100)];
+ 
+ 
+ 
+ SKSpriteNode *ts = [[SKSpriteNode alloc] initWithImageNamed:@"spider"];
+ //[background addChild:ts];
+ [mapScene.background addChild:ts];
+ ts.position = CGPointMake(400, 400);
+ ts.yScale = 0.5;
+ ts.xScale = 0.5;
+ //PHYSICS
+ //self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+ ts.physicsBody.affectedByGravity = false;
+ ts.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(ts.size.width, ts.size.height)];
+ 
+ ts.physicsBody.friction = 1;
+ ts.physicsBody.linearDamping = 0.7;
+ ts.physicsBody.allowsRotation = true;
+ ts.physicsBody.dynamic = true;
+ //[ts.physicsBody applyImpulse:CGVectorMake(0, 100)];
+ //[ts.physicsBody applyImpulse:CGVectorMake(0, 200)];
+ [ts.physicsBody applyForce:CGVectorMake(0, 200)];
+ 
+ */
+
 #import "Creep.h"
 #import "MapScene.h"
 
@@ -17,31 +57,78 @@
     NSMutableArray *wayPoints;
 }
 
-@synthesize mapScene, creepSprite;
+@synthesize mapScene, movementTimer;
 
 - (id) initWithMap: (MapScene*) map andCode: (NSString*) code {
-    if ((self=[super init])) {
+    if ((self=[super initWithImageNamed:@"spiderSmall"])) {
         mapScene = map;
         creepCode = code;
+        
+        //self.yScale = 0.2;
+        //self.xScale = 0.2;
         
         maxHP = 40;
         currentHP = maxHP;
         active = NO;
-        walkingSpeed = 7.0;
-        walkingTime = 0.005; // ?? FPS
+        walkingSpeed = 3.0;
+        walkingTime = 0.01; // 100 FPS
         
         [self setupWayPoints];
         
-        creepSprite = [[SKSpriteNode alloc] initWithImageNamed:@"spider"];
-        creepSprite.size = CGSizeMake(creepSprite.frame.size.width/5, creepSprite.frame.size.height/5);
         
-        [self addChild:creepSprite];
+        
         [self setPosition:lastDestination];
+        //[self creepMovement];
+        //SKAction *ska = [SKAction moveBy:CGVectorMake(0, -1000) duration:10];
+        //[self runAction:ska];
         
-        [self creepMovement];
+        movementTimer = [NSTimer scheduledTimerWithTimeInterval:walkingTime target:self
+                                                   selector:@selector(creepMovementTimer) userInfo:nil repeats:YES];
+        
+        
         
     }
     return self;
+}
+
+- (void) creepMovementTimer {
+    
+    if ([mapScene doesCircle:self.position withRadius:2 collideWithCircle:nextDestination collisionCircleRadius:5] ) {
+        
+        safeToTurn = 0;
+        
+        if (nextDestinationIndex == 14) {
+            nextDestinationIndex = 1;
+            nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex] CGPointValue];
+            lastDestination = [[wayPoints objectAtIndex:0] CGPointValue];
+            self.position = CGPointMake(lastDestination.x, lastDestination.y);
+        }
+        
+        lastDestination = nextDestination;
+        nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex++] CGPointValue];
+        
+        
+        // rotating object based on point location (nextDesIn - 1 really)
+        
+    }
+    
+    
+    if (nextDestination.x != lastDestination.x) /* moving along X */ {
+        if (lastDestination.x < nextDestination.x)  /* LEFT */{
+            self.position = CGPointMake(self.position.x + walkingSpeed, self.position.y);
+        } else /* RIGHT */ {
+            self.position = CGPointMake(self.position.x - walkingSpeed, self.position.y);
+        }
+    }
+    if (nextDestination.y != lastDestination.y) /* moving along Y */{
+        if (lastDestination.y < nextDestination.y)  /* UP */{
+            self.position = CGPointMake(self.position.x, self.position.y + walkingSpeed);
+        } else /* DOWN */ {
+            self.position = CGPointMake(self.position.x, self.position.y - walkingSpeed);
+        }
+    }
+    
+    
 }
 
 - (void) creepMovement {
@@ -60,6 +147,7 @@
             nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex++] CGPointValue];
         }
     }
+    
     
     if (nextDestination.x != lastDestination.x) /* moving along X */ {
         if (lastDestination.x < nextDestination.x)  /* LEFT */{

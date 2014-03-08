@@ -17,6 +17,7 @@
 		D212D2EB18C5460400DA54FA /* ButtonNext.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2E918C5460400DA54FA /* ButtonNext.png */; };
 		D212D2ED18C80AD000DA54FA /* towerPlaceHolder.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2EC18C80AD000DA54FA /* towerPlaceHolder.png */; };
 		D212D2EF18C81D0E00DA54FA /* spider.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2EE18C81D0E00DA54FA /* spider.png */; };
+		D212D2F118CAC3C600DA54FA /* spiderSmall.png in Resources */ = {isa = PBXBuildFile; fileRef = D212D2F018CAC3C600DA54FA /* spiderSmall.png */; };
 		D21B965C18B2F3520005DCAD /* MapScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965B18B2F3520005DCAD /* MapScene.m */; };
 		D21B966018B2F5D80005DCAD /* ToolbarScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B965F18B2F5D80005DCAD /* ToolbarScene.m */; };
 		D21B966318B3194B0005DCAD /* ElementPickerScene.m in Sources */ = {isa = PBXBuildFile; fileRef = D21B966218B3194B0005DCAD /* ElementPickerScene.m */; };
@@ -107,6 +108,7 @@
 		D212D2E918C5460400DA54FA /* ButtonNext.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ButtonNext.png; sourceTree = "<group>"; };
 		D212D2EC18C80AD000DA54FA /* towerPlaceHolder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = towerPlaceHolder.png; sourceTree = "<group>"; };
 		D212D2EE18C81D0E00DA54FA /* spider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spider.png; sourceTree = "<group>"; };
+		D212D2F018CAC3C600DA54FA /* spiderSmall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spiderSmall.png; sourceTree = "<group>"; };
 		D21B965A18B2F3520005DCAD /* MapScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapScene.h; path = eleTD/MapScene.h; sourceTree = "<group>"; };
 		D21B965B18B2F3520005DCAD /* MapScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapScene.m; path = eleTD/MapScene.m; sourceTree = "<group>"; };
 		D21B965E18B2F5D80005DCAD /* ToolbarScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToolbarScene.h; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 		D29F90FF18A9C0A700CE3CDA /* images */ = {
 			isa = PBXGroup;
 			children = (
+				D212D2F018CAC3C600DA54FA /* spiderSmall.png */,
 				D212D2EE18C81D0E00DA54FA /* spider.png */,
 				D212D2EC18C80AD000DA54FA /* towerPlaceHolder.png */,
 				D2AD9E8D18C4256A00EE8AF5 /* Map Images */,
@@ -497,6 +500,7 @@
 				D29F910618A9C0BA00CE3CDA /* mapBeta1.png in Resources */,
 				D2AD9E9418C425B400EE8AF5 /* creepSheep.png in Resources */,
 				D21B96B318B35AB70005DCAD /* spark.png in Resources */,
+				D212D2F118CAC3C600DA54FA /* spiderSmall.png in Resources */,
 				D2D606DB18BC38DA00A86B23 /* atomParticleEffect.sks in Resources */,
 				D2D606D718BC29B200A86B23 /* lightLensflare.png in Resources */,
 				D2D606AB18B71F1700A86B23 /* skull.png in Resources */,

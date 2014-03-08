@@ -10,7 +10,7 @@
 
 @class Tower, Map, MapScene, Bullet;
 
-@interface Creep : SKNode {
+@interface Creep : SKSpriteNode {
     int maxHP;
     int currentHP;
     float walkingSpeed;
@@ -20,10 +20,11 @@
     CGPoint lastDestination;
     BOOL active;
     NSString *creepCode;
+    float safeToTurn;
 }
 
 @property MapScene *mapScene;
-@property SKSpriteNode *creepSprite;
+@property NSTimer *movementTimer;
 
 - (id) initWithMap: (MapScene*) map andCode: (NSString*) code;
 - (void) doActivate;

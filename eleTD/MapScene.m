@@ -33,6 +33,8 @@ float iPhoneScale = 3.5;
         //viewController = [(Map*)self.view getViewController];
         //parentMap = (Map*)self.view;
         
+        enemies = [[NSMutableArray alloc] init];
+        
         //Loading the background
         background = [SKSpriteNode spriteNodeWithImageNamed:@"mapBeta1"];
         [background setName:@"background"];
@@ -65,11 +67,41 @@ float iPhoneScale = 3.5;
         }
         
         // creating a testing creep
-        Creep *creep = [[Creep alloc]initWithMap:self andCode:@""];
-        [background addChild:creep];
+        
+        // creating multiple creeps (x20)
+        creepCreator = [NSTimer scheduledTimerWithTimeInterval:1 target:self
+                                                       selector:@selector(createCreep) userInfo:nil repeats:YES];
+        
+        
+        
+        /*
+        SKSpriteNode *ts = [[SKSpriteNode alloc] initWithImageNamed:@"spider"];
+        [background addChild:ts];
+        ts.position = CGPointMake(400, 400);
+        ts.yScale = 0.5;
+        ts.xScale = 0.5;
+        //PHYSICS
+        self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
+        ts.physicsBody.affectedByGravity = false;
+        ts.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(ts.size.width, ts.size.height)];
+        [ts.physicsBody applyForce:CGVectorMake(0, 50)];
+        ts.physicsBody.friction = 0.0;
+        ts.physicsBody.linearDamping = 0;
+         */
         
     }
     return self;
+}
+
+- (void) createCreep {
+    
+    Creep *creep = [[Creep alloc]initWithMap:self andCode:@""];
+    [background addChild:creep];
+    [enemies addObject:creep];
+    
+    if ([enemies count] == 15) {
+        [creepCreator invalidate];
+    }
 }
 
 
@@ -89,6 +121,11 @@ float iPhoneScale = 3.5;
     CGPoint newPos = CGPointMake(newPosX, newPosY);
     [self scrollMap: newPos];
     
+    if ([selectedNode.name isEqualToString:@"build_spot"]) {
+        selectedNode.hidden = true;
+        selectedNode = nil;
+        [(Map *)self.view setEleButtonHidden:true];
+    }
     
     
 }

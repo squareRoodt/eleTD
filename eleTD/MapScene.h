@@ -16,6 +16,7 @@
     // these dont work??? have to manually use (Map*)self.view
     ViewController *viewController;
     Map *parentMap;
+    NSTimer *creepCreator;
 }
 
 @property (nonatomic, strong) SKSpriteNode *background;
