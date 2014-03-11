@@ -8,6 +8,10 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface Bullet : SKNode
+@interface Bullet : SKSpriteNode {
+    
+}
+
+- (id) initWithCode: (NSString *)code andImageName: (NSString *)name;
 
 @end

@@ -48,6 +48,8 @@
 
 #import "Creep.h"
 #import "MapScene.h"
+#import "Tower.h"
+#import "Bullet.h"
 
 @implementation Creep {
     NSMutableArray *creepImagesUp;
@@ -63,10 +65,7 @@
     if ((self=[super initWithImageNamed:@"spiderSmall"])) {
         mapScene = map;
         creepCode = code;
-        
-        //self.yScale = 0.2;
-        //self.xScale = 0.2;
-        
+      
         maxHP = 40;
         currentHP = maxHP;
         active = NO;
@@ -74,17 +73,12 @@
         walkingTime = 0.053; // ??? FPS
         
         [self setupWayPoints];
-        
         [self setPosition:lastDestination];
-        //[self creepMovement];
-        //SKAction *ska = [SKAction moveBy:CGVectorMake(0, -1000) duration:10];
-        //[self runAction:ska];
         
-        //movementTimer = [NSTimer scheduledTimerWithTimeInterval:walkingTime target:self
-         //                                          selector:@selector(creepMovementTimer) userInfo:nil repeats:YES];
+        attackedByTowers = [[NSMutableArray alloc] initWithCapacity:5];
         
-        
-        
+        // do a healthBar
+
     }
     return self;
 }
@@ -102,10 +96,6 @@
         
         lastDestination = nextDestination;
         nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex++] CGPointValue];
-        
-        //NSLog(@"%d", nextDestinationIndex);
-        // rotating object based on point location (nextDesIn - 1 really)
-        
     }
     
     
@@ -123,48 +113,6 @@
             self.position = CGPointMake(self.position.x, self.position.y - walkingSpeed);
         }
     }
-    
-    
-}
-
-- (void) creepMovement {
-    //SKAction mov
-    //NSLog(@"%f, %f", nextDestination.x, nextDestination.y);
-    
-    if ([mapScene doesCircle:self.position withRadius:4 collideWithCircle:nextDestination collisionCircleRadius:2]) {
-        
-        if (nextDestinationIndex == 14) {
-            nextDestinationIndex = 1;
-            nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex] CGPointValue];
-            lastDestination = [[wayPoints objectAtIndex:0] CGPointValue];
-            self.position = CGPointMake(lastDestination.x, lastDestination.y);
-        } else {
-            lastDestination = nextDestination;
-            nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex++] CGPointValue];
-        }
-    }
-    
-    
-    if (nextDestination.x != lastDestination.x) /* moving along X */ {
-        if (lastDestination.x < nextDestination.x)  /* LEFT */{
-            [self runAction:[SKAction moveByX:walkingSpeed y:0 duration:0]];
-        } else /* RIGHT */ {
-            [self runAction:[SKAction moveByX:-walkingSpeed y:0 duration:0]];
-        }
-    }
-    if (nextDestination.y != lastDestination.y) /* moving along Y */{
-        if (lastDestination.y < nextDestination.y)  /* UP */{
-            [self runAction:[SKAction moveByX:0 y:walkingSpeed duration:0]];
-        } else /* DOWN */ {
-            [self runAction:[SKAction moveByX:0 y:-walkingSpeed duration:0]];
-        }
-    }
-    
-    SKAction *a = [SKAction sequence:@[
-                                       [SKAction waitForDuration:walkingTime],
-                                       [SKAction runBlock:^{[self creepMovement];}]
-                                       ]];
-    [self runAction:a];
 }
 
 - (void) setupWayPoints {
@@ -217,24 +165,40 @@
     
 }
 
-- (void) move {
-    
-    if (nextDestination.x != lastDestination.x) /* moving along X */ {
-        if (lastDestination.x < nextDestination.x)  /* LEFT */{
-            self.position = CGPointMake(self.position.x + walkingSpeed, self.position.y);
-        } else /* RIGHT */ {
-            self.position = CGPointMake(self.position.x - walkingSpeed, self.position.y);
-        }
-    }
-    if (nextDestination.y != lastDestination.y) /* moving along Y */{
-        if (lastDestination.y < nextDestination.y)  /* UP */{
-            self.position = CGPointMake(self.position.x, self.position.y + walkingSpeed);
-        } else /* DOWN */ {
-            self.position = CGPointMake(self.position.x, self.position.y - walkingSpeed);
-            
-        }
+-(void)getRemoved
+{
+    for(Tower * attacker in attackedByTowers)
+    {
+        [attacker targetKilled];
     }
     
+    //[self.parent removeChild:self cleanup:YES];
+    [self removeFromParent];
+    [mapScene.enemies removeObject:self];
+    
+    //Notify the game that we killed an enemy so we can check if we can send another wave
+    [mapScene enemyGotKilled];
 }
+
+-(void)getAttackedBy:(Tower *)attacker
+{
+    [attackedByTowers addObject:attacker];
+}
+
+-(void)gotLostSight:(Tower *)attacker
+{
+    [attackedByTowers removeObject:attacker];
+}
+
+-(void)getDamaged:(float)damage
+{
+    currentHP -=damage;
+    if(currentHP <=0)
+    {
+        [self getRemoved];
+    }
+}
+
+
 
 @end

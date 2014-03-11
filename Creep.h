@@ -11,15 +11,18 @@
 @class Tower, Map, MapScene, Bullet;
 
 @interface Creep : SKSpriteNode {
+    NSMutableArray *attackedByTowers;
+    
     int maxHP;
     int currentHP;
-    
     float walkingTime;
     int nextDestinationIndex;  // index of array of points
     
     BOOL active;
     NSString *creepCode;
     float safeToTurn;
+    
+    SKSpriteNode *healthBar;
 }
 
 @property MapScene *mapScene;
@@ -31,7 +34,10 @@
 - (id) initWithMap: (MapScene*) map andCode: (NSString*) code;
 - (void) doActivate;
 - (void) kill;
-- (void) move;
 - (void) creepMovementTimer;
+
+- (void) getAttackedBy: (Tower *) tower;
+- (void) gotLostSight:(Tower *)attacker;
+- (void) getDamaged:(float)damage;
 
 @end

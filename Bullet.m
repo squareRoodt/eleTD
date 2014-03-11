@@ -10,4 +10,11 @@
 
 @implementation Bullet
 
+- (id) initWithCode: (NSString *)code andImageName:(NSString *)name{
+    if ([self initWithImageNamed:@"buttletPlaceholder"]) {
+       // NSLog(@"Bullet was shot");
+    }
+    return self;
+}
+
 @end

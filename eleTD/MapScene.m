@@ -34,6 +34,7 @@ float iPhoneScale = 3.5;
         //parentMap = (Map*)self.view;
         
         enemies = [[NSMutableArray alloc] init];
+        towers = [[NSMutableArray alloc]init];
         
         //Loading the background
         background = [SKSpriteNode spriteNodeWithImageNamed:@"mapBeta1"];
@@ -95,7 +96,7 @@ float iPhoneScale = 3.5;
 
 - (void) createCreep {
     
-    NSLog(@"adding creep");
+    //NSLog(@"adding creep");
     
     Creep *creep = [[Creep alloc]initWithMap:self andCode:@""];
     [background addChild:creep];
@@ -111,6 +112,7 @@ float iPhoneScale = 3.5;
     UITouch *touch = [touches anyObject];
     CGPoint positionOnMap = [touch locationInNode:background];
     [self findSelectedNodeInTouch:positionOnMap];
+    NSLog(@"towers array: %@", towers);
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -145,7 +147,7 @@ float iPhoneScale = 3.5;
 
 
 - (void)findSelectedNodeInTouch:(CGPoint)touchLocation {
-    NSLog(@"map location: x= %f, y= %f", touchLocation.x, touchLocation.y);
+    //NSLog(@"map location: x= %f, y= %f", touchLocation.x, touchLocation.y);
     SKNode *touchedNode = (SKNode *)[background nodeAtPoint:touchLocation];
     
     // deactivate nodes now that there is a new touch
@@ -155,7 +157,7 @@ float iPhoneScale = 3.5;
     
 	if(![selectedNode isEqual:touchedNode]) {
 		selectedNode = touchedNode;
-        NSLog(@"touched %@", selectedNode.name);
+        //NSLog(@"touched %@", selectedNode.name);
         [(Map *)self.view setEleButtonHidden:TRUE];
         
 		if([[touchedNode name] isEqualToString:@"tower"]) {
@@ -183,10 +185,11 @@ float iPhoneScale = 3.5;
 }
 
 - (void) buildTowerOfType: (NSString*)code {
+    NSLog(@"BUILDING TOWER");
     Tower *tower = [[Tower alloc] initWithMap:self code:code];
     [background addChild:tower];
     [tower setPosition:CGPointMake(selectedNode.frame.origin.x + selectedNode.frame.size.width/2, selectedNode.frame.origin.y + selectedNode.frame.size.height/2)];
-    
+    [towers addObject:tower];
 }
 
 -(BOOL)doesCircle:(CGPoint) circlePoint withRadius:(float) radius
@@ -204,12 +207,21 @@ collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusT
     return NO;
 }
 
+- (void) enemyGotKilled {
+    NSLog(@"enemy got killed. no code added yet");
+}
+
 - (void) update: (NSTimeInterval) currentTime {
    
-    // creep movement
     for (Creep *creepy in enemies) {
         [creepy creepMovementTimer];
     }
+    
+    for (Tower *tower in towers) {
+        [tower towerUpdate];
+    }
+    
+    
     
 }
 

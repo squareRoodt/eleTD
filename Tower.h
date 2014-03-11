@@ -14,19 +14,23 @@
 @class ViewController;
 
 @interface Tower : SKNode {
+    bool attacking;
+    Creep *currentCreep;
+    
     float attackRadius;
     float attackSpeed;
     float attackSplash;
     float attackDamage;
     NSString *attackModifier;
-    
+    NSTimer *attackTimer;
     NSString *towerCode;
 }
 
-@property (nonatomic, weak) MapScene *mapScene;
+@property MapScene *mapScene;
 @property (nonatomic, strong) SKSpriteNode *towerSprite;
 
--(id)initWithMap: (MapScene *)map code: (NSString *)code;
-
+- (id)initWithMap: (MapScene *)map code: (NSString *)code;
+- (void) targetKilled;
+- (void) towerUpdate;
 
 @end

@@ -27,5 +27,6 @@
 - (void) buildTowerOfType: (NSString*)code;
 -(BOOL)doesCircle:(CGPoint) circlePoint withRadius:(float) radius
 collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusTwo;
+- (void) enemyGotKilled;
 
 @end
