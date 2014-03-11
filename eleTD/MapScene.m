@@ -95,11 +95,13 @@ float iPhoneScale = 3.5;
 
 - (void) createCreep {
     
+    NSLog(@"adding creep");
+    
     Creep *creep = [[Creep alloc]initWithMap:self andCode:@""];
     [background addChild:creep];
     [enemies addObject:creep];
     
-    if ([enemies count] == 15) {
+    if ([enemies count] == 10) {
         [creepCreator invalidate];
     }
 }
@@ -202,8 +204,13 @@ collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusT
     return NO;
 }
 
--(void)update:(CFTimeInterval)currentTime {
-    /* Called before each frame is rendered */
+- (void) update: (NSTimeInterval) currentTime {
+   
+    // creep movement
+    for (Creep *creepy in enemies) {
+        [creepy creepMovementTimer];
+    }
+    
 }
 
 @end

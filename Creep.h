@@ -13,11 +13,10 @@
 @interface Creep : SKSpriteNode {
     int maxHP;
     int currentHP;
-    float walkingSpeed;
+    
     float walkingTime;
     int nextDestinationIndex;  // index of array of points
-    CGPoint nextDestination;
-    CGPoint lastDestination;
+    
     BOOL active;
     NSString *creepCode;
     float safeToTurn;
@@ -25,9 +24,14 @@
 
 @property MapScene *mapScene;
 @property NSTimer *movementTimer;
+@property CGPoint nextDestination;
+@property CGPoint lastDestination;
+@property float walkingSpeed;
 
 - (id) initWithMap: (MapScene*) map andCode: (NSString*) code;
 - (void) doActivate;
 - (void) kill;
+- (void) move;
+- (void) creepMovementTimer;
 
 @end

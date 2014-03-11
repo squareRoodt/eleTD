@@ -206,5 +206,11 @@
 		<key>name</key>
 		<string>Pure Dark</string>
 	</dict>
+	<dict>
+		<key>code</key>
+		<string>NWW</string>
+		<key>name</key>
+		<string>Flash Flood</string>
+	</dict>
 </array>
 </plist>

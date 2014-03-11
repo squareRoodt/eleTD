@@ -73,6 +73,11 @@
     elementPickerScene = [ElementPickerScene sceneWithSize:elementPickerSKView.bounds.size];
     [elementPickerSKView presentScene:elementPickerScene];
     
+    mapSKView.showsFPS = YES;
+    mapSKView.showsNodeCount = YES;
+    elementPickerSKView.showsFPS = true;
+    elementPickerSKView.showsNodeCount = true;
+    
     
     // adding views
     [self.view addSubview:mapSKView];

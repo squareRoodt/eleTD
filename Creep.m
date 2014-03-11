@@ -57,7 +57,7 @@
     NSMutableArray *wayPoints;
 }
 
-@synthesize mapScene, movementTimer;
+@synthesize mapScene, movementTimer, nextDestination, lastDestination, walkingSpeed;
 
 - (id) initWithMap: (MapScene*) map andCode: (NSString*) code {
     if ((self=[super initWithImageNamed:@"spiderSmall"])) {
@@ -70,20 +70,18 @@
         maxHP = 40;
         currentHP = maxHP;
         active = NO;
-        walkingSpeed = 3.0;
-        walkingTime = 0.01; // 100 FPS
+        walkingSpeed = 5.0;
+        walkingTime = 0.053; // ??? FPS
         
         [self setupWayPoints];
-        
-        
         
         [self setPosition:lastDestination];
         //[self creepMovement];
         //SKAction *ska = [SKAction moveBy:CGVectorMake(0, -1000) duration:10];
         //[self runAction:ska];
         
-        movementTimer = [NSTimer scheduledTimerWithTimeInterval:walkingTime target:self
-                                                   selector:@selector(creepMovementTimer) userInfo:nil repeats:YES];
+        //movementTimer = [NSTimer scheduledTimerWithTimeInterval:walkingTime target:self
+         //                                          selector:@selector(creepMovementTimer) userInfo:nil repeats:YES];
         
         
         
@@ -93,12 +91,10 @@
 
 - (void) creepMovementTimer {
     
-    if ([mapScene doesCircle:self.position withRadius:2 collideWithCircle:nextDestination collisionCircleRadius:5] ) {
-        
-        safeToTurn = 0;
+    if ([mapScene doesCircle:self.position withRadius:2 collideWithCircle:nextDestination collisionCircleRadius:2] ) {
         
         if (nextDestinationIndex == 14) {
-            nextDestinationIndex = 1;
+            nextDestinationIndex = 0;
             nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex] CGPointValue];
             lastDestination = [[wayPoints objectAtIndex:0] CGPointValue];
             self.position = CGPointMake(lastDestination.x, lastDestination.y);
@@ -107,7 +103,7 @@
         lastDestination = nextDestination;
         nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex++] CGPointValue];
         
-        
+        //NSLog(@"%d", nextDestinationIndex);
         // rotating object based on point location (nextDesIn - 1 really)
         
     }
@@ -218,6 +214,26 @@
 }
 
 - (void) kill {
+    
+}
+
+- (void) move {
+    
+    if (nextDestination.x != lastDestination.x) /* moving along X */ {
+        if (lastDestination.x < nextDestination.x)  /* LEFT */{
+            self.position = CGPointMake(self.position.x + walkingSpeed, self.position.y);
+        } else /* RIGHT */ {
+            self.position = CGPointMake(self.position.x - walkingSpeed, self.position.y);
+        }
+    }
+    if (nextDestination.y != lastDestination.y) /* moving along Y */{
+        if (lastDestination.y < nextDestination.y)  /* UP */{
+            self.position = CGPointMake(self.position.x, self.position.y + walkingSpeed);
+        } else /* DOWN */ {
+            self.position = CGPointMake(self.position.x, self.position.y - walkingSpeed);
+            
+        }
+    }
     
 }
 
