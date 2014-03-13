@@ -13,8 +13,6 @@
 @interface Creep : SKSpriteNode {
     NSMutableArray *attackedByTowers;
     
-    int maxHP;
-    int currentHP;
     float walkingTime;
     int nextDestinationIndex;  // index of array of points
     
@@ -22,7 +20,17 @@
     NSString *creepCode;
     float safeToTurn;
     
-    SKSpriteNode *healthBar;
+    SKSpriteNode *healthBarRed;
+    SKSpriteNode *healthBarGreen;
+    
+    NSMutableArray *deadEnemies;
+    
+    int waypointWaitingTime;
+    
+    SKTexture *up;
+    SKTexture *down;
+    SKTexture *right;
+    SKTexture *left;
 }
 
 @property MapScene *mapScene;
@@ -30,6 +38,8 @@
 @property CGPoint nextDestination;
 @property CGPoint lastDestination;
 @property float walkingSpeed;
+@property float maxHP;
+@property float currentHP;
 
 - (id) initWithMap: (MapScene*) map andCode: (NSString*) code;
 - (void) doActivate;
@@ -38,6 +48,6 @@
 
 - (void) getAttackedBy: (Tower *) tower;
 - (void) gotLostSight:(Tower *)attacker;
-- (void) getDamaged:(float)damage;
+- (void) getDamaged:(float)damage withSplashRadius: (float) splash withEffect: (NSString*) effect;
 
 @end

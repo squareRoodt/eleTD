@@ -17,6 +17,7 @@
     ViewController *viewController;
     Map *parentMap;
     NSTimer *creepCreator;
+    int currentLvl;
 }
 
 @property (nonatomic, strong) SKSpriteNode *background;
@@ -28,5 +29,6 @@
 -(BOOL)doesCircle:(CGPoint) circlePoint withRadius:(float) radius
 collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusTwo;
 - (void) enemyGotKilled;
+- (void) levelEnded;
 
 @end

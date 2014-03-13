@@ -22,10 +22,19 @@
         attacking = false;
         
         // load tower attributes
+        if ([code isEqualToString:@"FFN"]) {
+            FFNrandomAttackChance = 20;
+        } else {
+            FFNrandomAttackChance = 0;
+        }
+        
         attackRadius = 250;
+        attackSplash = 70;
         attackSpeed = 1;
         attackDamage = 10;
-        attackModifier = @"NONE";
+        attackModifier = code;
+        bulletImg = @"";
+        bulletSpeed = 0.4;
         
         towerSprite = [[SKSpriteNode alloc] initWithImageNamed:@"towerPlaceHolder"];
         [self addChild:towerSprite];
@@ -43,22 +52,54 @@
     currentCreep = nil;
     currentCreep = enemy;
     attackTimer = [NSTimer scheduledTimerWithTimeInterval:attackSpeed target:self
-                                                 selector:@selector(shootWeapon) userInfo:nil repeats:YES];
-    //[self shootWeapon]; // should fire a shot as soon as in range
+                                                 selector:@selector(readyWeapon) userInfo:nil repeats:YES];
+     // should fire a shot as soon as in range
+    //[self readyWeapon];
+    //[self runAction:[SKAction sequence:@[ [SKAction waitForDuration:attackSpeed/2], [SKAction runBlock:^{[self readyWeapon];}] ] ]];
     [enemy getAttackedBy:self];
 }
 
--(void)shootWeapon
+-(void)readyWeapon
 {
-    //NSLog(@"shooting");
-    Bullet * bullet = [[Bullet alloc]initWithCode:@"" andImageName:@""];
-    [mapScene.background addChild:bullet];
-    [bullet setPosition:self.position];
-    NSMutableArray *actions = [[NSMutableArray alloc]initWithObjects:[SKAction moveTo:currentCreep.position duration:0.2],
-                               [SKAction runBlock:^{[self damageEnemy]; [self removeBullet:bullet];}],
-                               nil];
-    [bullet runAction:[SKAction sequence:actions]];
+    [self shootWeaponAt:currentCreep];
     
+    // special FFN (volcano extra shot)
+    if (FFNrandomAttackChance != 0) {
+        if ((arc4random() % (100) <= FFNrandomAttackChance)) {
+            // lag a little bit before the extra shot is fired
+            // IN FUTURE PLAY A LITTLE SOUND THAT SHOWS THE USER GOT THE EXTRA SHOT
+            
+           [self runAction: [SKAction sequence:@[ [SKAction waitForDuration:attackSpeed/2],
+                                  [SKAction runBlock:^{
+                NSMutableArray *enemiesToAtt = [[NSMutableArray alloc]init];
+                for (Creep *enemy in mapScene.enemies) {
+                    if ([mapScene doesCircle:self.position withRadius:attackRadius collideWithCircle:enemy.position collisionCircleRadius:25]) {
+                        [enemiesToAtt addObject:enemy];
+                    }
+                }
+               
+               if ([enemiesToAtt count] != 0) {
+                   int randomCreep = arc4random() % ([enemiesToAtt count]);
+                   [self shootWeaponAt:enemiesToAtt[randomCreep]];
+               }
+               
+            }] ]] ];
+            
+        }
+    }
+    
+}
+
+- (void) shootWeaponAt: (Creep *) thisCreep {
+    if (thisCreep) {
+        Bullet * bullet = [[Bullet alloc]initWithCode:towerCode andImageName:bulletImg];
+        [mapScene.background addChild:bullet];
+        [bullet setPosition:self.position];
+        NSMutableArray *actions = [[NSMutableArray alloc]initWithObjects:[SKAction moveTo:thisCreep.position duration:bulletSpeed],
+                                   [SKAction runBlock:^{[self damageThisCreep: thisCreep]; [self removeBullet:bullet];}],
+                                   nil];
+        [bullet runAction:[SKAction sequence:actions]];
+    }
 }
 
 -(void)removeBullet:(Bullet *)bullet
@@ -66,9 +107,9 @@
     [bullet removeFromParent];
 }
 
--(void)damageEnemy
+-(void)damageThisCreep: (Creep*) creepToHurt
 {
-    [currentCreep getDamaged:attackDamage];
+    [creepToHurt getDamaged:attackDamage withSplashRadius:attackSplash withEffect:attackModifier];
 }
 
 - (void) targetKilled

@@ -35,6 +35,7 @@ float iPhoneScale = 3.5;
         
         enemies = [[NSMutableArray alloc] init];
         towers = [[NSMutableArray alloc]init];
+        currentLvl = 1;
         
         //Loading the background
         background = [SKSpriteNode spriteNodeWithImageNamed:@"mapBeta1"];
@@ -102,7 +103,7 @@ float iPhoneScale = 3.5;
     [background addChild:creep];
     [enemies addObject:creep];
     
-    if ([enemies count] == 10) {
+    if ([enemies count] == 1) {
         [creepCreator invalidate];
     }
 }
@@ -112,7 +113,7 @@ float iPhoneScale = 3.5;
     UITouch *touch = [touches anyObject];
     CGPoint positionOnMap = [touch locationInNode:background];
     [self findSelectedNodeInTouch:positionOnMap];
-    NSLog(@"towers array: %@", towers);
+    //NSLog(@"towers array: %@", towers);
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -211,6 +212,11 @@ collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusT
     NSLog(@"enemy got killed. no code added yet");
 }
 
+- (void) levelEnded {
+    currentLvl ++;
+    NSLog(@"level ended. level %d coming up... (once code has been added)",currentLvl);
+}
+
 - (void) update: (NSTimeInterval) currentTime {
    
     for (Creep *creepy in enemies) {
@@ -220,9 +226,6 @@ collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusT
     for (Tower *tower in towers) {
         [tower towerUpdate];
     }
-    
-    
-    
 }
 
 @end

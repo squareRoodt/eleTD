@@ -24,6 +24,11 @@
     NSString *attackModifier;
     NSTimer *attackTimer;
     NSString *towerCode;
+    NSString *bulletImg;
+    float bulletSpeed;
+    
+    // specials
+    int FFNrandomAttackChance;
 }
 
 @property MapScene *mapScene;

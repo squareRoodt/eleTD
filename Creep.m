@@ -7,45 +7,6 @@
 //
 
 
-
-
-/*
- self.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(1, 1)];
- self.physicsBody.usesPreciseCollisionDetection = false;
- mapScene.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
- self.physicsBody.friction = 0.0;
- self.physicsBody.linearDamping = 0;
- self.physicsBody.allowsRotation = true;
- //self.physicsBody.mass = 0.1;
- self.physicsBody.dynamic = true;
- self.physicsBody.affectedByGravity = false;
- 
- [self.physicsBody applyForce:CGVectorMake(0, -100)];
- [self.physicsBody applyImpulse:CGVectorMake(0, -100)];
- 
- 
- 
- SKSpriteNode *ts = [[SKSpriteNode alloc] initWithImageNamed:@"spider"];
- //[background addChild:ts];
- [mapScene.background addChild:ts];
- ts.position = CGPointMake(400, 400);
- ts.yScale = 0.5;
- ts.xScale = 0.5;
- //PHYSICS
- //self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
- ts.physicsBody.affectedByGravity = false;
- ts.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(ts.size.width, ts.size.height)];
- 
- ts.physicsBody.friction = 1;
- ts.physicsBody.linearDamping = 0.7;
- ts.physicsBody.allowsRotation = true;
- ts.physicsBody.dynamic = true;
- //[ts.physicsBody applyImpulse:CGVectorMake(0, 100)];
- //[ts.physicsBody applyImpulse:CGVectorMake(0, 200)];
- [ts.physicsBody applyForce:CGVectorMake(0, 200)];
- 
- */
-
 #import "Creep.h"
 #import "MapScene.h"
 #import "Tower.h"
@@ -59,12 +20,16 @@
     NSMutableArray *wayPoints;
 }
 
-@synthesize mapScene, movementTimer, nextDestination, lastDestination, walkingSpeed;
+@synthesize mapScene, movementTimer, nextDestination, lastDestination, walkingSpeed, maxHP, currentHP;
 
 - (id) initWithMap: (MapScene*) map andCode: (NSString*) code {
-    if ((self=[super initWithImageNamed:@"spiderSmall"])) {
+    if ((self=[super initWithImageNamed:@"c1d"])) {
+        
+        deadEnemies = [[NSMutableArray alloc]init];
         mapScene = map;
         creepCode = code;
+        
+        waypointWaitingTime = 0;
       
         maxHP = 40;
         currentHP = maxHP;
@@ -78,24 +43,105 @@
         attackedByTowers = [[NSMutableArray alloc] initWithCapacity:5];
         
         // do a healthBar
-
+        healthBarGreen = [[SKSpriteNode alloc]initWithImageNamed:@"hpGreen"];
+        healthBarRed = [[SKSpriteNode alloc]initWithImageNamed:@"hpRed"];
+        healthBarGreen.position = CGPointMake(-25, 25);
+        healthBarRed.position = CGPointMake(-25, 25);
+        [healthBarGreen setAnchorPoint:CGPointZero];
+        [healthBarRed setAnchorPoint:CGPointZero];
+        
+        [self addChild:healthBarRed];
+        [self addChild:healthBarGreen];
+        
+        up = [SKTexture textureWithImageNamed:@"c1u"];
+        down = [SKTexture textureWithImageNamed:@"c1d"];
+        right = [SKTexture textureWithImageNamed:@"c1l"];
+        left = [SKTexture textureWithImageNamed:@"c1r"];
+        
     }
     return self;
 }
 
 - (void) creepMovementTimer {
     
-    if ([mapScene doesCircle:self.position withRadius:2 collideWithCircle:nextDestination collisionCircleRadius:2] ) {
+    waypointWaitingTime ++;
+    
+    if ([mapScene doesCircle:self.position withRadius:1 collideWithCircle:nextDestination collisionCircleRadius:1] &&
+        waypointWaitingTime >= 3) {
         
-        if (nextDestinationIndex == 14) {
-            nextDestinationIndex = 0;
+        waypointWaitingTime = 0;
+        
+        if (nextDestinationIndex == 13) {
+            nextDestinationIndex = 0;   // compensating for next ++
             nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex] CGPointValue];
             lastDestination = [[wayPoints objectAtIndex:0] CGPointValue];
             self.position = CGPointMake(lastDestination.x, lastDestination.y);
         }
         
         lastDestination = nextDestination;
-        nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex++] CGPointValue];
+        nextDestinationIndex ++;
+        nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex] CGPointValue];
+        
+        // creep directions
+        NSLog(@"%d", nextDestinationIndex);
+        
+        switch (nextDestinationIndex) {
+            case 1:
+                self.texture = down;
+                break;
+                
+            case 2:
+                self.texture = left;
+                break;
+                
+            case 3:
+                self.texture = down;
+                break;
+                
+            case 4:
+                self.texture = right;
+                break;
+                
+            case 5:
+                self.texture = up;
+                break;
+                
+            case 6:
+                self.texture = right;
+                break;
+                
+            case 7:
+                self.texture = down;
+                break;
+                
+            case 8:
+                self.texture = left;
+                break;
+                
+            case 9:
+                self.texture = down;
+                break;
+                
+            case 10:
+                self.texture = right;
+                break;
+                
+            case 11:
+                self.texture = up;
+                break;
+                
+            case 12:
+                self.texture = left;
+                break;
+                
+            case 13:
+                self.texture = up;
+                break;
+                
+            default:
+                self.texture = down;
+                break;
+        }
     }
     
     
@@ -178,6 +224,11 @@
     
     //Notify the game that we killed an enemy so we can check if we can send another wave
     [mapScene enemyGotKilled];
+    
+    // check for next level
+    if ([mapScene.enemies count] == 0) {
+        [mapScene levelEnded];
+    }
 }
 
 -(void)getAttackedBy:(Tower *)attacker
@@ -190,12 +241,25 @@
     [attackedByTowers removeObject:attacker];
 }
 
--(void)getDamaged:(float)damage
+
+
+-(void)getDamaged:(float)damage withSplashRadius: (float) splash withEffect: (NSString*) effect
 {
-    currentHP -=damage;
-    if(currentHP <=0)
-    {
-        [self getRemoved];
+    
+    for (Creep *enemy in mapScene.enemies) {
+        if ([mapScene doesCircle:self.position withRadius:splash collideWithCircle:enemy.position collisionCircleRadius:10]) {
+            enemy.currentHP -=damage;
+            enemy->healthBarGreen.xScale = enemy.currentHP/enemy.maxHP;
+            if(enemy.currentHP <=0)
+            {
+                //[enemy getRemoved];
+                [deadEnemies addObject:enemy];
+            }
+        }
+    }
+    
+    for (Creep *enemy in deadEnemies) {
+        [enemy getRemoved];
     }
 }
 
