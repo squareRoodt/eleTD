@@ -103,7 +103,7 @@ float iPhoneScale = 3.5;
     [background addChild:creep];
     [enemies addObject:creep];
     
-    if ([enemies count] == 1) {
+    if ([enemies count] == 10) {
         [creepCreator invalidate];
     }
 }
@@ -220,7 +220,7 @@ collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusT
 - (void) update: (NSTimeInterval) currentTime {
    
     for (Creep *creepy in enemies) {
-        [creepy creepMovementTimer];
+        [creepy creepMovementTimer: currentTime];
     }
     
     for (Tower *tower in towers) {

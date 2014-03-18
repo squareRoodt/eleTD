@@ -34,7 +34,7 @@
         maxHP = 40;
         currentHP = maxHP;
         active = NO;
-        walkingSpeed = 5.0;
+        walkingSpeed = 120.0;
         walkingTime = 0.053; // ??? FPS
         
         [self setupWayPoints];
@@ -62,11 +62,17 @@
     return self;
 }
 
-- (void) creepMovementTimer {
+- (void) creepMovementTimer: (NSTimeInterval)time {
+    
+    if (!oldTime) {
+        oldTime = time;
+    }
+    
     
     waypointWaitingTime ++;
     
-    if ([mapScene doesCircle:self.position withRadius:1 collideWithCircle:nextDestination collisionCircleRadius:1] &&
+    // waypoints
+    if ([mapScene doesCircle:self.position withRadius:5 collideWithCircle:nextDestination collisionCircleRadius:5] &&
         waypointWaitingTime >= 3) {
         
         waypointWaitingTime = 0;
@@ -81,6 +87,8 @@
         lastDestination = nextDestination;
         nextDestinationIndex ++;
         nextDestination = [[wayPoints objectAtIndex:nextDestinationIndex] CGPointValue];
+        
+        self.position = lastDestination;
         
         // creep directions
         NSLog(@"%d", nextDestinationIndex);
@@ -144,21 +152,24 @@
         }
     }
     
+    float walkingSpeedTimeAffected = walkingSpeed * (time - oldTime);
     
     if (nextDestination.x != lastDestination.x) /* moving along X */ {
         if (lastDestination.x < nextDestination.x)  /* LEFT */{
-            self.position = CGPointMake(self.position.x + walkingSpeed, self.position.y);
+            self.position = CGPointMake(self.position.x + walkingSpeedTimeAffected, self.position.y);
         } else /* RIGHT */ {
-            self.position = CGPointMake(self.position.x - walkingSpeed, self.position.y);
+            self.position = CGPointMake(self.position.x - walkingSpeedTimeAffected, self.position.y);
         }
     }
     if (nextDestination.y != lastDestination.y) /* moving along Y */{
         if (lastDestination.y < nextDestination.y)  /* UP */{
-            self.position = CGPointMake(self.position.x, self.position.y + walkingSpeed);
+            self.position = CGPointMake(self.position.x, self.position.y + walkingSpeedTimeAffected);
         } else /* DOWN */ {
-            self.position = CGPointMake(self.position.x, self.position.y - walkingSpeed);
+            self.position = CGPointMake(self.position.x, self.position.y - walkingSpeedTimeAffected);
         }
     }
+    
+    oldTime = time;
 }
 
 - (void) setupWayPoints {

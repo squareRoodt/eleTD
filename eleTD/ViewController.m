@@ -71,7 +71,7 @@
     [toolbarSKView presentScene: toolbarScene];
     
     elementPickerScene = [ElementPickerScene sceneWithSize:elementPickerSKView.bounds.size];
-    [elementPickerSKView presentScene:elementPickerScene];
+    //[elementPickerSKView presentScene:elementPickerScene];
     
     mapSKView.showsFPS = YES;
     mapSKView.showsNodeCount = YES;
@@ -140,6 +140,14 @@
     pickerBackButton.hidden = !pickerBackButton.hidden;
     pickerNextButton.enabled = NO;
     towerName.text = @"";
+    
+    if (elementPickerSKView.hidden) {
+        toolbarScene = [ToolbarScene sceneWithSize:toolbarSKView.bounds.size];
+        toolbarScene.scaleMode = SKSceneScaleModeAspectFill;
+        [elementPickerSKView presentScene:toolbarScene];
+    } else {
+        [elementPickerSKView presentScene:elementPickerScene];
+    }
 }
 
 - (void) setButtonHidden: (BOOL) status {

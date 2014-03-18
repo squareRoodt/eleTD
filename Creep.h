@@ -31,6 +31,8 @@
     SKTexture *down;
     SKTexture *right;
     SKTexture *left;
+    
+    NSTimeInterval oldTime;
 }
 
 @property MapScene *mapScene;
@@ -44,7 +46,7 @@
 - (id) initWithMap: (MapScene*) map andCode: (NSString*) code;
 - (void) doActivate;
 - (void) kill;
-- (void) creepMovementTimer;
+- (void) creepMovementTimer: (NSTimeInterval)time;
 
 - (void) getAttackedBy: (Tower *) tower;
 - (void) gotLostSight:(Tower *)attacker;
