@@ -9,7 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 @class ViewController;
 
-@interface Toolbar : SKView {
+@interface Toolbar : UIView {
     
 }
 

@@ -91,7 +91,7 @@
         self.position = lastDestination;
         
         // creep directions
-        NSLog(@"%d", nextDestinationIndex);
+        //NSLog(@"%d", nextDestinationIndex);
         
         switch (nextDestinationIndex) {
             case 1:

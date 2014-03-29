@@ -49,8 +49,8 @@
     
     else /* IS_IPAD */ {
         mapSKView = [[Map alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.width)andViewController:self];
-        toolbarSKView = [[Toolbar alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width,
-                                                                self.view.bounds.size.height - self.view.bounds.size.width) andViewController:self];
+        toolbarSKView = [[Toolbar alloc]initWithFrame:CGRectMake(0, mapSKView.bounds.size.height, self.view.bounds.size.width, self.view.bounds.size.height - self.view.bounds.size.width) andViewController:self];
+        
         elementPickerSKView = [[ElementPicker alloc]initWithFrame: CGRectMake(
                                                                        mapSKView.bounds.size.width/15,
                                                                        mapSKView.bounds.size.height/15,
@@ -65,10 +65,11 @@
     mapScene = [MapScene sceneWithSize: mapSKView.bounds.size];
     mapScene.scaleMode = SKSceneScaleModeAspectFill;
     [mapSKView presentScene:mapScene];
+    [self openPicker];
     
     toolbarScene = [ToolbarScene sceneWithSize:toolbarSKView.bounds.size];
-    toolbarScene.scaleMode = SKSceneScaleModeAspectFill;
-    [toolbarSKView presentScene: toolbarScene];
+    //toolbarScene.scaleMode = SKSceneScaleModeAspectFill;
+    //[toolbarSKView presentScene: toolbarScene];
     
     elementPickerScene = [ElementPickerScene sceneWithSize:elementPickerSKView.bounds.size];
     //[elementPickerSKView presentScene:elementPickerScene];
@@ -83,7 +84,7 @@
     [self.view addSubview:mapSKView];
     [self.view addSubview:toolbarSKView];
     [self.view addSubview:elementPickerSKView];
-    elementPickerSKView.hidden = true;
+    
     
     
     // adding buttons, icons and smaller objects
@@ -144,6 +145,7 @@
     if (elementPickerSKView.hidden) {
         toolbarScene = [ToolbarScene sceneWithSize:toolbarSKView.bounds.size];
         toolbarScene.scaleMode = SKSceneScaleModeAspectFill;
+        // toolbarScene is being used as an empty Scene 
         [elementPickerSKView presentScene:toolbarScene];
     } else {
         [elementPickerSKView presentScene:elementPickerScene];

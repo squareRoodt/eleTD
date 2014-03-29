@@ -24,6 +24,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         viewController = vc;
+        self.backgroundColor = [UIColor whiteColor];
     }
     return self;
 }
