@@ -36,6 +36,7 @@ float iPhoneScale = 3.5;
         enemies = [[NSMutableArray alloc] init];
         towers = [[NSMutableArray alloc]init];
         currentLvl = 1;
+        spawnDelay = 0;
         
         //Loading the background
         background = [SKSpriteNode spriteNodeWithImageNamed:@"mapBeta1"];
@@ -69,42 +70,36 @@ float iPhoneScale = 3.5;
         }
         
         // creating a testing creep
-        
-        // creating multiple creeps (x20)
-        creepCreator = [NSTimer scheduledTimerWithTimeInterval:1 target:self
-                                                       selector:@selector(createCreep) userInfo:nil repeats:YES];
-        
-        
-        
-        /*
-        SKSpriteNode *ts = [[SKSpriteNode alloc] initWithImageNamed:@"spider"];
-        [background addChild:ts];
-        ts.position = CGPointMake(400, 400);
-        ts.yScale = 0.5;
-        ts.xScale = 0.5;
-        //PHYSICS
-        self.physicsWorld.gravity = CGVectorMake(0.0f, 0.0f);
-        ts.physicsBody.affectedByGravity = false;
-        ts.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:CGSizeMake(ts.size.width, ts.size.height)];
-        [ts.physicsBody applyForce:CGVectorMake(0, 50)];
-        ts.physicsBody.friction = 0.0;
-        ts.physicsBody.linearDamping = 0;
-         */
+        currentLvl = 1;
+        [self startLevel:currentLvl];
         
     }
     return self;
 }
 
+- (void) startLevel: (int) lvl {
+    // creating multiple creeps (x10)
+    NSLog(@"starting level %d and sleeping for 10s", currentLvl);
+    //sleep(10);
+    NSLog(@"starting creep spawner");
+    creepCreator = [NSTimer scheduledTimerWithTimeInterval:1 target:self
+                                                  selector:@selector(createCreep) userInfo:nil repeats:YES];
+}
+
 - (void) createCreep {
-    
-    //NSLog(@"adding creep");
-    
-    Creep *creep = [[Creep alloc]initWithMap:self andCode:@""];
-    [background addChild:creep];
-    [enemies addObject:creep];
-    
-    if ([enemies count] == 10) {
-        [creepCreator invalidate];
+    // deal with spawn delay
+    if (spawnDelay < 5) {
+        spawnDelay ++;
+    } else {
+        Creep *creep = [[Creep alloc]initWithMap:self andCode:@""];
+        [background addChild:creep];
+        [enemies addObject:creep];
+        
+        NSLog(@"creep count: %d", [enemies count]);
+        if ([enemies count] >= 10) {
+            [creepCreator invalidate];
+            spawnDelay = 0;
+        }
     }
 }
 
@@ -209,12 +204,19 @@ collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusT
 }
 
 - (void) enemyGotKilled {
-    NSLog(@"enemy got killed. no code added yet");
+    NSLog(@"creep(%d) got killed", [enemies count]);
+    NSLog(@"JD LOOK AT MAPSCENE BOTTOM FOR THIS MESSAGE. YOU WERE TRYING TO GET EACH LEVEL TO PROGRESS. I HAVE A FEELING THERE MIGHT HAVE TO BE SOME SORT OF OVER ALL GAME COUNTER THAT WORKS IN 1S INTERVALS THAT NEVER GETS INVALIDATED. MAYBE JUST IF STATEMENTS IN CREEP SPAWNING CODE? BUT YEA THIS IS WHERE YOU WERE.");
+    if ([enemies count] == 0) {
+        NSLog(@"level finished");
+        [self levelEnded];
+    }
 }
 
 - (void) levelEnded {
     currentLvl ++;
-    NSLog(@"level ended. level %d coming up... (once code has been added)",currentLvl);
+    
+    NSLog(@"level ended. level %d coming up... ",currentLvl);
+    [self startLevel:currentLvl];
 }
 
 - (void) update: (NSTimeInterval) currentTime {

@@ -18,6 +18,7 @@
     Map *parentMap;
     NSTimer *creepCreator;
     int currentLvl;
+    int spawnDelay;
 }
 
 @property (nonatomic, strong) SKSpriteNode *background;

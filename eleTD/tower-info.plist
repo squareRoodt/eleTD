@@ -212,5 +212,11 @@
 		<key>name</key>
 		<string>Flash Flood</string>
 	</dict>
+	<dict>
+		<key>code</key>
+		<string>FLN</string>
+		<key>name</key>
+		<string>Radiation</string>
+	</dict>
 </array>
 </plist>

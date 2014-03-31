@@ -31,7 +31,7 @@
         attackRadius = 250;
         attackSplash = 70;
         attackSpeed = 1;
-        attackDamage = 10;
+        attackDamage = 40;
         attackModifier = code;
         bulletImg = @"";
         bulletSpeed = 0.4;
