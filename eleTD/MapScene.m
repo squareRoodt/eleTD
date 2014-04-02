@@ -72,6 +72,8 @@ float iPhoneScale = 3.5;
         // creating a testing creep
         currentLvl = 1;
         [self startLevel:currentLvl];
+        creepCreator = [NSTimer scheduledTimerWithTimeInterval:1 target:self
+                                                                      selector:@selector(createCreep) userInfo:nil repeats:YES];
         
     }
     return self;
@@ -81,15 +83,16 @@ float iPhoneScale = 3.5;
     // creating multiple creeps (x10)
     NSLog(@"starting level %d and sleeping for 10s", currentLvl);
     //sleep(10);
-    NSLog(@"starting creep spawner");
-    creepCreator = [NSTimer scheduledTimerWithTimeInterval:1 target:self
-                                                  selector:@selector(createCreep) userInfo:nil repeats:YES];
+    //creepCreator = [NSTimer scheduledTimerWithTimeInterval:1 target:self
+    //                                              selector:@selector(createCreep) userInfo:nil repeats:YES];
 }
 
 - (void) createCreep {
-    // deal with spawn delay
-    if (spawnDelay < 5) {
-        spawnDelay ++;
+    
+    if (spawnDelay <= 10) {
+        if ([enemies count] == 0) {
+            spawnDelay ++;
+        }
     } else {
         Creep *creep = [[Creep alloc]initWithMap:self andCode:@""];
         [background addChild:creep];
@@ -97,8 +100,9 @@ float iPhoneScale = 3.5;
         
         NSLog(@"creep count: %d", [enemies count]);
         if ([enemies count] >= 10) {
-            [creepCreator invalidate];
+            //[creepCreator invalidate];
             spawnDelay = 0;
+            currentLvl ++;
         }
     }
 }
@@ -205,7 +209,7 @@ collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusT
 
 - (void) enemyGotKilled {
     NSLog(@"creep(%d) got killed", [enemies count]);
-    NSLog(@"JD LOOK AT MAPSCENE BOTTOM FOR THIS MESSAGE. YOU WERE TRYING TO GET EACH LEVEL TO PROGRESS. I HAVE A FEELING THERE MIGHT HAVE TO BE SOME SORT OF OVER ALL GAME COUNTER THAT WORKS IN 1S INTERVALS THAT NEVER GETS INVALIDATED. MAYBE JUST IF STATEMENTS IN CREEP SPAWNING CODE? BUT YEA THIS IS WHERE YOU WERE.");
+    
     if ([enemies count] == 0) {
         NSLog(@"level finished");
         [self levelEnded];
@@ -213,9 +217,7 @@ collideWithCircle:(CGPoint) circlePointTwo collisionCircleRadius:(float) radiusT
 }
 
 - (void) levelEnded {
-    currentLvl ++;
-    
-    NSLog(@"level ended. level %d coming up... ",currentLvl);
+    // THIS IS BEING CALLED TWICE WHEN IT SHOULDN'T
     [self startLevel:currentLvl];
 }
 

@@ -169,6 +169,9 @@
         }
     }
     
+    // error checking: is creep outside of map
+    // TO DO: check if creep is still on the right course. aka: is creep.position > map.position
+    
     oldTime = time;
 }
 
